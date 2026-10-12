@@ -1,11 +1,11 @@
-# AB/digital + SABINA — preview website
+# AB/digital + Latina Solo by Sabina — preview website
 
 An **actual responsive static website** with **zero package dependencies**. This is the public-preview-ready implementation of a personal IT/development business and an online Latin-dance course sales funnel. It does not collect payments or user details until merchant approval.
 
 ## Pages
 
 - `/` — IT developer / digital studio portfolio: services, current project, workflow, contact.
-- `/courses/sabina/` — elegant course landing with eight illustrative program items and three provisional packages.
+- `/courses/sabina/` — elegant course landing with the confirmed six-stage Latina Solo program and three provisional packages.
 - `/courses/sabina/checkout/?plan=self` (also `feedback` and `personal`) — interactive tariff-selection checkout preview, explicitly no payment collection.
 - `/legal/offer/`, `/legal/privacy/`, `/legal/refunds/`, `/legal/payment/` — clearly labeled legal drafts pending real owner details and legal review.
 
@@ -43,3 +43,8 @@ Open http://localhost:8080/. No Node, Vite, or npm install is needed. All pages 
 ## Hosting cost
 
 Static previews can run free. Any payment/fulfillment backend and production merchant-accepted hosting may incur costs. No credentials are committed.
+
+
+## Course content (12 October 2026)
+
+**Only one program is offered:** Latina Solo by Sabina, in six sequential stages: introduction, body technique, basic Latina Solo movements, choreography, visual expression and confidence, final rehearsal. Full descriptions are visible at `/courses/sabina/#program`. Tariffs, pricing and video durations remain provisional, and payments stay disabled. The React/Vite `src/` prototype is not deployed; Render serves the static `site/` directory from `develop`.
