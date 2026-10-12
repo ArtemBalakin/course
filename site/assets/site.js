@@ -20,4 +20,35 @@
     buttons.forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.plan;render()}));
     render();
   }
+  // The course uses a native dialog for details; Escape/focus trapping are handled by the browser.
+  const lessonDialog=document.getElementById('lesson-dialog');
+  if(lessonDialog&&typeof lessonDialog.showModal==='function'){
+    const triggers=[...document.querySelectorAll('[data-module]')];
+    const title=lessonDialog.querySelector('#lesson-dialog-title');
+    const subtitle=lessonDialog.querySelector('#lesson-dialog-subtitle');
+    const number=lessonDialog.querySelector('#lesson-dialog-number');
+    const visual=lessonDialog.querySelector('#lesson-dialog-visual');
+    const content=lessonDialog.querySelector('#lesson-dialog-content');
+    const close=lessonDialog.querySelector('.lesson-dialog-close');
+    const toTariffs=lessonDialog.querySelector('.lesson-dialog-cta');
+    let previousTrigger=null;
+    triggers.forEach(button=>button.addEventListener('click',()=>{
+      const id=button.dataset.module;
+      const template=document.getElementById('lesson-template-'+id);
+      if(!template)return;
+      previousTrigger=button;
+      number.textContent=id+' / 06';
+      visual.textContent=id;
+      title.textContent=button.querySelector('.module-title')?.textContent||'Этап курса';
+      subtitle.textContent=button.querySelector('.module-subtitle')?.textContent||'';
+      content.replaceChildren(template.content.cloneNode(true));
+      lessonDialog.showModal();
+      close.focus();
+    }));
+    close.addEventListener('click',()=>lessonDialog.close());
+    toTariffs.addEventListener('click',()=>lessonDialog.close());
+    lessonDialog.addEventListener('click',event=>{if(event.target===lessonDialog)lessonDialog.close()});
+    lessonDialog.addEventListener('close',()=>{previousTrigger?.focus({preventScroll:true})});
+  }
+
 })();

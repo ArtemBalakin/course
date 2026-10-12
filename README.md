@@ -48,3 +48,7 @@ Static previews can run free. Any payment/fulfillment backend and production mer
 ## Course content (12 October 2026)
 
 **Only one program is offered:** Latina Solo by Sabina, in six sequential stages: introduction, body technique, basic Latina Solo movements, choreography, visual expression and confidence, final rehearsal. Full descriptions are visible at `/courses/sabina/#program`. Tariffs, pricing and video durations remain provisional, and payments stay disabled. The React/Vite `src/` prototype is not deployed; Render serves the static `site/` directory from `develop`.
+
+## Course-card interaction (October 2026)
+
+Six program cards explicitly show "Подробнее об этапе" and open an accessible native HTML dialog with the stage's content (stored in non-rendering templates). This replaces the repeated six-block description and the unclear :target highlighting. Supports Escape, focus handling, backdrop close, mobile scrolling and CTA to tariffs.

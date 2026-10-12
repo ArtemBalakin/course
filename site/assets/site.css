@@ -36,3 +36,41 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
 .program-module-body li{padding-left:5px;margin:7px 0}
 @media(max-width:850px){.lesson-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.program-module{grid-template-columns:37% 1fr;gap:20px}}
 @media(max-width:600px){.lesson-grid{grid-template-columns:1fr}.lesson-grid .module-tile{height:240px}.module-tile .lesson-caption h3{font-size:30px}.program-module{grid-template-columns:1fr;gap:12px;padding:28px 5px}.program-details-title{margin-top:55px}.program-module-body{font-size:14px;padding:0}}
+
+
+/* Course discovery: six interactive cards + accessible on-demand detail dialog. */
+.lesson-grid .module-tile{border:0;text-align:left;width:100%;font-family:inherit;cursor:pointer;appearance:none;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;outline-offset:4px}
+.lesson-grid .module-tile:hover{transform:translateY(-6px);box-shadow:0 16px 30px #4b233b35}
+.lesson-grid .module-tile:focus-visible{outline:3px solid #60253f}
+.module-tile .lesson-glyph{font-family:'Playfair Display',Georgia,serif;font-size:165px;line-height:1;letter-spacing:-15px}
+.module-tile .lesson-caption{position:relative;z-index:3;display:flex;flex-direction:column;align-items:flex-start}
+.module-tile .module-title{display:block;font:600 clamp(25px,2.2vw,32px)/1.1 'Playfair Display',Georgia,serif;margin:8px 0 6px;max-width:330px;overflow-wrap:anywhere}
+.module-tile .module-subtitle{font-size:12px;line-height:1.5;color:#f9e0de}
+.module-tile .lesson-open{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:17px;padding-top:12px;border-top:1px solid #ffffff8a;font:800 12px Manrope,sans-serif;letter-spacing:.15px;color:#fff}
+.module-tile .lesson-open>span{font-size:23px;line-height:1;transition:transform .2s}
+.module-tile:hover .lesson-open>span,.module-tile:focus-visible .lesson-open>span{transform:translate(3px,-3px)}
+.lesson-dialog{padding:0;border:0;border-radius:16px;background:#fff8f2;color:#4e2939;width:min(880px,calc(100% - 30px));max-width:880px;max-height:min(760px,calc(100dvh - 30px));overflow:hidden;box-shadow:0 25px 80px #16060d70}
+.lesson-dialog::backdrop{background:rgba(21,10,18,.75);backdrop-filter:blur(5px)}
+.lesson-dialog-shell{display:grid;grid-template-columns:33% 67%;max-height:min(760px,calc(100dvh - 30px))}
+.lesson-dialog-art{background:radial-gradient(circle at 20% 15%,#eeb39b 0,#ba6274 48%,#61233d 100%);position:relative;overflow:hidden;min-height:460px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;color:#fff}
+.lesson-dialog-art:before,.lesson-dialog-art:after{content:"";position:absolute;width:310px;height:430px;border:1px solid #ffffff63;border-radius:50%;transform:rotate(25deg)}
+.lesson-dialog-art:after{transform:rotate(-25deg);width:230px;height:395px}
+.lesson-dialog-art-num{position:relative;z-index:1;font:600 clamp(92px,13vw,164px)/1 'Playfair Display',Georgia,serif;letter-spacing:-12px;color:#fff5e8a6}
+.lesson-dialog-art-tag,.lesson-dialog-art-foot{position:absolute;z-index:1;left:25px;right:20px;font:800 10px Manrope,sans-serif;letter-spacing:1.7px}
+.lesson-dialog-art-tag{top:31px}.lesson-dialog-art-foot{bottom:28px}
+.lesson-dialog-main{position:relative;overflow-y:auto;padding:58px 48px 42px;scrollbar-width:thin;overscroll-behavior:contain}
+.lesson-dialog-close{position:absolute;top:19px;right:22px;display:grid;place-items:center;background:#f2e3db;border:0;border-radius:50%;width:40px;height:40px;color:#692a45;font:600 18px Manrope,sans-serif;cursor:pointer;transition:background .2s}
+.lesson-dialog-close:hover,.lesson-dialog-close:focus-visible{background:#eacac6;outline:2px solid #a04b66;outline-offset:2px}
+.lesson-dialog-kicker{font:800 11px Manrope,sans-serif;letter-spacing:2px;color:#aa6276}
+.lesson-dialog h2{font:600 clamp(34px,3.2vw,49px)/1.07 'Playfair Display',Georgia,serif;letter-spacing:-1.3px;margin:21px 0 12px;color:#5c293d;overflow-wrap:anywhere}
+.lesson-dialog-subtitle{font:700 15px/1.55 Manrope,sans-serif;color:#a05870;margin:0 0 26px}
+.lesson-dialog-content{border-top:1px solid #ead0c8;padding-top:22px;font:400 15px/1.7 Manrope,sans-serif;color:#624d55}
+.lesson-dialog-content p{margin:0 0 16px}
+.lesson-dialog-content ul{margin:0 0 16px;padding-left:22px}
+.lesson-dialog-content li{margin-bottom:8px;padding-left:4px}
+.lesson-dialog-cta{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;margin-top:25px;padding:15px 21px;border-radius:30px;background:#6b253e;color:#fff;font:700 12px Manrope,sans-serif}
+.lesson-dialog-cta:hover,.lesson-dialog-cta:focus-visible{background:#873956}
+.lesson-dialog-cta span{font-size:18px}
+@media(max-width:700px){.lesson-dialog-shell{display:block;overflow-y:auto;max-height:calc(100dvh - 26px)}.lesson-dialog{max-height:calc(100dvh - 26px)}.lesson-dialog-art{min-height:130px;max-height:130px;padding:16px 25px;align-items:flex-start}.lesson-dialog-art-num{font-size:80px;letter-spacing:-6px}.lesson-dialog-art-tag,.lesson-dialog-art-foot{font-size:8px}.lesson-dialog-art-tag{top:14px}.lesson-dialog-art-foot{bottom:10px}.lesson-dialog-main{padding:39px 25px 30px;overflow:visible}.lesson-dialog-close{top:16px;right:18px}.lesson-dialog h2{font-size:37px}.lesson-dialog-content{font-size:14px}}
+@media(max-width:600px){.lesson-grid .module-tile{height:266px}.module-tile .module-title{font-size:29px}.module-tile .lesson-open{margin-top:12px;padding-top:9px}}
+@media(prefers-reduced-motion:reduce){.module-tile .lesson-open>span{transition:none}}
