@@ -14,41 +14,47 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 
 
-/* Latina Solo: six-stage program and expanded course outline */
-.lesson-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-.lesson-grid .module-tile{height:320px;text-decoration:none;transition:transform .2s,box-shadow .2s}
-.lesson-grid .module-tile:hover,.lesson-grid .module-tile:focus-visible{transform:translateY(-5px);box-shadow:0 12px 26px #58304726}
-.lesson-grid .module-tile:focus-visible{outline:3px solid #54283d;outline-offset:3px}
-.module-tile .lesson-glyph{font-size:165px;letter-spacing:-15px}
-.module-tile .lesson-caption h3{font-size:clamp(25px,2.2vw,32px);line-height:1.1;max-width:330px;overflow-wrap:anywhere}
-.module-tile .lesson-caption p{font-size:12px;line-height:1.5}
-.program-details-title{font:600 clamp(33px,3.8vw,54px)/1.15 'Playfair Display',Georgia,serif;margin:74px 0 28px;color:#582d3d}
-.program-details-title em{color:#a4506b;font-weight:500}
-.program-details{border-top:1px solid #c7aaa1}
-.program-module{display:grid;grid-template-columns:41% minmax(0,1fr);gap:30px;padding:32px 10px;border-bottom:1px solid #c7aaa1;scroll-margin-top:25px}
-.program-module:target{background:#fff8f1}
-.program-module-head h3{font:600 clamp(25px,2.7vw,38px)/1.15 'Playfair Display',Georgia,serif;color:#5f283f;margin:12px 0 9px}
-.program-module-head p{color:#9a5e72;font-weight:700;font-size:13px;line-height:1.6}
-.program-module-num{font:700 11px Manrope,sans-serif;letter-spacing:2px;color:#9b536c}
-.program-module-body{font-size:15px;line-height:1.8;color:#60454b;padding-right:14px}
-.program-module-body p{margin:0 0 16px}
-.program-module-body ul{margin:0;padding:0 0 0 22px}
-.program-module-body li{padding-left:5px;margin:7px 0}
-@media(max-width:850px){.lesson-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.program-module{grid-template-columns:37% 1fr;gap:20px}}
-@media(max-width:600px){.lesson-grid{grid-template-columns:1fr}.lesson-grid .module-tile{height:240px}.module-tile .lesson-caption h3{font-size:30px}.program-module{grid-template-columns:1fr;gap:12px;padding:28px 5px}.program-details-title{margin-top:55px}.program-module-body{font-size:14px;padding:0}}
-
-
-/* Course discovery: six interactive cards + accessible on-demand detail dialog. */
-.lesson-grid .module-tile{border:0;text-align:left;width:100%;font-family:inherit;cursor:pointer;appearance:none;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;outline-offset:4px}
-.lesson-grid .module-tile:hover{transform:translateY(-6px);box-shadow:0 16px 30px #4b233b35}
-.lesson-grid .module-tile:focus-visible{outline:3px solid #60253f}
-.module-tile .lesson-glyph{font-family:'Playfair Display',Georgia,serif;font-size:165px;line-height:1;letter-spacing:-15px}
-.module-tile .lesson-caption{position:relative;z-index:3;display:flex;flex-direction:column;align-items:flex-start}
-.module-tile .module-title{display:block;font:600 clamp(25px,2.2vw,32px)/1.1 'Playfair Display',Georgia,serif;margin:8px 0 6px;max-width:330px;overflow-wrap:anywhere}
-.module-tile .module-subtitle{font-size:12px;line-height:1.5;color:#f9e0de}
-.module-tile .lesson-open{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:17px;padding-top:12px;border-top:1px solid #ffffff8a;font:800 12px Manrope,sans-serif;letter-spacing:.15px;color:#fff}
+/* Latina Solo: colorful program cards with truly separate number / title zones. */
+.lesson-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.lesson-grid .module-tile{
+  display:grid;grid-template-rows:auto minmax(72px,1fr) auto;
+  align-items:stretch;justify-content:stretch;text-align:left;
+  min-height:352px;height:auto;width:100%;padding:20px 22px 19px;
+  border:0;border-radius:3px;cursor:pointer;appearance:none;
+  font-family:inherit;color:white;isolation:isolate;
+  transition:transform .2s,box-shadow .2s;outline-offset:4px
+}
+.lesson-grid .module-tile:hover{transform:translateY(-5px);box-shadow:0 16px 30px #4b233b35}
+.lesson-grid .module-tile:focus-visible{outline:3px solid #fff4df;outline-offset:-6px}
+.module-tile .lesson-index{grid-row:1;position:relative;z-index:2;font:700 11px Manrope,sans-serif;letter-spacing:1.7px}
+.module-tile .lesson-glyph{
+  grid-row:2;position:relative;inset:auto;left:auto;top:auto;
+  transform:none;align-self:center;justify-self:end;
+  font:600 clamp(74px,8vw,108px)/1 'Playfair Display',Georgia,serif;
+  letter-spacing:-9px;opacity:.45;color:#fff9ee;
+  pointer-events:none;z-index:1
+}
+.module-tile .lesson-caption{
+  grid-row:3;position:relative;z-index:3;
+  display:flex;flex-direction:column;align-items:flex-start;
+  justify-content:flex-end;text-shadow:0 1px 7px #40172870;
+  min-width:0;max-width:100%
+}
+.module-tile .lesson-caption>span:first-child{font:800 10px Manrope,sans-serif;letter-spacing:1.5px;color:#ffe4dd}
+.module-tile .module-title{
+  display:block;font:600 clamp(24px,2.2vw,32px)/1.08 'Playfair Display',Georgia,serif;
+  margin:9px 0 6px;max-width:100%;overflow-wrap:anywhere
+}
+.module-tile .module-subtitle{display:block;font:500 12px/1.5 Manrope,sans-serif;color:#ffe4e1}
+.module-tile .lesson-open{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  width:100%;margin-top:14px;padding-top:12px;border-top:1px solid #ffffff9c;
+  font:800 12px Manrope,sans-serif;letter-spacing:.1px;color:#fff
+}
 .module-tile .lesson-open>span{font-size:23px;line-height:1;transition:transform .2s}
 .module-tile:hover .lesson-open>span,.module-tile:focus-visible .lesson-open>span{transform:translate(3px,-3px)}
+
+/* Dialog: browse stages in place, using buttons, keyboard or a direct jump list. */
 .lesson-dialog{padding:0;border:0;border-radius:16px;background:#fff8f2;color:#4e2939;width:min(880px,calc(100% - 30px));max-width:880px;max-height:min(760px,calc(100dvh - 30px));overflow:hidden;box-shadow:0 25px 80px #16060d70}
 .lesson-dialog::backdrop{background:rgba(21,10,18,.75);backdrop-filter:blur(5px)}
 .lesson-dialog-shell{display:grid;grid-template-columns:33% 67%;max-height:min(760px,calc(100dvh - 30px))}
@@ -68,9 +74,58 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
 .lesson-dialog-content p{margin:0 0 16px}
 .lesson-dialog-content ul{margin:0 0 16px;padding-left:22px}
 .lesson-dialog-content li{margin-bottom:8px;padding-left:4px}
-.lesson-dialog-cta{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;margin-top:25px;padding:15px 21px;border-radius:30px;background:#6b253e;color:#fff;font:700 12px Manrope,sans-serif}
+.lesson-dialog-nav{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  border-top:1px solid #e9d5cd;margin-top:20px;padding-top:20px
+}
+.lesson-nav-button{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  flex:0 0 auto;border:1px solid #d9b6b8;background:#fff1ea;color:#652940;
+  border-radius:24px;min-height:44px;padding:11px 15px;
+  font:800 12px Manrope,sans-serif;cursor:pointer
+}
+.lesson-nav-button:hover:not(:disabled),.lesson-nav-button:focus-visible{background:#f1d6d4;border-color:#a05c73}
+.lesson-nav-button:disabled{opacity:.38;cursor:not-allowed}
+.lesson-nav-button span{font-size:19px;line-height:1}
+.lesson-nav-progress{font:700 12px Manrope,sans-serif;color:#87596a;text-align:center}
+.lesson-dialog-jump-label{display:block;font:700 11px Manrope,sans-serif;color:#986477;margin-top:22px;margin-bottom:8px}
+.lesson-dialog-jump{
+  display:block;width:100%;max-width:100%;min-height:44px;padding:11px 38px 11px 13px;
+  border-radius:9px;border:1px solid #dfc3ba;background:#fffaf7;
+  color:#5d283d;font:600 13px Manrope,sans-serif;cursor:pointer
+}
+.lesson-dialog-jump:focus-visible{outline:2px solid #8f4466;outline-offset:3px}
+.lesson-dialog-cta{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;margin-top:18px;padding:15px 21px;border-radius:30px;background:#6b253e;color:#fff;font:700 12px Manrope,sans-serif}
 .lesson-dialog-cta:hover,.lesson-dialog-cta:focus-visible{background:#873956}
 .lesson-dialog-cta span{font-size:18px}
-@media(max-width:700px){.lesson-dialog-shell{display:block;overflow-y:auto;max-height:calc(100dvh - 26px)}.lesson-dialog{max-height:calc(100dvh - 26px)}.lesson-dialog-art{min-height:130px;max-height:130px;padding:16px 25px;align-items:flex-start}.lesson-dialog-art-num{font-size:80px;letter-spacing:-6px}.lesson-dialog-art-tag,.lesson-dialog-art-foot{font-size:8px}.lesson-dialog-art-tag{top:14px}.lesson-dialog-art-foot{bottom:10px}.lesson-dialog-main{padding:39px 25px 30px;overflow:visible}.lesson-dialog-close{top:16px;right:18px}.lesson-dialog h2{font-size:37px}.lesson-dialog-content{font-size:14px}}
-@media(max-width:600px){.lesson-grid .module-tile{height:266px}.module-tile .module-title{font-size:29px}.module-tile .lesson-open{margin-top:12px;padding-top:9px}}
-@media(prefers-reduced-motion:reduce){.module-tile .lesson-open>span{transition:none}}
+
+@media(max-width:850px){
+  .lesson-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lesson-grid .module-tile{min-height:355px}
+}
+@media(max-width:700px){
+  .lesson-dialog-shell{display:block;overflow-y:auto;max-height:calc(100dvh - 26px)}
+  .lesson-dialog{max-height:calc(100dvh - 26px)}
+  .lesson-dialog-art{min-height:130px;max-height:130px;padding:16px 25px;align-items:flex-start}
+  .lesson-dialog-art-num{font-size:80px;letter-spacing:-6px}
+  .lesson-dialog-art-tag,.lesson-dialog-art-foot{font-size:8px}
+  .lesson-dialog-art-tag{top:14px}
+  .lesson-dialog-art-foot{bottom:10px}
+  .lesson-dialog-main{padding:39px 25px 30px;overflow:visible}
+  .lesson-dialog-close{top:16px;right:18px}
+  .lesson-dialog h2{font-size:37px}
+  .lesson-dialog-content{font-size:14px}
+}
+@media(max-width:600px){
+  .lesson-grid{grid-template-columns:1fr}
+  .lesson-grid .module-tile{min-height:300px;padding:19px 21px 18px;grid-template-rows:auto minmax(54px,1fr) auto}
+  .module-tile .lesson-glyph{font-size:82px}
+  .module-tile .module-title{font-size:29px}
+  .module-tile .lesson-open{margin-top:12px;padding-top:9px}
+  .lesson-dialog-nav{gap:6px}
+  .lesson-nav-button{padding:10px 11px;font-size:11px}
+  .lesson-nav-progress{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .module-tile .lesson-open>span{transition:none}
+}

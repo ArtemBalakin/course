@@ -52,3 +52,7 @@ Static previews can run free. Any payment/fulfillment backend and production mer
 ## Course-card interaction (October 2026)
 
 Six program cards explicitly show "Подробнее об этапе" and open an accessible native HTML dialog with the stage's content (stored in non-rendering templates). This replaces the repeated six-block description and the unclear :target highlighting. Supports Escape, focus handling, backdrop close, mobile scrolling and CTA to tariffs.
+
+## Scalable program navigation (October 2026)
+
+Inside the lesson dialog, `Назад` and `Далее`, Left/Right arrow keys and a dynamically populated "Быстрый переход" select allow browsing 6 or 20+ stages without repeatedly closing and reopening cards. First/last arrows are disabled at bounds and the progress indicator is announced to assistive technologies. Card layout uses three CSS Grid rows (index, decorative numeral, text/CTA), preventing number/text overlap on desktop and phones.

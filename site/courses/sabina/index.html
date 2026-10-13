@@ -16,6 +16,13 @@
       <h2 id="lesson-dialog-title">Введение в курс</h2>
       <p class="lesson-dialog-subtitle" id="lesson-dialog-subtitle">Знакомство и выбор танца</p>
       <div class="lesson-dialog-content" id="lesson-dialog-content"></div>
+      <nav class="lesson-dialog-nav" aria-label="Навигация по программе">
+        <button class="lesson-nav-button lesson-nav-prev" type="button" aria-label="Предыдущий этап"><span aria-hidden="true">←</span> Назад</button>
+        <span class="lesson-nav-progress" id="lesson-nav-progress" aria-live="polite" aria-atomic="true">Этап 1 из 6</span>
+        <button class="lesson-nav-button lesson-nav-next" type="button" aria-label="Следующий этап">Далее <span aria-hidden="true">→</span></button>
+      </nav>
+      <label class="lesson-dialog-jump-label" for="lesson-dialog-jump">Быстрый переход к этапу</label>
+      <select id="lesson-dialog-jump" class="lesson-dialog-jump" aria-label="Перейти к выбранному этапу"></select>
       <a href="#tariffs" class="lesson-dialog-cta">Посмотреть форматы обучения <span aria-hidden="true">↗</span></a>
     </div>
   </div>
