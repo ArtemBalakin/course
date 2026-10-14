@@ -101,3 +101,10 @@ Refreshed both homepage stylesheet URLs with an explicit version query to avoid 
 ## Public-facing homepage revisions (Oct 14, 2026)
 
 Improved reading contrast and body type across the homepage and course, simplified the three service descriptions for non-technical clients and added design/Tilda/other site builders. Replaced the generic N3/iSpace boxes with differently composed cards themed to their public websites and linked to public-page screenshots via WordPress mShots (third-party-generated, may change/temporarily be unavailable). Reframed process copy with explicit agreed milestones and timeframes; layered timeline behind numbered circles. Direct Telegram/WhatsApp buttons are not yet included because no confirmed personal contact handles have been supplied: never substitute a guessed chat URL. Existing GitHub link is retained as a verified interim route.
+
+
+## AB/digital Formspree contact (October 2026)
+
+Studio homepage `/#contact` now submits to **`https://formspree.io/f/mgaongrd`**. The previous Telegram message-draft submission is replaced with a native `POST` action plus progressive AJAX `fetch`, preserving the form's existing fields and style. Client-side success, error, and submitting states handle Formspree JSON responses and the button is disabled during submission. A visitor consent checkbox is required and the privacy-policy draft now discloses Formspree for inquiries. No Formspree secrets are present in client code; the form endpoint is a public submission destination.
+
+**Operational follow-ups:** Verify the form and configure Telegram notifications in the Formspree dashboard (Workflow). A successful HTTP submission confirms Formspree acceptance, **not** that a Telegram notification is configured or delivered. Because the website's legal privacy page is still a draft with the legal owner details missing, it must be reviewed and finalized before general public commercial intake. Do not submit fake leads to test the endpoint without the owner's approval.

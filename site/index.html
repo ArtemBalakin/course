@@ -108,13 +108,14 @@
     <h2>Есть задача?<br><em>Давайте обсудим.</em></h2>
     <p>Расскажите, что хотите создать или улучшить. Поможем определить первый шаг и подходящий формат работы.</p>
     <a class="contact-tg-button" href="https://t.me/ArtemBalakin" target="_blank" rel="noopener noreferrer"><span class="contact-tg-icon" aria-hidden="true">↗</span><span>Написать Артёму <small>Telegram · @ArtemBalakin</small></span><span aria-hidden="true">→</span></a>
-    <p class="contact-side-note">Или заполните форму рядом: она подготовит сообщение для чата.</p>
+    <p class="contact-side-note">Или отправьте заявку прямо с сайта — без перехода в мессенджер.</p>
   </div>
   <div class="contact-panel">
     <div class="contact-panel-head"><span>01 / ЗАЯВКА</span><span aria-hidden="true">✳</span></div>
     <h3>Коротко о проекте</h3>
     <p class="contact-panel-lead">Пара вопросов, чтобы сразу обсудить дело.</p>
-    <form id="ab-contact-form" action="https://t.me/ArtemBalakin" method="get">
+    <form id="ab-contact-form" action="https://formspree.io/f/mgaongrd" method="POST" accept-charset="UTF-8">
+      <input type="hidden" name="source" value="AB/digital — форма на сайте">
       <div class="contact-form-row">
         <label for="ab-contact-name">Как к вам обращаться *
           <input id="ab-contact-name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="Ваше имя" required>
@@ -137,10 +138,11 @@
       <label for="ab-contact-details">Опишите задачу *
         <textarea id="ab-contact-details" name="details" rows="4" maxlength="1200" placeholder="Что хотите сделать, для кого и к какому сроку?" required></textarea>
       </label>
-      <button type="submit" class="contact-form-submit">Открыть заявку в Telegram <span aria-hidden="true">↗</span></button>
-      <p id="ab-contact-status" role="status" aria-live="polite">Откроется чат с готовым текстом. Проверьте его и нажмите «Отправить» в Telegram — сайт не отправляет заявку автоматически и не сохраняет введённое.</p>
+      <label class="contact-consent" for="ab-contact-consent"><input id="ab-contact-consent" name="consent" type="checkbox" value="Да" required><span>Согласен(на) на обработку указанных контактных данных для ответа на заявку, в том числе через сервис Formspree. <a href="/legal/privacy/" target="_blank" rel="noopener noreferrer">Информация о данных ↗</a></span></label>
+      <button type="submit" class="contact-form-submit"><span class="contact-submit-label">Отправить заявку</span><span aria-hidden="true">↗</span></button>
+      <p id="ab-contact-status" class="contact-form-status" role="status" aria-live="polite" aria-atomic="true">Заявка отправляется напрямую с сайта. Telegram для отправки не нужен.</p>
     </form>
   </div>
 </div>
 </section>
-</main><footer class="footer "><div class="footer-up"><a href="/" class="brand"><span class="brand-icon">a<span>.</span></span><span>AB<span class="brand-soft">/</span>digital</span></a><p>Сайты, боты, интеграции. Продукты, которые помогают бизнесу работать.</p><a href="https://t.me/ArtemBalakin" target="_blank" rel="noopener noreferrer" class="footer-git">Telegram: @ArtemBalakin ↗</a></div><div class="footer-bottom"><span>© 2026 AB/digital · Предварительная версия сайта</span><div><a href="/legal/offer/">Оферта</a><a href="/legal/privacy/">Конфиденциальность</a><a href="/legal/refunds/">Возвраты</a><a href="/legal/payment/">Оплата и доступ</a></div></div><p class="footer-note">До публичного запуска требуется указать официальное наименование и реквизиты ИП, утвердить юридические документы. Сейчас оплата отключена.</p></footer><script src="/assets/site.js" defer></script><script src="/assets/motion.js?v=20261014-motion-v1" defer></script><script src="/assets/contact.js?v=20261014-polish-v1" defer></script></body></html>
+</main><footer class="footer "><div class="footer-up"><a href="/" class="brand"><span class="brand-icon">a<span>.</span></span><span>AB<span class="brand-soft">/</span>digital</span></a><p>Сайты, боты, интеграции. Продукты, которые помогают бизнесу работать.</p><a href="https://t.me/ArtemBalakin" target="_blank" rel="noopener noreferrer" class="footer-git">Telegram: @ArtemBalakin ↗</a></div><div class="footer-bottom"><span>© 2026 AB/digital · Предварительная версия сайта</span><div><a href="/legal/offer/">Оферта</a><a href="/legal/privacy/">Конфиденциальность</a><a href="/legal/refunds/">Возвраты</a><a href="/legal/payment/">Оплата и доступ</a></div></div><p class="footer-note">До публичного запуска требуется указать официальное наименование и реквизиты ИП, утвердить юридические документы. Сейчас оплата отключена.</p></footer><script src="/assets/site.js" defer></script><script src="/assets/motion.js?v=20261014-motion-v1" defer></script><script src="/assets/contact.js?v=20261014-formspree-v1" defer></script></body></html>

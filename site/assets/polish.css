@@ -47,3 +47,19 @@
 .home-contact #ab-contact-status.is-ready{color:#2b7960;font-weight:700}
 @media(max-width:1020px){.contact-layout{grid-template-columns:1fr;gap:34px}.contact-copy{max-width:700px}.contact-panel{max-width:850px}.corporate-case.corporate-case-n3{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.corporate-case.corporate-case-n3{display:flex;flex-direction:column}.corporate-case-n3 .corporate-case-copy{padding:27px 24px}.corporate-case-n3 .corporate-case-copy h3{font-size:34px}.corporate-case-n3 .corporate-case-shot{min-height:270px;height:270px}.n3-identity{margin-bottom:22px}.contact-panel{padding:24px 20px}.contact-form-row{grid-template-columns:1fr}.contact-tg-button{width:100%;padding:14px}.home-contact .contact-copy h2{font-size:clamp(37px,10vw,54px)}.ab-workflow-node:not(:last-child)::after{left:16px;top:88px;width:7px;height:7px}}
+
+
+/* Direct Formspree form: privacy acknowledgement, loading/error/success feedback. */
+#ab-contact-form .contact-consent{display:flex;align-items:flex-start;gap:10px;font:400 12px/1.6 'DM Sans',sans-serif;color:#38525a}
+#ab-contact-form .contact-consent input[type="checkbox"]{
+  width:19px;height:19px;flex:0 0 19px;accent-color:#237f68;margin:2px 0 0;
+  border-radius:4px;cursor:pointer
+}
+#ab-contact-form .contact-consent span{display:block;min-width:0}
+#ab-contact-form .contact-consent a{color:#226d61;text-decoration:underline;text-underline-offset:2px}
+#ab-contact-form .contact-consent a:hover,#ab-contact-form .contact-consent a:focus-visible{color:#123e3b}
+#ab-contact-form .contact-form-submit[disabled]{cursor:wait;opacity:.65;transform:none;box-shadow:none}
+#ab-contact-form .contact-form-status{min-height:2.6em}
+#ab-contact-form #ab-contact-status[data-state="sending"]{color:#3e6677;font-weight:600}
+#ab-contact-form #ab-contact-status[data-state="success"]{color:#12694c;font-weight:700}
+#ab-contact-form #ab-contact-status[data-state="error"]{color:#a13232;font-weight:700}
