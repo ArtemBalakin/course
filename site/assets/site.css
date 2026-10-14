@@ -347,3 +347,29 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
   .solution-phone-front{right:16%}
   .solution-case-open{font-size:11px}
 }
+
+
+/* AB/digital hero: subtle, accessible kinetic system diagram. */
+@keyframes ab-orbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes ab-orbit-reverse{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+@keyframes ab-cloud-breathe{0%,100%{transform:rotate(-9deg) translateY(0)}50%{transform:rotate(-9deg) translateY(-11px)}}
+@keyframes ab-float-a{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-11px) rotate(6deg)}}
+@keyframes ab-float-b{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-10px) rotate(-8deg)}}
+@keyframes ab-float-c{0%,100%{transform:translateY(0) rotate(7deg)}50%{transform:translateY(-9px) rotate(5deg)}}
+@keyframes ab-status-glow{0%,100%{box-shadow:0 0 0 3px #55b77d35}50%{box-shadow:0 0 0 8px #55b77d17}}
+@keyframes ab-scroll-hint{0%,100%{opacity:.65;transform:translateY(0)}50%{opacity:1;transform:translateY(4px)}}
+.home-hero .art-orbit{transform-origin:center;animation:ab-orbit 40s linear infinite}
+.home-hero .art-orbit-2{animation:ab-orbit-reverse 33s linear infinite}
+.home-hero .art-orbit::after{content:"";position:absolute;top:13%;left:13%;width:9px;height:9px;border-radius:50%;background:#d9ff5e;box-shadow:0 0 15px #d9ff5e8e}
+.home-hero .art-orbit-2::after{background:#88cac0;box-shadow:0 0 15px #88cac086;width:6px;height:6px}
+.home-hero .art-cloud{animation:ab-cloud-breathe 7.5s ease-in-out infinite;will-change:transform}
+.home-hero .art-card.a1{animation:ab-float-a 7s ease-in-out infinite}
+.home-hero .art-card.a2{animation:ab-float-b 8.4s ease-in-out infinite}
+.home-hero .art-card.a3{animation:ab-float-c 7.7s ease-in-out infinite}
+.home-hero .art-dot.green{animation:ab-status-glow 3s ease-in-out infinite}
+.home-hero .scroll-cue{display:inline-block;animation:ab-scroll-hint 3s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){
+  .home-hero .art-orbit,.home-hero .art-orbit-2,.home-hero .art-cloud,
+  .home-hero .art-card.a1,.home-hero .art-card.a2,.home-hero .art-card.a3,
+  .home-hero .art-dot.green,.home-hero .scroll-cue{animation:none!important;will-change:auto}
+}

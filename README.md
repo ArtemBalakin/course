@@ -91,3 +91,8 @@ Refactored the homepage to remove reference-derived equal service-card and proce
 - Removed the reference-based service/process CSS overrides from `site/assets/site.css`. Tested new sections at 1440px and 390px with headless Chromium, with no horizontal overflow (local archived-base visual preview); production browser check still required.
 
 The layout was designed around the site's existing Manrope + Playfair typography, lime accent and navy/cream palette; there are no invented prices, timelines or client statistics.
+
+
+## Design polish (2026-10-14)
+
+Refreshed both homepage stylesheet URLs with an explicit version query to avoid stale cached styling. Normalized AB/digital heading accents to Manrope, strengthened the five-stage process as a connected vertical flow with visible arrows and continuous track (desktop and mobile), and added gentle orbit/card/letter motion to the hero. All animations respect `prefers-reduced-motion`. No business claims, course content, payments, or Mini App functionality were changed.

@@ -115,3 +115,49 @@
   .ab-workflow-node p{font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){.ab-cap-item-arrow{transition:none}}
+
+/* AB/digital workflow v2: clear vertical path, with visible connected steps.
+   Scoped to #process; does not change the Sabina course or Mini App gallery. */
+.ab-cap-signature h2 em,.ab-workflow-intro h2 em{
+  font-family:Manrope,Arial,sans-serif;font-size:1em;font-style:normal;font-weight:800;line-height:1.12;
+  letter-spacing:-1.8px
+}
+.ab-capabilities,.ab-workflow{font-family:'DM Sans',Arial,sans-serif}
+.ab-workflow{background:#10222c;color:#f9fbf7}
+.ab-workflow-layout{display:grid;grid-template-columns:minmax(260px,40%) minmax(0,1fr);gap:7%;align-items:start}
+.ab-workflow-intro{position:sticky;top:44px;min-width:0}
+.ab-workflow-path{display:flex;flex-direction:column;gap:0;padding:9px 0 0 0;margin:0;position:relative;list-style:none}
+.ab-workflow-path::before{content:"";position:absolute;top:34px;bottom:46px;left:29px;width:2px;border:0;background:linear-gradient(180deg,#d9ff5e 0%,#90d0c0 55%,#2e6470 100%);pointer-events:none}
+.ab-workflow-node{display:grid;grid-template-columns:60px minmax(0,1fr);gap:23px;align-items:start;min-height:151px;position:relative;padding:0;margin:0}
+.ab-workflow-node:not(:last-child)::after{content:"↓";position:absolute;z-index:3;top:100px;left:22px;background:#10222c;color:#c0efb8;font:800 18px/22px Manrope,sans-serif;width:18px;text-align:center}
+.ab-workflow-node-marker{position:relative;z-index:2;display:grid;place-items:center;width:60px;height:60px;background:#142e34;border:2px solid #7cc3b4;color:#d9ff5e;border-radius:50%;font:800 15px Manrope,sans-serif;box-shadow:0 0 0 5px #10222c}
+.ab-workflow-node:last-child .ab-workflow-node-marker{background:#d9ff5e;border-color:#d9ff5e;color:#10222c}
+.ab-workflow-node>div,.ab-workflow-node:not(:last-child) div{border:0;margin:0;padding:8px 0 35px;min-width:0}
+.ab-workflow-node h3{font:800 clamp(22px,2.2vw,31px)/1.2 Manrope,Arial,sans-serif;margin:0 0 11px;color:#fff}
+.ab-workflow-node p{font:400 14px/1.75 'DM Sans',Arial,sans-serif;max-width:450px;margin:0;color:#b5c9cb}
+.ab-workflow-kicker,.ab-cap-kicker{font-family:Manrope,Arial,sans-serif;font-size:11px;letter-spacing:1.2px}
+.ab-cap-item-body h3{font-family:Manrope,Arial,sans-serif}
+@media(min-width:851px){
+  .ab-workflow-intro h2{font-size:clamp(42px,4.7vw,68px);letter-spacing:-3.3px}
+}
+@media(max-width:850px){
+  .ab-workflow-layout{grid-template-columns:minmax(0,1fr);gap:34px}
+  .ab-workflow-intro{position:static}
+  .ab-workflow-path{padding-top:7px}
+  .ab-workflow-node{grid-template-columns:55px minmax(0,1fr);gap:18px;min-height:141px}
+  .ab-workflow-node-marker{width:55px;height:55px}
+  .ab-workflow-path::before{left:26px;top:24px;bottom:40px}
+  .ab-workflow-node:not(:last-child)::after{left:20px;top:95px}
+  .ab-workflow-node>div,.ab-workflow-node:not(:last-child) div{padding:8px 0 35px}
+}
+@media(max-width:600px){
+  .ab-workflow-layout{gap:25px}
+  .ab-workflow-kicker{gap:6px;flex-wrap:wrap;line-height:1.7;font-size:10px}
+  .ab-workflow-node{grid-template-columns:42px minmax(0,1fr);gap:14px;min-height:139px}
+  .ab-workflow-node-marker{width:42px;height:42px;font-size:12px}
+  .ab-workflow-path::before{left:20px;top:20px;bottom:40px}
+  .ab-workflow-node:not(:last-child)::after{left:13px;top:89px}
+  .ab-workflow-node>div,.ab-workflow-node:not(:last-child) div{padding:4px 0 32px}
+  .ab-workflow-node h3{font-size:21px}
+  .ab-workflow-node p{font-size:12.5px;line-height:1.65}
+}
