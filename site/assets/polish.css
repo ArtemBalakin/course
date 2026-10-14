@@ -1,0 +1,49 @@
+/* AB/digital refinements: native timeline arrows, N3 brand treatment, Telegram enquiry. */
+.ab-workflow-node:not(:last-child)::after{
+  content:""!important;position:absolute;z-index:3;left:25px;top:103px;
+  width:8px;height:8px;border-right:2px solid #b6e6c8;border-bottom:2px solid #b6e6c8;
+  transform:rotate(45deg);background:transparent!important;box-shadow:none!important;
+  font-size:0!important;pointer-events:none
+}
+.corporate-case.corporate-case-n3{grid-template-columns:45% 55%;background:#f9fdfe;color:#0d3540;border:1px solid #9adcea;border-top:7px solid #06abc8;box-shadow:0 18px 40px #147e9422}
+.corporate-case-n3 .corporate-case-copy{background:#f9fdfe;padding:35px 38px;min-width:0}
+.n3-identity{display:flex;align-items:center;gap:16px;margin:0 0 26px;padding-bottom:21px;border-bottom:1px solid #c0e8ee}
+.n3-identity-mark{font:800 46px/1 Manrope,sans-serif;letter-spacing:-3px;color:#084150}
+.n3-identity-mark span{color:#08aac4}
+.n3-identity-name{color:#02798f;font:800 10px/1.6 Manrope,sans-serif;letter-spacing:1.1px}
+.corporate-case-n3 .corporate-case-index{color:#047e94;font:800 11px Manrope,sans-serif;letter-spacing:1.2px}
+.corporate-case-n3 .corporate-case-copy h3{font:800 clamp(29px,3vw,44px)/1.14 Manrope,sans-serif;letter-spacing:-1.6px;color:#083b47;margin:21px 0 17px}
+.corporate-case-n3 .corporate-case-copy p{font:500 15px/1.73 'DM Sans',sans-serif;color:#3e5e67;opacity:1;margin:0 0 26px}
+.corporate-case-n3 .corporate-case-copy>a{color:#046a83;border-color:#b9dde6;font:800 14px Manrope,sans-serif;padding:18px 0 0}
+.corporate-case-n3 .corporate-case-copy>a:hover{color:#03a3c1}
+.corporate-case-n3 .corporate-case-shot{min-height:430px;background:#00a7ca;overflow:hidden}
+.corporate-case-n3 .corporate-case-shot img{object-fit:cover;object-position:top center;filter:none}
+.corporate-shot-label{display:none!important}
+.contact-layout{display:grid;grid-template-columns:47% minmax(0,1fr);gap:6%;align-items:start}
+.home-contact .contact-copy h2{font:800 clamp(38px,4.5vw,68px)/1.12 Manrope,sans-serif;letter-spacing:-2.9px;margin:28px 0 24px}
+.home-contact .contact-copy>p{font:400 16px/1.8 'DM Sans',sans-serif;color:#d1e0df}
+.contact-tg-button{display:flex;align-items:center;gap:14px;margin-top:34px;padding:16px 19px;background:#d9ff5e;color:#14252b;width:fit-content;max-width:100%;border-radius:12px;font:800 15px Manrope,sans-serif;transition:transform .2s,box-shadow .2s}
+.contact-tg-button:hover,.contact-tg-button:focus-visible{transform:translateY(-3px);box-shadow:0 18px 30px #d9ff5e30;color:#14252b}
+.contact-tg-icon{flex:none;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:#143032;color:#d9ff5e;font-size:25px}
+.contact-tg-button small{display:block;font:700 12px Manrope,sans-serif;color:#41605a;margin-top:3px}
+.contact-tg-button>span:last-child{margin-left:auto;font-size:22px}
+.home-contact .contact-side-note{color:#a7c0bb;font:400 13px/1.7 'DM Sans',sans-serif;margin-top:21px}
+.contact-panel{background:#f6f9f5;border:1px solid #d7e5dd;border-radius:18px;color:#102832;padding:30px 32px;box-shadow:0 20px 50px #020f182e}
+.contact-panel-head{display:flex;align-items:center;justify-content:space-between;color:#58786b;font:800 11px Manrope,sans-serif;letter-spacing:1.5px}
+.contact-panel-head span:last-child{font-size:25px;color:#579b80}
+.contact-panel h3{font:800 clamp(27px,2.7vw,36px)/1.18 Manrope,sans-serif;letter-spacing:-1px;margin:20px 0 9px}
+.home-contact .contact-panel-lead{font:400 14px/1.6 'DM Sans',sans-serif;color:#566b68;margin:0 0 20px}
+#ab-contact-form{display:grid;gap:15px}
+.contact-form-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+#ab-contact-form label{display:block;color:#294348;font:700 12px/1.5 Manrope,sans-serif}
+#ab-contact-form input,#ab-contact-form select,#ab-contact-form textarea{display:block;width:100%;min-width:0;margin-top:7px;border:1px solid #bfd0c9;background:#fff;border-radius:10px;padding:12px 13px;color:#142e34;font:500 14px/1.5 'DM Sans',sans-serif;outline:none}
+#ab-contact-form input::placeholder,#ab-contact-form textarea::placeholder{color:#70827f}
+#ab-contact-form textarea{resize:vertical;min-height:112px}
+#ab-contact-form input:focus-visible,#ab-contact-form select:focus-visible,#ab-contact-form textarea:focus-visible{border-color:#3c987c;box-shadow:0 0 0 3px #86cdb04a}
+.contact-form-submit{display:flex;align-items:center;justify-content:space-between;gap:13px;width:100%;border:0;border-radius:10px;background:#142c32;color:white;cursor:pointer;padding:15px 18px;font:800 14px Manrope,sans-serif}
+.contact-form-submit:hover,.contact-form-submit:focus-visible{background:#2a6958}
+.contact-form-submit span{font-size:22px}
+.home-contact #ab-contact-status{color:#536b67;font:400 11px/1.55 'DM Sans',sans-serif;margin:0;max-width:none}
+.home-contact #ab-contact-status.is-ready{color:#2b7960;font-weight:700}
+@media(max-width:1020px){.contact-layout{grid-template-columns:1fr;gap:34px}.contact-copy{max-width:700px}.contact-panel{max-width:850px}.corporate-case.corporate-case-n3{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.corporate-case.corporate-case-n3{display:flex;flex-direction:column}.corporate-case-n3 .corporate-case-copy{padding:27px 24px}.corporate-case-n3 .corporate-case-copy h3{font-size:34px}.corporate-case-n3 .corporate-case-shot{min-height:270px;height:270px}.n3-identity{margin-bottom:22px}.contact-panel{padding:24px 20px}.contact-form-row{grid-template-columns:1fr}.contact-tg-button{width:100%;padding:14px}.home-contact .contact-copy h2{font-size:clamp(37px,10vw,54px)}.ab-workflow-node:not(:last-child)::after{left:16px;top:88px;width:7px;height:7px}}
