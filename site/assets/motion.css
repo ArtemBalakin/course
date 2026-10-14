@@ -1,0 +1,99 @@
+/* AB/digital motion layer: isolated from course pages. All interactive effects are progressive enhancements. */
+.ab-read-progress{--ab-read:0;position:fixed;top:0;left:0;width:100%;height:3px;z-index:80;pointer-events:none;transform:scaleX(var(--ab-read));transform-origin:left center;background:linear-gradient(90deg,#77dbbd 0%,#d9ff5e 85%);box-shadow:0 0 15px #d9ff5e75}
+.ab-signal-ticker{position:relative;z-index:2;overflow:hidden;background:#d9ff5e;color:#14272b;border-top:1px solid #b0ce5c;border-bottom:1px solid #b0ce5c;height:62px;display:flex;align-items:center}
+.ab-ticker-window{overflow:hidden;width:100%}
+.ab-ticker-track{display:flex;align-items:center;width:max-content;white-space:nowrap;animation:ab-ticker-flow 33s linear infinite}
+.ab-ticker-unit{flex:0 0 auto;padding-right:36px;font:800 13px/1.3 Manrope,Arial,sans-serif;letter-spacing:2.4px}
+.ab-ticker-unit b{color:#507958;font:900 18px Manrope,Arial,sans-serif;padding:0 28px;vertical-align:middle}
+@keyframes ab-ticker-flow{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+/* Native content remains visible without JS / IntersectionObserver. */
+.ab-motion-ready .ab-motion-reveal:not(.ab-inview){opacity:0;transform:translate3d(0,34px,0)}
+.ab-motion-ready .ab-motion-reveal{transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .86s cubic-bezier(.17,.67,.18,1);transition-delay:var(--ab-stagger,0ms)}
+.ab-motion-ready .ab-motion-reveal.ab-inview{opacity:1;transform:translate3d(0,0,0)}
+.ab-motion-ready .section-kicker{position:relative}
+.ab-motion-ready .section-kicker::after{content:"";height:1px;width:100%;position:absolute;bottom:-1px;left:0;background:#74c1aa;transform:scaleX(0);transform-origin:left;transition:transform 1.4s cubic-bezier(.25,.7,.18,1)}
+.ab-motion-ready .section-kicker.ab-inview::after{transform:scaleX(1)}
+/* Make the typography, interface elements and links respond with intent, not bounce randomly. */
+.ab-cap-art-mark{animation:ab-brand-drift 9s ease-in-out infinite}
+.ab-cap-art-orbit{animation:ab-brand-orbit 40s linear infinite;transform-origin:center}
+.ab-chip-one{animation:ab-brand-chip-one 7.2s ease-in-out infinite}
+.ab-chip-two{animation:ab-brand-chip-two 8.4s ease-in-out infinite}
+.ab-cap-signature{transition:box-shadow .35s ease}
+.ab-cap-item{position:relative;isolation:isolate}
+.ab-cap-item::before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(420px circle at var(--ab-mx,50%) var(--ab-my,50%),#b4dbc443,transparent 72%);opacity:0;pointer-events:none;transition:opacity .3s}
+.ab-cap-item:hover::before{opacity:1}
+.ab-cap-item-body h3{transition:color .24s}
+.ab-cap-item:hover .ab-cap-item-body h3{color:#357969}
+.ab-cap-item-arrow{transition:transform .4s cubic-bezier(.2,.8,.2,1),background .2s,box-shadow .2s}
+.ab-cap-item:hover .ab-cap-item-arrow{box-shadow:0 0 0 6px #d9ff5e30}
+@keyframes ab-brand-drift{0%,100%{transform:rotate(-11deg) translateY(0)}50%{transform:rotate(-9deg) translateY(-12px)}}
+@keyframes ab-brand-orbit{to{transform:rotate(360deg)}}
+@keyframes ab-brand-chip-one{0%,100%{transform:rotate(7deg) translateY(0)}50%{transform:rotate(4deg) translateY(-10px)}}
+@keyframes ab-brand-chip-two{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(-5deg) translateY(8px)}}
+/* Product previews float as a group so links keep their own tilt + focus/hover transforms. */
+.solution-phones{animation:ab-device-hover 6.7s ease-in-out infinite}
+.solution-showcase-reminder .solution-phones{animation-delay:-3.1s;animation-duration:7.3s}
+.solution-case-visual::after{content:"";position:absolute;z-index:0;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,#71bdba51 0%,transparent 69%);filter:blur(10px);left:-15%;bottom:-15%;animation:ab-device-light 9s ease-in-out infinite;pointer-events:none}
+.solution-phones,.solution-visual-kicker,.solution-visual-hint{z-index:1}
+.solution-showcase{isolation:isolate;--ab-glow-color:#9dd6be24}
+.solution-showcase::after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;opacity:0;background:radial-gradient(500px circle at var(--ab-mx,50%) var(--ab-my,50%),var(--ab-glow-color),transparent 67%);transition:opacity .3s}
+.solution-showcase:hover::after{opacity:1}
+.solution-showcase:hover .solution-phones{animation-play-state:paused}
+.solution-case-open{transition:transform .25s ease,background .2s,border-color .2s,box-shadow .2s}
+.solution-case-open:hover,.solution-case-open:focus-visible{transform:translateY(-3px);box-shadow:0 8px 25px #d9ff5e33}
+@keyframes ab-device-hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes ab-device-light{0%,100%{transform:translate(0,0) scale(.9);opacity:.45}50%{transform:translate(80px,-45px) scale(1.2);opacity:.8}}
+/* Project feature: gentle kinetic oval, progressively enhanced. */
+.project-art{isolation:isolate}
+.project-art::before{animation:ab-project-ring-a 23s linear infinite}
+.project-art::after{animation:ab-project-ring-b 27s linear infinite}
+.project-oval{animation:ab-project-emblem 9s ease-in-out infinite}
+.project-feature:hover .project-oval{animation-play-state:paused;transform:rotate(-7deg) scale(1.045)}
+.project-link span{display:inline-block;transition:transform .25s}
+.project-feature:hover .project-link span{transform:translate(4px,-4px)}
+@keyframes ab-project-ring-a{from{transform:rotate(30deg)}to{transform:rotate(390deg)}}
+@keyframes ab-project-ring-b{from{transform:rotate(-36deg)}to{transform:rotate(-396deg)}}
+@keyframes ab-project-emblem{0%,100%{transform:rotate(-12deg) translateY(0)}50%{transform:rotate(-9deg) translateY(-11px)}}
+/* Enterprise: light cursor spotlight and intentional on-hover elevation. */
+.corporate-card{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
+.corporate-card::before{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(380px circle at var(--ab-mx,50%) var(--ab-my,50%),#5cc3ac35,transparent 74%);opacity:0;transition:opacity .3s}
+.corporate-card:hover{transform:translateY(-5px);box-shadow:0 18px 36px #183f3f25}
+.corporate-card:hover::before{opacity:1}
+.corporate-card a span{display:inline-block;transition:transform .25s}
+.corporate-card a:hover span{transform:translate(3px,-3px)}
+/* Workflow path fills as the reader walks through the steps. */
+.ab-workflow-path{--ab-flow-progress:0}
+.ab-motion-ready .ab-workflow-path::after{content:"";position:absolute;z-index:1;top:34px;left:29px;width:2px;height:calc((100% - 80px)*var(--ab-flow-progress));border:0;background:linear-gradient(#d9ff5e,#9cdec3);box-shadow:0 0 12px #d9ff5e91;pointer-events:none}
+.ab-workflow-node-marker{transition:background .5s ease,border-color .5s ease,color .5s ease,box-shadow .5s ease}
+.ab-workflow-node.ab-flow-active .ab-workflow-node-marker{background:#d9ff5e;border-color:#d9ff5e;color:#12282f;box-shadow:0 0 0 6px #d9ff5e18,0 0 22px #bceca24d}
+.ab-workflow-node:last-child.ab-flow-active .ab-workflow-node-marker{box-shadow:0 0 0 7px #d9ff5e23,0 0 28px #bceca27d}
+@media(max-width:850px){
+.ab-motion-ready .ab-workflow-path::after{top:24px;left:26px;height:calc((100% - 64px)*var(--ab-flow-progress))}
+}
+@media(max-width:600px){
+.ab-ticker-unit{font-size:11px;letter-spacing:1.5px}.ab-ticker-unit b{padding:0 20px}
+.ab-signal-ticker{height:49px}
+.ab-motion-ready .ab-workflow-path::after{left:20px;top:20px;height:calc((100% - 60px)*var(--ab-flow-progress))}
+.ab-motion-ready .ab-motion-reveal:not(.ab-inview){transform:translate3d(0,18px,0)}
+.solution-phones{animation-duration:8.5s}
+}
+@media(hover:none){
+.ab-cap-item::before,.solution-showcase::after,.corporate-card::before{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+.ab-ticker-track,.ab-cap-art-mark,.ab-cap-art-orbit,.ab-chip-one,.ab-chip-two,
+.solution-phones,.solution-case-visual::after,.project-art::before,.project-art::after,.project-oval{animation:none!important}
+.ab-motion-ready .ab-motion-reveal,.ab-motion-ready .ab-motion-reveal:not(.ab-inview){opacity:1!important;transform:none!important;transition:none!important}
+.ab-motion-ready .section-kicker::after{transition:none!important;transform:scaleX(1)}
+.ab-cap-item-arrow,.solution-case-open,.corporate-card,.corporate-card a span,.project-link span,.ab-workflow-node-marker{transition:none!important}
+.ab-read-progress{transition:none!important}
+}
+
+/* Pointer parallax and background-tab suspension. */
+@media(hover:hover) and (pointer:fine){
+  .home-hero .home-art{transform:translate3d(var(--ab-art-x,0px),var(--ab-art-y,0px),0);transition:transform .26s ease-out}
+}
+.ab-motion-paused .ab-ticker-track,.ab-motion-paused .ab-cap-art-mark,
+.ab-motion-paused .ab-cap-art-orbit,.ab-motion-paused .ab-chip-one,.ab-motion-paused .ab-chip-two,
+.ab-motion-paused .solution-phones,.ab-motion-paused .project-art::before,
+.ab-motion-paused .project-art::after,.ab-motion-paused .project-oval{animation-play-state:paused!important}
