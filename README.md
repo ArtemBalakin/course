@@ -61,3 +61,12 @@ Inside the lesson dialog, `Назад` and `Далее`, Left/Right arrow keys a
 ## AB/digital portfolio — Telegram Mini Apps (October 2026)
 
 The AB/digital home page now includes two additional portfolio cases: [Reminder Bot](https://github.com/ArtemBalakin/reminderBot) and [Salon Booking Bot](https://github.com/ArtemBalakin/salon-booking-bot/tree/feature/miniapp-showcase). Each has four original full-height UI preview images in `site/assets/portfolio/*.webp` (optimized 500px-wide WebP). The Reminder preview images use the real cat illustrations from the source repository; all task names and booking values in the shots are illustrative. A keyboard-accessible modal switches between screenshots and links back to the correct GitHub branch. These are static previews, not connected live Telegram sessions.
+
+
+## Portfolio copy and corporate platforms (14 October 2026)
+
+The AB/digital homepage now has concrete descriptions of Java backend, websites and Telegram Mini Apps. The corporate-platform section links to [N3](https://n3corp.ru/) (enterprise health management) and [iSpace](https://ispace-platform.ru/) (ECM/BPM/document processes). It describes their publicly documented capabilities without claiming that AB/digital implemented the entire platforms.
+
+The Sabina landing now contains the instructor information supplied by the content owner: Sabina Azizova, Kazakhstan Master of Sports, seven-time national champion, World Championship semifinalist, international dance practice and experience teaching Latina Solo to women's groups. An outcome section describes body control, basic rumba technique, music, choreography, plasticity and confident expression. The existing six-stage curriculum text is preserved until the course owner confirms how its 'dance selection' stage relates to the promised rumba-specific outcome. Pricing and payment remain inactive. The production photography and independently verified award details should be supplied before commercial publication.
+
+The Render Blueprint service is renamed to `ab-digital-preview` (the portfolio-wide identity) rather than tying the whole studio to one course. The old public preview can remain separately reachable for historical links until it is retired.

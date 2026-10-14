@@ -1,7 +1,7 @@
 services:
   - type: web
     runtime: static
-    name: ab-digital-sabina-preview
+    name: ab-digital-preview
     branch: develop
     buildCommand: echo "Static website — no build required"
     staticPublishPath: ./site
