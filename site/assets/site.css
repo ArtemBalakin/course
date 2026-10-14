@@ -346,3 +346,84 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
 .process-section .process-step h3{font-size:20px;margin:16px 0 8px}
 .home-contact h2{font-size:clamp(43px,10vw,61px);letter-spacing:-2.5px}
 }
+
+
+/* AB/digital original case studies with immediate product proof.
+   Override earlier generic white-card solution styles without changing Latina Solo pages. */
+.solutions-section{padding:110px 0 95px;background:var(--cream);color:var(--navy)}
+.solutions-section .section-kicker{color:#53666b}
+.solutions-header{margin:54px 0 38px;display:flex;align-items:end;justify-content:space-between;gap:40px}
+.solutions-eyebrow{color:#587a71}
+.solutions-header h2{font:800 clamp(40px,4.7vw,66px)/1.11 Manrope,sans-serif;letter-spacing:-3.4px}
+.solutions-header h2 em{font-family:'Playfair Display',Georgia,serif;font-weight:500;color:#659580;letter-spacing:-1.3px}
+.solutions-header>p{max-width:380px;font:400 15px/1.8 'DM Sans',sans-serif;color:#65747a}
+.solution-showcases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.solution-showcase{display:grid;grid-template-columns:minmax(0,1fr) 40%;min-width:0;min-height:535px;overflow:hidden;background:#10232d;border:1px solid #243c43;border-radius:21px;color:#fff;position:relative}
+.solution-case-content{display:flex;flex-direction:column;padding:30px 10px 28px 28px;min-width:0;position:relative;z-index:2}
+.solution-case-top{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;color:#71beb8;font:800 9px/1.6 Manrope,sans-serif;letter-spacing:1.1px}
+.solution-case-chip{border:1px solid #4c7777;border-radius:40px;padding:5px 9px;font-size:9px;letter-spacing:.5px;color:#c7e7df}
+.solution-case-content h3{font:800 clamp(25px,2.35vw,37px)/1.21 Manrope,sans-serif;letter-spacing:-1.45px;color:#fff;margin:41px 0 19px}
+.solution-case-content h3 em{font-family:'Playfair Display',Georgia,serif;font-weight:500;letter-spacing:-.7px;color:#d9ff5e}
+.solution-showcase-reminder .solution-case-content h3 em{color:#b4ecdd}
+.solution-case-problem{font:400 13px/1.75 'DM Sans',sans-serif;color:#b6c7d0;margin:0 0 22px;max-width:330px}
+.solution-case-outcome{padding-top:18px;border-top:1px solid #4360696b}
+.solution-case-label{display:block;color:#8bc9bd;font:800 10px/1.5 Manrope,sans-serif;letter-spacing:1.6px}
+.solution-case-outcome p{font:400 13px/1.7 'DM Sans',sans-serif;color:#e3eded;margin:9px 0 22px;max-width:325px}
+.solution-case-actions{display:flex;flex-wrap:wrap;gap:13px;align-items:center;margin-top:auto;padding-top:14px}
+.solution-case-open{border:1px solid #d9ff5e;background:#d9ff5e;color:#11242b;display:inline-flex;align-items:center;justify-content:space-between;gap:15px;padding:11px 13px;border-radius:40px;font:800 12px Manrope,sans-serif;white-space:nowrap}
+.solution-case-open:hover,.solution-case-open:focus-visible{background:white;border-color:white;color:#11242b}
+.solution-case-open span{font-size:17px}
+.solution-case-source{font:700 11px Manrope,sans-serif;color:#bad0d3;white-space:nowrap}
+.solution-case-source:hover{color:#fff}
+.solution-case-visual{position:relative;min-width:0;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 90% 15%,#2a5664 0,#1a3a45 35%,#10232d 87%)}
+.solution-showcase-reminder .solution-case-visual{background:radial-gradient(circle at 78% 16%,#476958 0,#234e50 42%,#10232d 85%)}
+.solution-case-visual::before{content:"";position:absolute;width:380px;height:380px;border:1px solid #ffffff31;border-radius:50%;transform:rotate(23deg);left:-95px;top:45px}
+.solution-visual-kicker{position:absolute;top:30px;right:16px;color:#a9d9d3;font:800 9px Manrope,sans-serif;letter-spacing:1.5px}
+.solution-phones{display:flex;align-items:center;justify-content:center;position:relative;width:100%;height:100%;max-width:275px;min-height:390px;isolation:isolate}
+.solution-phone{display:block;position:absolute;top:50%;width:min(74%,180px);padding:5px;border:3px solid #162831;border-radius:20px;background:#15232a;box-shadow:0 17px 31px #020e1799;transition:transform .2s,box-shadow .2s;outline-offset:5px;overflow:hidden}
+.solution-phone img{display:block;width:100%;height:auto;aspect-ratio:500/1013;object-fit:contain;border-radius:13px;background:#fff9ec}
+.solution-phone-rear{z-index:1;left:3%;transform:translateY(-48%) rotate(-9deg) scale(.86);transform-origin:center center}
+.solution-phone-front{z-index:2;right:1%;transform:translateY(-50%) rotate(7deg);transform-origin:center center}
+.solution-phone-rear:hover,.solution-phone-rear:focus-visible{z-index:5;transform:translateY(-52%) rotate(0) scale(.94);box-shadow:0 21px 35px #000a}
+.solution-phone-front:hover,.solution-phone-front:focus-visible{z-index:5;transform:translateY(-53%) rotate(0) scale(1.02);box-shadow:0 21px 35px #000a}
+.solution-visual-hint{position:absolute;bottom:24px;right:13px;left:13px;text-align:center;font:800 9px Manrope,sans-serif;letter-spacing:1px;color:#bbdbd4}
+.solutions-caveat{margin:16px 0 0;color:#788687;font:400 12px/1.7 'DM Sans',sans-serif}
+@media(max-width:1150px){
+  .solution-showcases{grid-template-columns:1fr;gap:16px}
+  .solution-showcase{grid-template-columns:minmax(0,1fr) 43%;min-height:445px}
+  .solution-case-content{padding:31px 25px 28px 35px}
+  .solution-case-content h3{font-size:clamp(29px,3vw,43px);margin:24px 0 16px}
+  .solution-case-problem,.solution-case-outcome p{max-width:490px;font-size:14px}
+  .solution-phones{max-width:375px}
+  .solution-phone{width:min(65%,190px)}
+}
+@media(max-width:760px){
+  .solutions-header{display:block}
+  .solutions-header>p{margin:17px 0 0;max-width:100%}
+  .solution-showcase{grid-template-columns:1fr;min-height:0}
+  .solution-case-content{padding:29px 26px 22px}
+  .solution-case-content h3{margin:19px 0 13px}
+  .solution-case-problem,.solution-case-outcome p{max-width:none}
+  .solution-case-visual{height:355px}
+  .solution-phones{min-height:0;max-width:375px}
+  .solution-phone{width:min(42%,163px)}
+  .solution-phone-rear{left:23%}
+  .solution-phone-front{right:23%}
+  .solution-visual-kicker{top:17px}
+  .solution-visual-hint{bottom:13px}
+}
+@media(max-width:600px){
+  .solutions-section{padding:77px 0 81px}
+  .solutions-header{margin:37px 0 26px}
+  .solutions-header h2{font-size:clamp(37px,9vw,48px);letter-spacing:-2.3px}
+  .solution-showcase{border-radius:17px}
+  .solution-case-content{padding:23px 21px 24px}
+  .solution-case-top{font-size:9px}
+  .solution-case-content h3{font-size:clamp(29px,7vw,39px)}
+  .solution-case-actions{gap:15px}
+  .solution-case-visual{height:327px}
+  .solution-phone{width:min(48%,160px)}
+  .solution-phone-rear{left:16%}
+  .solution-phone-front{right:16%}
+  .solution-case-open{font-size:11px}
+}

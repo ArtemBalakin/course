@@ -74,3 +74,8 @@ The Render Blueprint service is renamed to `ab-digital-preview` (the portfolio-w
 ## Studio services & proven experience (14 October 2026)
 
 The homepage now consistently uses a team **we** voice and features a three-column service overview (Telegram Mini Apps, Telegram bots, web/backend), three problem-solution case cards, five steps of delivery, and concrete links to our project previews. Corporate cards identify our participation in development of N3 and iSpace without claiming to own or have delivered the complete products. Removed non-clickable decorative top-right arrows; official platform links remain active at the bottom. No invented prices, delivery estimates, or client outcomes.
+
+
+## Inline Telegram case studies (14 October 2026)
+
+The `/#solutions` section was redesigned to use AB/digital's own dark navy / lime visual language, not a generic reference card layout. Salon Booking and Reminder Bot now have direct, full-height image previews **inside** their problem/solution case studies; clicking either preview or “Смотреть 4 экрана” opens the existing accessible gallery **without scrolling to another block**. The redundant duplicate gallery cards were removed from `/#works`, where the separately developed Latina Solo project remains. The modal and all eight optimized image files remain unchanged and functional. The case claims stay grounded in the implemented UI, and no real appointments or reminders are created.
