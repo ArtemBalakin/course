@@ -73,9 +73,21 @@ The Render Blueprint service is renamed to `ab-digital-preview` (the portfolio-w
 
 ## Studio services & proven experience (14 October 2026)
 
-The homepage now consistently uses a team **we** voice and features a three-column service overview (Telegram Mini Apps, Telegram bots, web/backend), three problem-solution case cards, five steps of delivery, and concrete links to our project previews. Corporate cards identify our participation in development of N3 and iSpace without claiming to own or have delivered the complete products. Removed non-clickable decorative top-right arrows; official platform links remain active at the bottom. No invented prices, delivery estimates, or client outcomes.
+The homepage now consistently uses a team **we** voice and features a three editorial service rows (Telegram Mini Apps, Telegram bots, web/backend), two inline Mini App cases, five steps of delivery, and concrete links to our project previews. Corporate cards identify our participation in development of N3 and iSpace without claiming to own or have delivered the complete products. Removed non-clickable decorative top-right arrows; official platform links remain active at the bottom. No invented prices, delivery estimates, or client outcomes.
 
 
 ## Inline Telegram case studies (14 October 2026)
 
 The `/#solutions` section was redesigned to use AB/digital's own dark navy / lime visual language, not a generic reference card layout. Salon Booking and Reminder Bot now have direct, full-height image previews **inside** their problem/solution case studies; clicking either preview or “Смотреть 4 экрана” opens the existing accessible gallery **without scrolling to another block**. The redundant duplicate gallery cards were removed from `/#works`, where the separately developed Latina Solo project remains. The modal and all eight optimized image files remain unchanged and functional. The case claims stay grounded in the implemented UI, and no real appointments or reminders are created.
+
+
+## Studio layout refresh (14 October 2026)
+
+Refactored the homepage to remove reference-derived equal service-card and process-card grids. The original AB/digital identity drives the new sections:
+- `#services`: asymmetric studio panel with the AB/digital motif alongside three editorial capability rows, with direct links to live visual examples.
+- `#process`: a single connected five-step timeline with a typographic introduction rather than five standalone cards.
+- `#solutions`: existing inline Reminder and Salon Mini App screen previews and their accessible four-screen gallery remain immediately accessible, no duplicate gallery further down.
+- Dedicated `site/assets/studio.css` loads **only on the studio homepage** and does not alter the Latina Solo landing.
+- Removed the reference-based service/process CSS overrides from `site/assets/site.css`. Tested new sections at 1440px and 390px with headless Chromium, with no horizontal overflow (local archived-base visual preview); production browser check still required.
+
+The layout was designed around the site's existing Manrope + Playfair typography, lime accent and navy/cream palette; there are no invented prices, timelines or client statistics.

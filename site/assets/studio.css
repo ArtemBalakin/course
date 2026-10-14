@@ -1,0 +1,117 @@
+/* AB/digital / studio system v1: dedicated visual language, not reference-card clones.
+   Hero, product previews, company references and course keep their existing layout. */
+.ab-capabilities{background:#f0f1e8;color:#10222b;padding:105px 0 115px;overflow:hidden}
+.ab-cap-kicker{border-color:#d1d9d0;color:#697973}
+.ab-cap-layout{display:grid;grid-template-columns:42% minmax(0,1fr);margin-top:47px;gap:0;min-height:710px}
+.ab-cap-signature{position:relative;display:flex;flex-direction:column;overflow:hidden;min-width:0;isolation:isolate;background:#101f29;color:#f9fbf5;padding:43px 43px 27px;min-height:685px}
+.ab-cap-signature::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 95% 85%,#31534d91,transparent 52%);pointer-events:none;z-index:-1}
+.ab-cap-signature-meta{display:flex;align-items:center;gap:11px;color:#c7d3d1;font:800 10px Manrope,sans-serif;letter-spacing:1.3px;line-height:1.5}
+.ab-signal{width:8px;height:8px;border-radius:100%;background:#d9ff5e;box-shadow:0 0 0 5px #d9ff5e24;flex:none}
+.ab-cap-signature h2{font:800 clamp(38px,3.9vw,60px)/1.12 Manrope,sans-serif;letter-spacing:-3.7px;margin:38px 0 21px}
+.ab-cap-signature h2 em{color:#d9ff5e;font:500 italic 1.1em/1.05 'Playfair Display',Georgia,serif;letter-spacing:-2px}
+.ab-cap-signature>p{max-width:365px;font:400 15px/1.78 'DM Sans',sans-serif;color:#b9cacd;margin:0;position:relative;z-index:2}
+.ab-cap-art{flex:1;position:relative;min-height:185px;margin:18px -12px 0;z-index:1}
+.ab-cap-art-mark{position:absolute;left:13%;top:2%;font:800 clamp(95px,13vw,195px)/1 Manrope,sans-serif;letter-spacing:-17px;color:#fcfff4;transform:rotate(-11deg);opacity:.95}
+.ab-cap-art-mark span{color:#d9ff5e}
+.ab-cap-art-orbit{position:absolute;border:1px solid #75978b56;border-radius:50%;width:320px;height:320px;left:-12%;top:-12%;transform:rotate(27deg);z-index:-1}
+.ab-cap-art-chip{position:absolute;z-index:2;padding:13px 18px;border-radius:9px;background:#d9ff5e;color:#192a2c;box-shadow:0 10px 25px #0006;font:800 12px Manrope,sans-serif;letter-spacing:.3px;white-space:nowrap}
+.ab-cap-art-chip b{color:#577047}
+.ab-chip-one{right:-3%;top:8%;transform:rotate(7deg)}
+.ab-chip-two{left:1%;bottom:7%;background:#f2f6ef;transform:rotate(-8deg)}
+.ab-cap-signature-foot{position:relative;display:flex;justify-content:space-between;gap:12px;padding-top:17px;border-top:1px solid #b5cac02d;color:#a9c2c4;font:800 9px Manrope,sans-serif;letter-spacing:1.2px}
+.ab-cap-directory{display:flex;flex-direction:column;min-width:0;padding:3px 0 0 6.3%}
+.ab-cap-directory-head{display:flex;align-items:center;justify-content:space-between;gap:20px;color:#5f746b;font:800 10px Manrope,sans-serif;letter-spacing:1.8px;padding:2px 0 21px;border-bottom:2px solid #142b31}
+.ab-cap-item{display:grid;grid-template-columns:65px minmax(0,1fr) 46px;gap:12px;border-bottom:1px solid #cbd8cf;min-height:202px;align-items:start;padding:29px 0 24px}
+.ab-cap-item-number{font:800 24px Manrope,sans-serif;letter-spacing:-1px;color:#90aca4;white-space:nowrap}
+.ab-cap-item-number span{display:block;margin-top:3px;font:700 10px Manrope,sans-serif;letter-spacing:.6px;color:#a2b2a9}
+.ab-cap-item-body h3{font:800 clamp(23px,2.8vw,38px)/1.17 Manrope,sans-serif;letter-spacing:-1.6px;margin:0 0 11px;max-width:380px}
+.ab-cap-item-body p{font:400 13px/1.72 'DM Sans',sans-serif;color:#536b6c;max-width:395px;margin:0 0 13px}
+.ab-cap-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.ab-cap-tags span{padding:6px 10px;border:1px solid #cbd8ce;border-radius:30px;font:700 10px Manrope,sans-serif;color:#59756b;white-space:nowrap}
+.ab-cap-item-arrow{display:grid;place-items:center;align-self:center;width:41px;height:41px;border-radius:100%;background:#10232c;color:#d9ff5e;font:700 22px Manrope,sans-serif;transition:transform .2s,background .2s}
+.ab-cap-item-arrow:hover,.ab-cap-item-arrow:focus-visible{transform:rotate(45deg);background:#47665c}
+.ab-cap-directory-foot{font:500 12px/1.7 'DM Sans',sans-serif;color:#697e77;margin:20px 0 0}
+/* Process is a continuous timeline, not five equal "template" boxes. */
+.ab-workflow{background:#10222c;color:#fff;padding:108px 0 125px;overflow:hidden}
+.ab-workflow-kicker{color:#d5ff77;border-color:#48636b66}
+.ab-workflow-layout{display:grid;grid-template-columns:42% minmax(0,1fr);gap:8%;margin-top:73px}
+.ab-workflow-intro{position:relative;padding-bottom:50px}
+.ab-workflow-eyebrow{color:#a5c5c1;font:800 10px Manrope,sans-serif;letter-spacing:2px}
+.ab-workflow-intro h2{font:800 clamp(43px,5vw,73px)/1.16 Manrope,sans-serif;letter-spacing:-4px;margin:35px 0 24px;color:#fff}
+.ab-workflow-intro h2 em{font:500 italic 1.12em/1.05 'Playfair Display',Georgia,serif;color:#d9ff5e;letter-spacing:-1.8px}
+.ab-workflow-intro>p{font:400 15px/1.85 'DM Sans',sans-serif;max-width:360px;color:#bed0d3;margin:0}
+.ab-workflow-stamp{display:flex;align-items:center;gap:20px;max-width:315px;margin-top:66px;padding-top:22px;border-top:1px solid #5b7a775c;color:#c8d9d5}
+.ab-workflow-stamp strong{font:800 83px/1 Manrope,sans-serif;letter-spacing:-7px;color:#d9ff5e}
+.ab-workflow-stamp span{font:800 10px/1.65 Manrope,sans-serif;letter-spacing:1.8px}
+.ab-workflow-stamp i{margin-left:auto;align-self:start;font-style:normal;font-size:25px;color:#d9ff5e}
+.ab-workflow-path{padding:0;margin:0;list-style:none;counter-reset:step;position:relative}
+.ab-workflow-path::before{content:"";position:absolute;top:20px;bottom:70px;left:24px;border-left:1px solid #5c7e79;pointer-events:none}
+.ab-workflow-node{display:grid;grid-template-columns:50px minmax(0,1fr);gap:29px;position:relative;min-height:132px}
+.ab-workflow-node:not(:last-child) div{border-bottom:1px solid #ffffff26}
+.ab-workflow-node-marker{display:grid;place-items:center;width:49px;height:49px;border:1px solid #60847c;border-radius:50%;background:#10222c;color:#d9ff5e;font:800 13px Manrope,sans-serif;z-index:1}
+.ab-workflow-node:last-child .ab-workflow-node-marker{background:#d9ff5e;color:#112b2d;border-color:#d9ff5e}
+.ab-workflow-node>div{padding:7px 0 25px;margin:0 0 15px}
+.ab-workflow-node h3{font:800 clamp(21px,2.4vw,30px)/1.3 Manrope,sans-serif;letter-spacing:-.7px;margin:0 0 10px;color:#f9faf4}
+.ab-workflow-node p{font:400 13px/1.78 'DM Sans',sans-serif;color:#b7cacc;max-width:390px;margin:0}
+.ab-workflow-node:last-child div{border:0}
+/* Keep inline case screenshots visually connected to our original palette. */
+.solutions-section{background:#f8f9f4}
+.solutions-header h2 em{color:#567e72}
+@media(max-width:1120px){
+  .ab-cap-layout{grid-template-columns:40% minmax(0,1fr)}
+  .ab-cap-signature{padding:33px 28px 23px}
+  .ab-cap-signature h2{font-size:clamp(38px,4vw,55px)}
+  .ab-cap-item{grid-template-columns:50px minmax(0,1fr) 42px;gap:10px}
+  .ab-cap-item-body h3{font-size:clamp(22px,2.8vw,33px)}
+  .ab-workflow-layout{gap:6%}
+}
+@media(max-width:850px){
+  .ab-capabilities,.ab-workflow{padding:80px 0 88px}
+  .ab-cap-layout,.ab-workflow-layout{grid-template-columns:1fr;gap:28px;margin-top:32px}
+  .ab-cap-signature{min-height:380px;padding:34px 35px 24px}
+  .ab-cap-signature h2{max-width:560px;font-size:51px;margin:22px 0 15px}
+  .ab-cap-signature>p{max-width:420px}
+  .ab-cap-art{position:absolute;right:0;bottom:33px;width:35%;min-height:165px;opacity:.7}
+  .ab-cap-art-mark{font-size:125px;letter-spacing:-12px;left:0}
+  .ab-cap-art-chip{display:none}
+  .ab-cap-signature-foot{margin-top:auto}
+  .ab-cap-directory{padding:0}
+  .ab-cap-item{min-height:190px}
+  .ab-cap-item-body h3{font-size:30px}
+  .ab-workflow-intro{padding-bottom:0}
+  .ab-workflow-intro h2{font-size:55px}
+  .ab-workflow-stamp{display:none}
+  .ab-workflow-path{padding-top:14px}
+}
+@media(max-width:600px){
+  .ab-capabilities,.ab-workflow{padding:72px 0 78px}
+  .ab-cap-layout{margin-top:25px;gap:26px}
+  .ab-cap-signature{min-height:335px;padding:25px 22px 20px}
+  .ab-cap-signature-meta{font-size:9px}
+  .ab-cap-signature h2{font-size:clamp(37px,9.5vw,49px);letter-spacing:-2.4px;margin:25px 0 16px}
+  .ab-cap-signature>p{font-size:13px;max-width:295px}
+  .ab-cap-art{right:-40px;bottom:22px;opacity:.3}
+  .ab-cap-art-mark{font-size:100px}
+  .ab-cap-signature-foot{font-size:8px;letter-spacing:.6px}
+  .ab-cap-directory-head{font-size:9px;letter-spacing:1px}
+  .ab-cap-item{grid-template-columns:33px minmax(0,1fr) 33px;gap:9px;min-height:0;padding:25px 0}
+  .ab-cap-item-number{font-size:19px}
+  .ab-cap-item-number span{font-size:8px}
+  .ab-cap-item-body h3{font-size:clamp(21px,6vw,27px);letter-spacing:-1px}
+  .ab-cap-item-body p{font-size:12px}
+  .ab-cap-tags span{font-size:9px;padding:5px 8px}
+  .ab-cap-item-arrow{height:33px;width:33px;font-size:18px}
+  .ab-cap-directory-foot{font-size:11px}
+  .ab-workflow-kicker{flex-wrap:wrap;gap:10px}
+  .ab-workflow-kicker span{white-space:normal}
+  .ab-workflow-layout{margin-top:36px;gap:29px}
+  .ab-workflow-intro h2{font-size:clamp(41px,10vw,53px);letter-spacing:-2.5px;margin:21px 0 16px}
+  .ab-workflow-intro>p{font-size:13px}
+  .ab-workflow-path::before{left:19px}
+  .ab-workflow-node{grid-template-columns:40px minmax(0,1fr);gap:15px;min-height:0}
+  .ab-workflow-node-marker{width:39px;height:39px;font-size:11px}
+  .ab-workflow-node>div{padding:4px 0 24px;margin:0 0 16px}
+  .ab-workflow-node h3{font-size:22px}
+  .ab-workflow-node p{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.ab-cap-item-arrow{transition:none}}
