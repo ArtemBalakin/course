@@ -56,3 +56,8 @@ Six program cards explicitly show "Подробнее об этапе" and open 
 ## Scalable program navigation (October 2026)
 
 Inside the lesson dialog, `Назад` and `Далее`, Left/Right arrow keys and a dynamically populated "Быстрый переход" select allow browsing 6 or 20+ stages without repeatedly closing and reopening cards. First/last arrows are disabled at bounds and the progress indicator is announced to assistive technologies. Card layout uses three CSS Grid rows (index, decorative numeral, text/CTA), preventing number/text overlap on desktop and phones.
+
+
+## AB/digital portfolio — Telegram Mini Apps (October 2026)
+
+The AB/digital home page now includes two additional portfolio cases: [Reminder Bot](https://github.com/ArtemBalakin/reminderBot) and [Salon Booking Bot](https://github.com/ArtemBalakin/salon-booking-bot/tree/feature/miniapp-showcase). Each has four original full-height UI preview images in `site/assets/portfolio/*.webp` (optimized 500px-wide WebP). The Reminder preview images use the real cat illustrations from the source repository; all task names and booking values in the shots are illustrative. A keyboard-accessible modal switches between screenshots and links back to the correct GitHub branch. These are static previews, not connected live Telegram sessions.

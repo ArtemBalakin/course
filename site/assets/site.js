@@ -96,4 +96,80 @@
     lessonDialog.addEventListener('close',()=>{returnFocus?.focus({preventScroll:true})});
   }
 
+  // Static portfolio gallery: images are stored with the site and require no bot or payment credentials.
+  const showcaseDialog=document.getElementById('portfolio-gallery');
+  if(showcaseDialog&&typeof showcaseDialog.showModal==='function'){
+    const showcaseProjects={
+      reminder:{title:'Мой дом',source:'https://github.com/ArtemBalakin/reminderBot',screens:[
+        ['Главная — светлая тема','/assets/portfolio/reminder-today.webp'],
+        ['Главная — тёмная тема','/assets/portfolio/reminder-night.webp'],
+        ['Календарь задач','/assets/portfolio/reminder-calendar.webp'],
+        ['Профиль и статистика','/assets/portfolio/reminder-profile.webp']
+      ]},
+      salon:{title:'Salon Booking',source:'https://github.com/ArtemBalakin/salon-booking-bot/tree/feature/miniapp-showcase',screens:[
+        ['Выбор услуги','/assets/portfolio/salon-services.webp'],
+        ['Выбор мастера','/assets/portfolio/salon-master.webp'],
+        ['Дата и время','/assets/portfolio/salon-slots.webp'],
+        ['Подтверждение записи','/assets/portfolio/salon-summary.webp']
+      ]}
+    };
+    const viewerHeading=showcaseDialog.querySelector('#portfolio-viewer-heading');
+    const viewerCaption=showcaseDialog.querySelector('#portfolio-viewer-caption');
+    const viewerImage=showcaseDialog.querySelector('#portfolio-viewer-image');
+    const viewerCount=showcaseDialog.querySelector('#portfolio-viewer-count');
+    const viewerSource=showcaseDialog.querySelector('#portfolio-viewer-source');
+    const thumbArea=showcaseDialog.querySelector('#portfolio-viewer-thumbs');
+    const closeButton=showcaseDialog.querySelector('.portfolio-viewer-close');
+    let activeProject='reminder',activeScreen=0,returnFocus=null;
+    const updateViewer=()=>{
+      const item=showcaseProjects[activeProject],screen=item.screens[activeScreen];
+      viewerHeading.textContent=item.title;
+      viewerCaption.textContent=screen[0];
+      viewerImage.src=screen[1];
+      viewerImage.alt=item.title+' — '+screen[0];
+      viewerCount.textContent=String(activeScreen+1).padStart(2,'0')+' / '+String(item.screens.length).padStart(2,'0');
+      viewerSource.href=item.source;
+      thumbArea.replaceChildren();
+      item.screens.forEach((shot,i)=>{
+        const button=document.createElement('button');
+        button.type='button';
+        button.className='portfolio-viewer-thumb';
+        button.setAttribute('aria-label',shot[0]);
+        button.setAttribute('aria-pressed',String(i===activeScreen));
+        const img=document.createElement('img');
+        img.src=shot[1];img.alt='';img.width=500;img.height=1013;
+        button.append(img);
+        button.addEventListener('click',()=>{activeScreen=i;updateViewer()});
+        thumbArea.append(button);
+      });
+    };
+    const moveViewer=direction=>{
+      const total=showcaseProjects[activeProject].screens.length;
+      activeScreen=(activeScreen+direction+total)%total;
+      updateViewer();
+    };
+    document.querySelectorAll('[data-gallery-project]').forEach(trigger=>trigger.addEventListener('click',event=>{
+      const project=trigger.dataset.galleryProject;
+      if(!showcaseProjects[project])return;
+      event.preventDefault();
+      returnFocus=trigger;
+      activeProject=project;
+      activeScreen=Math.min(Math.max(Number(trigger.dataset.galleryIndex)||0,0),showcaseProjects[project].screens.length-1);
+      updateViewer();
+      showcaseDialog.showModal();
+      closeButton.focus();
+    }));
+    showcaseDialog.querySelector('.portfolio-viewer-prev').addEventListener('click',()=>moveViewer(-1));
+    showcaseDialog.querySelector('.portfolio-viewer-next').addEventListener('click',()=>moveViewer(1));
+    closeButton.addEventListener('click',()=>showcaseDialog.close());
+    showcaseDialog.addEventListener('click',event=>{if(event.target===showcaseDialog)showcaseDialog.close()});
+    showcaseDialog.addEventListener('keydown',event=>{
+      if(event.altKey||event.ctrlKey||event.metaKey||event.shiftKey)return;
+      if(event.target instanceof HTMLElement&&event.target.closest('input,textarea,select'))return;
+      if(event.key==='ArrowLeft'){event.preventDefault();moveViewer(-1)}
+      if(event.key==='ArrowRight'){event.preventDefault();moveViewer(1)}
+    });
+    showcaseDialog.addEventListener('close',()=>returnFocus?.focus({preventScroll:true}));
+  }
+
 })();
