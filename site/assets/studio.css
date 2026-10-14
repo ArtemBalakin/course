@@ -161,3 +161,63 @@
   .ab-workflow-node h3{font-size:21px}
   .ab-workflow-node p{font-size:12.5px;line-height:1.65}
 }
+
+
+/* Services — the three offerings are the focal point, not a competing decorative panel. */
+.ab-capabilities{background:#f1f5ef;padding:93px 0 109px}
+.ab-cap-intro{display:flex;justify-content:space-between;gap:35px;align-items:end;margin:47px 0 37px}
+.ab-cap-eyebrow{font:800 12px Manrope,sans-serif;letter-spacing:1.6px;color:#4f766d}
+.ab-cap-intro h2{font:800 clamp(39px,4.7vw,67px)/1.14 Manrope,sans-serif;letter-spacing:-3px;margin:12px 0 0;color:#10232c}
+.ab-cap-intro h2 em{font-family:'Playfair Display',Georgia,serif;color:#568572;font-weight:500}
+.ab-cap-intro>p{max-width:385px;color:#405660;line-height:1.75;font-size:17px}
+.ab-cap-service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.ab-capabilities .ab-cap-item{display:flex;flex-direction:column;align-items:stretch;gap:0;min-height:500px;margin:0;padding:28px;border:1px solid #d4e2d7;border-radius:17px;background:#fff;box-shadow:0 11px 26px #0f383016;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.ab-capabilities .ab-cap-item:hover{transform:translateY(-7px);box-shadow:0 21px 39px #0f38302b}
+.ab-capabilities .ab-cap-mini{background:#123540;color:#fff;border-color:#123540}
+.ab-capabilities .ab-cap-bots{background:#dcefe3;color:#173b34}
+.ab-capabilities .ab-cap-web{background:#f4e4d4;color:#3a342c;border-color:#eacfb8}
+.ab-capabilities .ab-cap-item-number{color:inherit;opacity:.72;font:800 12px Manrope,sans-serif;letter-spacing:1.25px}
+.ab-cap-item-art{height:135px;margin:23px 0 17px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid currentColor;opacity:.75}
+.ab-cap-item-art span{font:500 102px/1 Manrope,sans-serif;letter-spacing:-6px}
+.ab-cap-item-art i{font:700 11px Manrope,sans-serif;font-style:normal;letter-spacing:1.3px}
+.ab-capabilities .ab-cap-item-body h3{color:inherit;letter-spacing:-.8px;font:800 clamp(22px,2.1vw,29px)/1.21 Manrope,sans-serif;margin:8px 0 15px}
+.ab-capabilities .ab-cap-item-body p{color:inherit;opacity:.88;font-size:15px;line-height:1.7;margin-bottom:17px}
+.ab-capabilities .ab-cap-tags{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 19px}
+.ab-capabilities .ab-cap-tags span{border:1px solid currentColor;color:inherit;opacity:.8;padding:7px 10px;border-radius:100px;font:700 11px Manrope,sans-serif}
+.ab-capabilities .ab-cap-item-arrow{width:100%;height:auto;align-self:stretch;border:0;border-top:1px solid currentColor;border-radius:0;background:transparent;color:inherit;display:flex;justify-content:space-between;align-items:center;padding:18px 0 0;margin-top:auto;font:800 13px Manrope,sans-serif;box-shadow:none}
+.ab-capabilities .ab-cap-item-arrow:hover,.ab-capabilities .ab-cap-item-arrow:focus-visible{background:transparent;color:inherit;transform:none;text-decoration:underline}
+.ab-cap-footnote{margin:22px 0 0;color:#425c58;font-size:15px}
+/* Corporate cards adopt the original products' palettes and different page compositions. */
+.corporate-showcase{display:grid;grid-template-columns:1fr;gap:22px}
+.corporate-case{display:grid;grid-template-columns:43% 57%;min-height:425px;border-radius:16px;overflow:hidden;background:#0c2831;color:#fff}
+.corporate-case-ispace{grid-template-columns:53% 47%;background:#f3f6fb;color:#18284d;border:1px solid #d9e2f4}
+.corporate-case-copy{padding:42px 38px;display:flex;flex-direction:column;min-width:0}
+.corporate-case-n3{background:#071b25}
+.corporate-case-n3 .corporate-case-copy{background:linear-gradient(145deg,#073442,#09212c)}
+.corporate-case-index{color:#3de0bf;letter-spacing:1.4px;font:800 11px Manrope,sans-serif}
+.corporate-case-ispace .corporate-case-index{color:#506eb6}
+.corporate-case-copy h3{font:800 clamp(55px,6vw,95px)/1.2 Manrope,sans-serif;letter-spacing:-4px;margin:34px 0 15px}
+.corporate-case-copy h3 span{color:#16d7b4}
+.corporate-case-ispace .corporate-case-copy h3 span{color:#6d8be0}
+.corporate-case-copy p{font:400 16px/1.78 'DM Sans',sans-serif;margin:0 0 32px;max-width:450px;color:inherit;opacity:.91}
+.corporate-case-copy>a{display:flex;justify-content:space-between;align-items:center;color:inherit;gap:20px;font:800 14px Manrope,sans-serif;padding-top:17px;margin-top:auto;border-top:1px solid currentColor}
+.corporate-case-copy>a:hover{text-decoration:underline}
+.corporate-case-copy>a span{font-size:23px}
+.corporate-case-shot{display:flex;position:relative;overflow:hidden;min-width:0;min-height:390px;background:linear-gradient(135deg,#134658,#2cd7b7)}
+.corporate-case-ispace .corporate-case-shot{background:linear-gradient(135deg,#bdcffa,#4868b1)}
+.corporate-case-shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;filter:saturate(.95);transition:transform .65s}
+.corporate-case-shot:hover img{transform:scale(1.035)}
+.corporate-shot-label{position:absolute;bottom:18px;left:18px;right:18px;background:#05131cda;color:#fff;backdrop-filter:blur(8px);border-radius:8px;padding:11px 13px;font:800 10px Manrope,sans-serif;letter-spacing:1px}
+.corporate-case-ispace .corporate-shot-label{background:#172757d9}
+.corporate-note{margin:18px 0 0;color:#49666d;font-size:14px;line-height:1.65}
+/* Workflow: line visually behind number badges, and active fill inherits the same track. */
+.ab-workflow-path{isolation:isolate}
+.ab-workflow-path::before{z-index:0}
+.ab-motion-ready .ab-workflow-path::after{z-index:0!important}
+.ab-workflow-node{z-index:1}
+.ab-workflow-node-marker{z-index:3;background:#142e34}
+.ab-workflow-node:last-child .ab-workflow-node-marker{background:#d9ff5e}
+.ab-workflow-intro>p{font-size:16px;line-height:1.8;color:#d7e3e3}
+.ab-workflow-node p{font-size:15px;line-height:1.7;color:#dae5e4}
+@media(max-width:950px){.ab-cap-service-grid{grid-template-columns:repeat(2,1fr)}.ab-cap-web{grid-column:span 2}.corporate-case{grid-template-columns:1fr 1fr}.corporate-case-ispace{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.ab-capabilities{padding:75px 0}.ab-cap-intro{display:block;margin:30px 0}.ab-cap-intro>p{max-width:none;margin-top:16px}.ab-cap-service-grid{grid-template-columns:1fr;gap:12px}.ab-cap-web{grid-column:auto}.ab-capabilities .ab-cap-item{min-height:0;padding:23px}.ab-cap-item-art{height:95px;margin:10px 0}.ab-cap-item-art span{font-size:72px}.corporate-case,.corporate-case-ispace{display:flex;flex-direction:column}.corporate-case-ispace .corporate-case-shot{order:1}.corporate-case-ispace .corporate-case-copy{order:0}.corporate-case-shot{min-height:240px;height:280px}.corporate-case-copy{padding:29px 25px}.corporate-case-copy h3{font-size:62px;margin:22px 0 10px}.ab-workflow-node p{font-size:14px}}

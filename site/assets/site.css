@@ -373,3 +373,15 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
   .home-hero .art-card.a1,.home-hero .art-card.a2,.home-hero .art-card.a3,
   .home-hero .art-dot.green,.home-hero .scroll-cue{animation:none!important;will-change:auto}
 }
+
+
+/* Readability pass across AB/digital and Sabina: avoid low-contrast grey on pale surfaces. */
+body{font-size:16px}
+body[data-page="home"] :is(.home-hero-copy>p,.ab-cap-intro>p,.ab-cap-item-body p,.ab-cap-footnote,.solutions-header>p,.solution-case-problem,.solution-case-outcome p,.project-info p,.corporate-intro>p,.corporate-note,.home-contact p,.footer p){font-size:clamp(15px,1.13vw,17px);line-height:1.75}
+body[data-page="home"] :is(.ab-cap-item-number,.ab-cap-tags span,.section-kicker,.corporate-overline,.corporate-case-index,.corporate-shot-label,.solution-case-label,.portfolio-overline){font-size:clamp(11px,.85vw,13px)}
+body[data-page="home"] :is(.solutions-header>p,.ab-cap-intro>p,.ab-cap-footnote,.project-info p,.corporate-note,.footer p){color:#43565e}
+body[data-page="course"] :is(.dance-site p,.dance-site li,.dance-site summary,.dance-site button,.dance-site label){font-size:clamp(14px,1.13vw,17px);line-height:1.7}
+body[data-page="course"] :is(.outcome-card p,.dance-about-content p,.tariff-card p,.dance-program p,.dance-faq p,.dance-journey p){color:#644450}
+body[data-page="course"] :is(.outcome-card>span,.dance-kicker,.dance-overline){font-size:12px}
+body[data-page="home"] .top-contact,body[data-page="home"] .btn{font-size:15px}
+@media(max-width:600px){body[data-page="home"] :is(.ab-cap-item-body p,.corporate-case-copy p,.solution-case-outcome p,.corporate-note){font-size:15px;line-height:1.7}}

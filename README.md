@@ -96,3 +96,8 @@ The layout was designed around the site's existing Manrope + Playfair typography
 ## Design polish (2026-10-14)
 
 Refreshed both homepage stylesheet URLs with an explicit version query to avoid stale cached styling. Normalized AB/digital heading accents to Manrope, strengthened the five-stage process as a connected vertical flow with visible arrows and continuous track (desktop and mobile), and added gentle orbit/card/letter motion to the hero. All animations respect `prefers-reduced-motion`. No business claims, course content, payments, or Mini App functionality were changed.
+
+
+## Public-facing homepage revisions (Oct 14, 2026)
+
+Improved reading contrast and body type across the homepage and course, simplified the three service descriptions for non-technical clients and added design/Tilda/other site builders. Replaced the generic N3/iSpace boxes with differently composed cards themed to their public websites and linked to public-page screenshots via WordPress mShots (third-party-generated, may change/temporarily be unavailable). Reframed process copy with explicit agreed milestones and timeframes; layered timeline behind numbered circles. Direct Telegram/WhatsApp buttons are not yet included because no confirmed personal contact handles have been supplied: never substitute a guessed chat URL. Existing GitHub link is retained as a verified interim route.
