@@ -1,6 +1,6 @@
 # AB/digital + Latina Solo by Sabina — preview website
 
-An **actual responsive static website** with **zero package dependencies**. This is the public-preview-ready implementation of a personal IT/development business and an online Latin-dance course sales funnel. It does not collect payments or user details until merchant approval.
+An **actual responsive static website** with **zero package dependencies**. This is the public-preview-ready implementation of a personal IT/development business and an online Latin-dance course sales funnel. Payments and course checkout remain disabled; the studio contact form accepts inquiries through Formspree.
 
 ## Pages
 
