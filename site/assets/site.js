@@ -96,6 +96,8 @@
     lessonDialog.addEventListener('close',()=>{returnFocus?.focus({preventScroll:true})});
   }
 
+  const tr=value=>(window.AB_TRANSLATIONS&&window.AB_TRANSLATIONS[value])||value;
+
   // Static portfolio gallery: images are stored with the site and require no bot or payment credentials.
   const showcaseDialog=document.getElementById('portfolio-gallery');
   if(showcaseDialog&&typeof showcaseDialog.showModal==='function'){
@@ -123,10 +125,10 @@
     let activeProject='reminder',activeScreen=0,returnFocus=null;
     const updateViewer=()=>{
       const item=showcaseProjects[activeProject],screen=item.screens[activeScreen];
-      viewerHeading.textContent=item.title;
-      viewerCaption.textContent=screen[0];
+      viewerHeading.textContent=tr(item.title);
+      viewerCaption.textContent=tr(screen[0]);
       viewerImage.src=screen[1];
-      viewerImage.alt=item.title+' — '+screen[0];
+      viewerImage.alt=tr(item.title)+' — '+tr(screen[0]);
       viewerCount.textContent=String(activeScreen+1).padStart(2,'0')+' / '+String(item.screens.length).padStart(2,'0');
       viewerSource.href=item.source;
       thumbArea.replaceChildren();
@@ -134,7 +136,7 @@
         const button=document.createElement('button');
         button.type='button';
         button.className='portfolio-viewer-thumb';
-        button.setAttribute('aria-label',shot[0]);
+        button.setAttribute('aria-label',tr(shot[0]));
         button.setAttribute('aria-pressed',String(i===activeScreen));
         const img=document.createElement('img');
         img.src=shot[1];img.alt='';img.width=500;img.height=1013;

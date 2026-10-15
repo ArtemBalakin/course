@@ -385,3 +385,12 @@ body[data-page="course"] :is(.outcome-card p,.dance-about-content p,.tariff-card
 body[data-page="course"] :is(.outcome-card>span,.dance-kicker,.dance-overline){font-size:12px}
 body[data-page="home"] .top-contact,body[data-page="home"] .btn{font-size:15px}
 @media(max-width:600px){body[data-page="home"] :is(.ab-cap-item-body p,.corporate-case-copy p,.solution-case-outcome p,.corporate-note){font-size:15px;line-height:1.7}}
+
+/* Language picker: visible on desktop and on mobile, with a clear active locale. */
+.lang-switch{display:flex;align-items:center;gap:3px;flex:none;border:1px solid #cbd6d2;padding:4px;border-radius:22px;font:800 10px Manrope,sans-serif;letter-spacing:.2px}
+.lang-switch a{border-radius:18px;padding:7px 9px;line-height:1;color:#43545d;white-space:nowrap;transition:background .15s,color .15s}
+.lang-switch a:hover{background:#e4ebdf;color:#0e1b26}
+.lang-switch a[aria-current="page"]{background:#0e1b26;color:#d9ff5e}
+@media(max-width:1130px){.desktop-nav{gap:17px}.top-contact{padding:11px 13px;gap:8px}.lang-switch a{padding:7px 7px}}
+@media(max-width:850px){.lang-switch{margin-left:auto;margin-right:12px}.lang-switch a{padding:8px 10px}}
+@media(max-width:390px){.lang-switch{margin-right:2px}.lang-switch a{padding:7px 7px}}

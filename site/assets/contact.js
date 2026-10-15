@@ -2,6 +2,7 @@
    The native POST action remains a no-JavaScript fallback. */
 (function(){
   'use strict';
+  const tr=value=>(window.AB_TRANSLATIONS&&window.AB_TRANSLATIONS[value])||value;
   const form=document.getElementById('ab-contact-form');
   if(!form)return;
 
@@ -23,8 +24,8 @@
     if(submitting||!form.reportValidity())return;
     submitting=true;
     if(submit){submit.disabled=true;submit.setAttribute('aria-busy','true')}
-    if(label)label.textContent='Отправляем…';
-    announce('Отправляем заявку. Пожалуйста, подождите…','sending');
+    if(label)label.textContent=tr("Отправляем…");
+    announce(tr("Отправляем заявку. Пожалуйста, подождите…"),'sending');
 
     try{
       const result=await fetch(form.action,{
@@ -42,16 +43,16 @@
             details=String(response.errors[0].message||'').slice(0,300);
           }
         }catch(_ignored){}
-        throw new Error(details||'Сервис не смог принять заявку. Попробуйте ещё раз.');
+        throw new Error(details||tr("Сервис не смог принять заявку. Попробуйте ещё раз."));
       }
       form.reset();
-      announce('Готово! Заявка принята. Мы свяжемся с вами по указанному контакту.','success');
+      announce(tr("Готово! Заявка принята. Мы свяжемся с вами по указанному контакту."),'success');
     }catch(error){
-      announce('Не удалось отправить заявку. '+(error&&error.message?error.message:'Проверьте интернет-соединение и повторите попытку.')+' Если проблема повторится, напишите нам в Telegram: @ArtemBalakin.','error');
+      announce(tr("Не удалось отправить заявку. ")+(error&&error.message?error.message:tr("Проверьте интернет-соединение и повторите попытку."))+tr(" Если проблема повторится, напишите нам в Telegram: @ArtemBalakin."),'error');
     }finally{
       submitting=false;
       if(submit){submit.disabled=false;submit.removeAttribute('aria-busy')}
-      if(label)label.textContent='Отправить заявку';
+      if(label)label.textContent=tr("Отправить заявку");
     }
   });
 })();

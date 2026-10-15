@@ -1,0 +1,31 @@
+name: Build multilingual SEO pages
+on:
+  push:
+    paths:
+      - scripts/templates/home.ru.html
+      - scripts/generate-locales.mjs
+      - scripts/i18n/**
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/generate-locales.mjs
+      - name: Commit generated RU KK EN pages
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add site/index.html site/kk/index.html site/en/index.html site/assets/i18n-kk.js site/assets/i18n-en.js site/robots.txt site/sitemap.xml
+          if ! git diff --cached --quiet; then
+            git commit -m 'feat(site): publish indexable RU KK EN pages with SEO metadata'
+            git push origin HEAD:develop
+          fi
