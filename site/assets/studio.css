@@ -221,3 +221,48 @@
 .ab-workflow-node p{font-size:15px;line-height:1.7;color:#dae5e4}
 @media(max-width:950px){.ab-cap-service-grid{grid-template-columns:repeat(2,1fr)}.ab-cap-web{grid-column:span 2}.corporate-case{grid-template-columns:1fr 1fr}.corporate-case-ispace{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.ab-capabilities{padding:75px 0}.ab-cap-intro{display:block;margin:30px 0}.ab-cap-intro>p{max-width:none;margin-top:16px}.ab-cap-service-grid{grid-template-columns:1fr;gap:12px}.ab-cap-web{grid-column:auto}.ab-capabilities .ab-cap-item{min-height:0;padding:23px}.ab-cap-item-art{height:95px;margin:10px 0}.ab-cap-item-art span{font-size:72px}.corporate-case,.corporate-case-ispace{display:flex;flex-direction:column}.corporate-case-ispace .corporate-case-shot{order:1}.corporate-case-ispace .corporate-case-copy{order:0}.corporate-case-shot{min-height:240px;height:280px}.corporate-case-copy{padding:29px 25px}.corporate-case-copy h3{font-size:62px;margin:22px 0 10px}.ab-workflow-node p{font-size:14px}}
+
+
+/* Corporate image loading states: branded placeholders until local WebP screenshots decode. */
+.corporate-shot-placeholder{
+  position:absolute;inset:0;z-index:1;display:none;flex-direction:column;
+  justify-content:center;align-items:center;gap:36px;padding:34px;
+  pointer-events:none;text-align:center;
+  background:linear-gradient(145deg,#0b2d39 0%,#0e4854 58%,#0c2831 100%);
+  color:#e9faf5;transition:opacity .35s ease,visibility .35s ease;
+}
+.corporate-case-ispace .corporate-shot-placeholder{
+  color:#223668;background:linear-gradient(145deg,#edf3ff 0%,#bfd2fa 58%,#8caee9 100%);
+}
+.corporate-shot-placeholder::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(110deg,transparent 20%,#ffffff14 48%,transparent 76%);
+  background-size:250% 100%;animation:corporate-image-sheen 2.4s ease-in-out infinite;
+}
+.corporate-shot-placeholder-art{display:flex;flex-direction:column;align-items:center;gap:12px;position:relative}
+.corporate-shot-placeholder-art strong{
+  font:800 clamp(48px,7vw,94px)/1 Manrope,sans-serif;letter-spacing:-.065em;
+}
+.corporate-case-n3 .corporate-shot-placeholder-art strong{color:#51e4c6}
+.corporate-case-ispace .corporate-shot-placeholder-art strong{color:#294b98}
+.corporate-shot-placeholder-art small{
+  font:800 clamp(10px,.9vw,13px)/1.6 Manrope,sans-serif;letter-spacing:.15em;
+}
+.corporate-shot-placeholder-status{
+  position:relative;font:700 clamp(11px,1vw,13px)/1.5 Manrope,sans-serif;
+  opacity:.8;letter-spacing:.02em;
+}
+.corporate-shot-error{display:none}
+html.js .corporate-case-shot .corporate-shot-placeholder{display:flex}
+html.js .corporate-case-shot:not(.is-ready) img{opacity:0}
+html.js .corporate-case-shot.is-ready img{opacity:1}
+html.js .corporate-case-shot.is-ready .corporate-shot-placeholder{opacity:0;visibility:hidden}
+html.js .corporate-case-shot.is-error .corporate-shot-loading{display:none}
+html.js .corporate-case-shot.is-error .corporate-shot-error{display:inline}
+html.js .corporate-case-shot.is-error .corporate-shot-placeholder::before{animation:none;background:none}
+.corporate-case-shot img{transition:opacity .35s ease,transform .65s ease}
+@keyframes corporate-image-sheen{from{background-position:200% 0}to{background-position:-200% 0}}
+@media(prefers-reduced-motion:reduce){
+  .corporate-shot-placeholder::before{animation:none}
+  .corporate-shot-placeholder,.corporate-case-shot img{transition:none}
+}
