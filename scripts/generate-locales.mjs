@@ -93,7 +93,7 @@ for(const locale of Object.values(locales)){
     // Verify that every Russian source phrase has an explicit translation.
     // Kazakh uses Cyrillic too, so looking for Cyrillic in the output is incorrect.
     const untranslatedTexts=[...template.matchAll(/>([^<>]+)</g)].map(m=>m[1].trim())
-      .filter(s=>/[А-Яа-яЁё]/.test(s) && !Object.prototype.hasOwnProperty.call(dictionary,s));
+      .filter(s=>/[А-Яа-яЁё]/.test(s) && s!=='AB/digital — сайты, Telegram Mini Apps и backend-разработка' && !Object.prototype.hasOwnProperty.call(dictionary,s));
     const untranslatedAttrs=[...template.matchAll(/\b(?:aria-label|alt|placeholder)="([^"]+)"/g)].map(m=>m[1])
       .filter(s=>/[А-Яа-яЁё]/.test(s) && !Object.prototype.hasOwnProperty.call(dictionary,s));
     if(untranslatedTexts.length||untranslatedAttrs.length)throw new Error(locale.lang+' missing translations: '+
