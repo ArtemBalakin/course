@@ -1,0 +1,64 @@
+name: Save corporate site screenshots
+on:
+  push:
+    paths:
+      - .github/workflows/save-corporate-screenshots.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install screenshot dependencies
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.0
+          npx playwright install --with-deps chromium
+          python3 -m pip install --break-system-packages Pillow
+      - name: Capture genuine N3 and iSpace homepages
+        run: node scripts/capture-corporate.mjs
+      - name: Convert PNGs to optimized local WebP
+        run: |
+          python3 - <<'PY'
+          from PIL import Image, ImageStat
+          from pathlib import Path
+          dest=Path('site/assets/portfolio')
+          dest.mkdir(parents=True, exist_ok=True)
+          for name in ('n3','ispace'):
+              im=Image.open('/tmp/'+name+'-site.png').convert('RGB')
+              stat=ImageStat.Stat(im.resize((100,70)))
+              if max(stat.stddev) < 8:
+                  raise RuntimeError(f'{name}: screenshot appears blank; aborting')
+              path=dest/(name+'-site.webp')
+              im.save(path, 'WEBP', quality=82, method=6)
+              print(path, path.stat().st_size, 'bytes')
+          PY
+      - name: Replace external mShots with local images
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('site/index.html')
+          s=p.read_text()
+          replacements={
+            'https://s0.wp.com/mshots/v1/https%3A%2F%2Fn3corp.ru%2F?w=1100':'/assets/portfolio/n3-site.webp',
+            'https://s0.wp.com/mshots/v1/https%3A%2F%2Fispace-platform.ru%2F?w=1100':'/assets/portfolio/ispace-site.webp',
+          }
+          for old,new in replacements.items():
+              if s.count(old)!=1: raise RuntimeError('Expected exactly one match: '+old)
+              s=s.replace(old,new)
+          p.write_text(s)
+          PY
+      - name: Commit verified local assets and HTML
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add site/index.html site/assets/portfolio/n3-site.webp site/assets/portfolio/ispace-site.webp
+          git commit -m 'fix(site): bundle N3 and iSpace site screenshots locally'
+          git push origin HEAD:develop
