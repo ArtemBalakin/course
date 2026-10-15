@@ -7,7 +7,7 @@
   'use strict';
 
   const BEACON_TOKENS = {
-    'ab-digital.onrender.com': '',
+    'ab-digital.onrender.com': 'c81faf1fe46a427d8c10e8644458ab4f',
     'ab-digital-preview.onrender.com': ''
   };
 
@@ -17,6 +17,7 @@
 
   const beacon = document.createElement('script');
   beacon.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  beacon.type = 'module';
   beacon.async = true;
   // The site is multi-page HTML; hash anchors are not extra pageviews.
   beacon.setAttribute('data-cf-beacon', JSON.stringify({ token: token, spa: false }));
