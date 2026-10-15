@@ -1,0 +1,40 @@
+name: Verify public sitemap for Google
+on:
+  push:
+    paths:
+      - .github/workflows/check-sitemap-google.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Test public XML sitemap and Googlebot access
+        shell: bash
+        run: |
+          set -euo pipefail
+          for agent in 'Mozilla/5.0' 'Googlebot'; do
+            echo "=== User-Agent: $agent ==="
+            code=$(curl --compressed -L -sS --connect-timeout 10 --max-time 25 -A "$agent" -D /tmp/headers.txt -o /tmp/sitemap.xml -w '%{http_code}' 'https://ab-digital.onrender.com/sitemap.xml')
+            sed -n '1,25p' /tmp/headers.txt
+            echo "HTTP Status: $code"
+            echo "Body (first 200 bytes):"
+            head -c 200 /tmp/sitemap.xml
+            echo
+            test "$code" = 200
+            python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+          xml='/tmp/sitemap.xml'
+          root=ET.parse(xml).getroot()
+          assert root.tag=='{http://www.sitemaps.org/schemas/sitemap/0.9}urlset', root.tag
+          paths=[el.text for el in root.findall('{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
+          expected=['https://ab-digital.onrender.com/','https://ab-digital.onrender.com/kk/','https://ab-digital.onrender.com/en/']
+          assert paths==expected, paths
+          print('PASS XML syntax and URL entries: ',paths)
+          PY
+          done
+          echo '=== robots.txt ==='
+          curl --compressed -sS -L -A 'Googlebot' -i --max-time 25 'https://ab-digital.onrender.com/robots.txt'
+          echo 'PASS public sitemap and robots'
