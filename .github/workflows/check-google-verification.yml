@@ -1,0 +1,29 @@
+name: Verify Google Search Console ownership file
+on:
+  push:
+    paths:
+      - .github/workflows/check-google-verification.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check uploaded HTML verification file on live main host
+        run: |
+          set -euo pipefail
+          url='https://ab-digital.onrender.com/google67f1d14bdccf1d0b.html'
+          expected='google-site-verification: google67f1d14bdccf1d0b.html'
+          for i in 1 2 3 4 5; do
+            status=$(curl --location --silent --show-error --output /tmp/google-verify.txt --write-out '%{http_code}' "$url") || status=000
+            if [ "$status" = "200" ] && [ "$(tr -d '\r\n' </tmp/google-verify.txt)" = "$expected" ]; then
+              echo "PASS: HTTP 200 and exact Google verification file content"
+              exit 0
+            fi
+            echo "Attempt $i: HTTP $status, waiting for publish..."
+            sleep 5
+          done
+          echo 'FAIL: verification URL did not return the expected content'
+          exit 1
