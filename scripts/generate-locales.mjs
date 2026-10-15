@@ -90,10 +90,14 @@ for(const locale of Object.values(locales)){
   if(locale.lang!=='ru'){
     html=html.replace('<script src="/assets/site.js" defer></script>',
       '<script src="/assets/i18n-'+locale.lang+'.js?v=20261015" defer></script><script src="/assets/site.js" defer></script>');
-    // Browser title/alt/labels must not contain untranslated Russian.
-    const russianTexts=[...html.matchAll(/>([^<>]+)</g)].map(m=>m[1].trim()).filter(s=>/[А-Яа-яЁё]/.test(s));
-    const russianAttrs=[...html.matchAll(/\b(?:aria-label|alt|placeholder)="([^"]+)"/g)].map(m=>m[1]).filter(s=>/[А-Яа-яЁё]/.test(s));
-    if(russianTexts.length||russianAttrs.length)throw new Error(locale.lang+' has untranslated text: '+JSON.stringify({russianTexts,russianAttrs}).slice(0,3000));
+    // Verify that every Russian source phrase has an explicit translation.
+    // Kazakh uses Cyrillic too, so looking for Cyrillic in the output is incorrect.
+    const untranslatedTexts=[...template.matchAll(/>([^<>]+)</g)].map(m=>m[1].trim())
+      .filter(s=>/[А-Яа-яЁё]/.test(s) && !Object.prototype.hasOwnProperty.call(dictionary,s));
+    const untranslatedAttrs=[...template.matchAll(/\b(?:aria-label|alt|placeholder)="([^"]+)"/g)].map(m=>m[1])
+      .filter(s=>/[А-Яа-яЁё]/.test(s) && !Object.prototype.hasOwnProperty.call(dictionary,s));
+    if(untranslatedTexts.length||untranslatedAttrs.length)throw new Error(locale.lang+' missing translations: '+
+      JSON.stringify({untranslatedTexts:[...new Set(untranslatedTexts)],untranslatedAttrs:[...new Set(untranslatedAttrs)]}).slice(0,3000));
     fs.writeFileSync(path.join(root,'site/assets/i18n-'+locale.lang+'.js'),'window.AB_TRANSLATIONS='+jsonForHtml(dictionary)+';\n');
     outFiles.push('site/assets/i18n-'+locale.lang+'.js');
   }
