@@ -8,7 +8,7 @@
 
   const BEACON_TOKENS = {
     'ab-digital.onrender.com': 'c81faf1fe46a427d8c10e8644458ab4f',
-    'ab-digital-preview.onrender.com': ''
+    'ab-digital-preview.onrender.com': '3495d8071f0c426a8d4c352ffe1a6161'
   };
 
   const hostname = window.location.hostname.toLowerCase();
