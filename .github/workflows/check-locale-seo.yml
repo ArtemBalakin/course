@@ -1,0 +1,23 @@
+name: Verify multilingual SEO and preview forwarding
+on:
+  push:
+    paths:
+      - .github/workflows/check-locale-seo.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          npm install --no-save --ignore-scripts playwright@1.56.0
+          npx playwright install --with-deps chromium
+      - run: node scripts/check-locale-seo.mjs
