@@ -1,0 +1,39 @@
+name: Diagnose live sitemap for Google
+on:
+  push:
+    paths:
+      - .github/workflows/diagnose-sitemap.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check public HTTP responses and XML contents
+        shell: bash
+        run: |
+          set -euo pipefail
+          root='https://ab-digital.onrender.com'
+          for file in sitemap.xml robots.txt; do
+            for agent in 'Mozilla/5.0 (X11; Linux x86_64) Chrome/140.0.0.0' 'Googlebot/2.1 (+http://www.google.com/bot.html)'; do
+              echo "=== ${file} - ${agent} ==="
+              http=$(curl --silent --show-error --location --compressed \
+                --user-agent "$agent" \
+                --header 'Cache-Control: no-cache' \
+                --dump-header /tmp/headers -o /tmp/result \
+                --write-out '%{http_code}' \
+                "$root/$file")
+              echo "HTTP $http"
+              sed -n '/^HTTP\|^[Cc]ontent-[Tt]ype:\|^[Xx]-[Rr]obots-[Tt]ag:\|^[Ll]ocation:/p' /tmp/headers
+              echo "body bytes $(wc -c </tmp/result)"
+              test "$http" = 200
+              if [ "$file" = sitemap.xml ]; then
+                python -c 'import xml.etree.ElementTree as E; r=E.parse("/tmp/result").getroot(); ns={"sm":"http://www.sitemaps.org/schemas/sitemap/0.9"}; u=[n.text for n in r.findall("./sm:url/sm:loc",ns)]; print("parsed XML URLs:",u); assert u == ["https://ab-digital.onrender.com/","https://ab-digital.onrender.com/kk/","https://ab-digital.onrender.com/en/"]'
+              else
+                grep -Fxq 'Sitemap: https://ab-digital.onrender.com/sitemap.xml' /tmp/result
+              fi
+            done
+          done
+          echo 'PASS: sitemap and robots available to ordinary browsers and Googlebot user agents'
