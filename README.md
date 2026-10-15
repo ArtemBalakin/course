@@ -113,3 +113,7 @@ Studio homepage `/#contact` now submits to **`https://formspree.io/f/mgaongrd`**
 ## AB/digital public homepage cleanup (October 2026)
 
 The main studio homepage now only highlights the studio's core services, Mini App work, N3/iSpace experience, process and contact form. The Sabina project is omitted from homepage navigation and portfolio until requested again, but the separate `/courses/sabina/` pages and their honest payment/terms disclosures remain intact. Four draft legal-document links and the development-mode disclaimer are omitted from the studio footer; the draft legal URLs themselves are retained unchanged for ongoing review, and the Formspree consent still names its data processing. Onsite project navigation points to existing live sections (the two Mini App showcases and enterprise experience). Do not represent the underlying legal drafts as approved or enable the unfinished checkout.
+
+## Cloudflare Web Analytics
+
+Separate production and preview tracking is prepared but inactive until two public beacon tokens are configured. See docs/WEB_ANALYTICS.md.
