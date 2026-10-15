@@ -20,14 +20,23 @@ try{
    meta:document.querySelector('meta[name="robots"]')?.content,
    hreflangs:[...document.querySelectorAll('link[hreflang]')].map(x=>x.hreflang),
    active:document.querySelector('.lang-switch [aria-current="page"]')?.getAttribute('hreflang'),
+   languageLinks:Object.fromEntries([...document.querySelectorAll('.lang-switch [data-switch-lang]')].map(a=>[a.dataset.switchLang,a.getAttribute('href')])),
    hero:document.querySelector('.home-hero h1')?.innerText,
    cssApplied:getComputedStyle(document.querySelector('.lang-switch')).display,
    gallery:typeof document.querySelector('#portfolio-gallery')?.showModal==='function',
    scripts:[...document.scripts].filter(x=>x.src.includes('i18n-')).map(x=>x.src)
   }));
   const expected='https://'+hosts[0]+test.path;
-  if(r?.status()!==200||state.lang!==test.lang||state.canonical!==expected||!state.meta?.includes('index')||state.active!==test.lang||!state.hero?.includes(test.marker)||!['flex','inline-flex'].includes(state.cssApplied)||runtime.length)failures.push({test,state,status:r?.status(),runtime});
+  const correctLinks=state.languageLinks?.ru==='/'&&state.languageLinks?.kk==='/kk/'&&state.languageLinks?.en==='/en/';
+  if(r?.status()!==200||state.lang!==test.lang||state.canonical!==expected||!state.meta?.includes('index')||state.active!==test.lang||!state.hero?.includes(test.marker)||!['flex','inline-flex'].includes(state.cssApplied)||!correctLinks||runtime.length)failures.push({test,state,status:r?.status(),runtime});
   console.log('LOCALE',JSON.stringify({lang:test.lang,status:r?.status(),state,runtime}));
+  if(test.lang!=='ru'){
+    await page.locator('.lang-switch [data-switch-lang="ru"]').click();
+    await page.waitForURL('https://'+hosts[0]+'/',{timeout:15000});
+    const afterLang=await page.locator('html').getAttribute('lang');
+    if(afterLang!=='ru')failures.push({test:'click-RU-from-'+test.lang,afterLang,url:page.url()});
+    console.log('RU_CLICK',test.lang+' -> '+page.url()+' ['+afterLang+']');
+  }
   await page.close();
  }
  for(const lang of languages){
