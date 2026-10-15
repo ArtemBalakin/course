@@ -48,8 +48,9 @@ try{
  const robots=await page.locator('body').innerText();
  console.log('ROBOTS',robots);
  if(!robots.includes('Sitemap: https://ab-digital.onrender.com/sitemap.xml'))failures.push({test:'robots',robots});
- await page.goto('https://'+hosts[0]+'/sitemap.xml');
- const sitemap=await page.locator('body').innerText();
+ const sitemapResponse=await page.request.get('https://'+hosts[0]+'/sitemap.xml');
+ const sitemap=await sitemapResponse.text();
+ if(sitemapResponse.status()!==200)failures.push({test:'sitemap-http',status:sitemapResponse.status()});
  console.log('SITEMAP',sitemap.slice(0,400));
  if(!sitemap.includes('/en/')||!sitemap.includes('/kk/'))failures.push({test:'sitemap',sitemap:sitemap.slice(0,500)});
  await page.close();

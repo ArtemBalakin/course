@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - .github/workflows/check-locale-seo.yml
+      - scripts/check-locale-seo.mjs
   workflow_dispatch:
 permissions:
   contents: read
