@@ -6,23 +6,36 @@ const id='11223344-5566-7788-9900-aabbccddeeff';
 const origin='https://ab-digital.onrender.com';
 const lead={id,name:'Alice',contact:'@alice',details:'Need a website',service:'Site',consent:true,turnstile_token:'testtoken'};
 function fakeDb(){
- const rows=new Map();
- return {rows,prepare(sql){return{bind(...params){return{
-  async first(){const value=rows.get(params[0]);return value?{id:value.id,notify_state:value.notify_state}:null;},
-  async run(){
-   if(sql.startsWith('INSERT')){
-    if(rows.has(params[0]))return{meta:{changes:0}};
-    rows.set(params[0],{id:params[0],notify_state:'pending'});return{meta:{changes:1}};
-   }
-   if(sql.startsWith('UPDATE')){
-    const item=rows.get(params.at(-1));
-    if(item&&sql.includes("notify_state='sent'"))item.notify_state='sent';
-    return{meta:{changes:1}};
-   }
-   throw Error('unknown sql '+sql);
-  },
-  async all(){return {results:[]}}
- };}};}}};
+  const rows=new Map();
+  return {
+    rows,
+    prepare(sql){
+      return {
+        bind(...params){
+          return {
+            async first(){
+              const row=rows.get(params[0]);
+              return row?{id:row.id,notify_state:row.notify_state}:null;
+            },
+            async run(){
+              if(sql.startsWith('INSERT')){
+                if(rows.has(params[0]))return {meta:{changes:0}};
+                rows.set(params[0],{id:params[0],notify_state:'pending'});
+                return {meta:{changes:1}};
+              }
+              if(sql.startsWith('UPDATE')){
+                const row=rows.get(params.at(-1));
+                if(row&&sql.includes("notify_state='sent'"))row.notify_state='sent';
+                return {meta:{changes:1}};
+              }
+              throw Error('Unexpected SQL: '+sql);
+            },
+            async all(){return {results:[]};}
+          };
+        }
+      };
+    }
+  };
 }
 const env=(DB=fakeDb())=>({DB,TELEGRAM_BOT_TOKEN:'TEST_SECRET',TELEGRAM_CHAT_ID:'123',TURNSTILE_SECRET:'TEST_SECRET'});
 const req=(data=lead,from=origin)=>new Request('https://test.workers.dev/api/lead',{method:'POST',headers:{Origin:from,'content-type':'application/json'},body:JSON.stringify(data)});
