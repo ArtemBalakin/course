@@ -63,3 +63,8 @@
 #ab-contact-form #ab-contact-status[data-state="sending"]{color:#3e6677;font-weight:600}
 #ab-contact-form #ab-contact-status[data-state="success"]{color:#12694c;font-weight:700}
 #ab-contact-form #ab-contact-status[data-state="error"]{color:#a13232;font-weight:700}
+
+/* A visible secondary route when external form delivery is unavailable. */
+.contact-telegram-copy{display:block;width:100%;border:1px solid #bfd0c9;background:transparent;color:#285549;border-radius:10px;padding:11px 15px;font:700 12px Manrope,sans-serif;cursor:pointer;text-align:center}
+.contact-telegram-copy:hover,.contact-telegram-copy:focus-visible{background:#e2eee8;color:#12362d}
+.contact-turnstile{min-height:66px;max-width:100%;overflow:hidden}

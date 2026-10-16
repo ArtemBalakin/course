@@ -175,5 +175,14 @@
   "Готово! Заявка принята. Мы свяжемся с вами по указанному контакту.": "Thank you! Your inquiry has been received. We'll get in touch using your contact details.",
   "Не удалось отправить заявку. ": "Unable to send your inquiry. ",
   "Проверьте интернет-соединение и повторите попытку.": "Check your internet connection and try again.",
-  " Если проблема повторится, напишите нам в Telegram: @ArtemBalakin.": " If the issue persists, message us on Telegram: @ArtemBalakin."
+  " Если проблема повторится, напишите нам в Telegram: @ArtemBalakin.": " If the issue persists, message us on Telegram: @ArtemBalakin.",
+  "Отправить копию через Telegram ↗": "Send a copy via Telegram ↗",
+  "Сначала заполните имя, контакт и описание задачи.": "First enter your name, contact details and project description.",
+  "Текст заявки скопирован. Вставьте его в чат Telegram и отправьте.": "Your inquiry was copied. Paste it into the Telegram chat and send it.",
+  "Telegram открыт. Скопируйте описание задачи из формы и отправьте его в чат.": "Telegram is open. Copy your project description from the form and send it in chat.",
+  "Заявка сохранена и отправлена по двум независимым каналам. Мы скоро свяжемся с вами.": "Your inquiry was saved and sent through two independent channels. We will be in touch soon.",
+  "Заявка надёжно сохранена. Мы скоро свяжемся с вами.": "Your inquiry is safely stored. We will be in touch soon.",
+  "Formspree принял заявку, но резервный канал не подтвердил сохранение. Для надёжности напишите нам в Telegram.": "Formspree accepted the inquiry but backup storage was not confirmed. Please contact us on Telegram to be safe.",
+  "Formspree принял заявку. Если ответ задержится, напишите нам в Telegram: @ArtemBalakin.": "Formspree accepted your inquiry. If our reply is delayed, message us on Telegram: @ArtemBalakin.",
+  "Не удалось подтвердить доставку заявки. Данные остались в форме. Используйте кнопку отправки в Telegram ниже.": "We could not confirm delivery. Your details are still in the form. Please use the Telegram option below."
 }
