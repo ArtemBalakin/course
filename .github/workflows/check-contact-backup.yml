@@ -1,0 +1,21 @@
+name: Check live contact form backup UI
+on:
+  push:
+    paths:
+      - .github/workflows/check-contact-backup.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          npm install --no-save --ignore-scripts playwright@1.56.0
+          npx playwright install --with-deps chromium
+      - run: node scripts/check-contact-backup.mjs
