@@ -31,7 +31,7 @@
     return {
       id:form.dataset.requestId || (window.crypto?.randomUUID?window.crypto.randomUUID():''),
       name:text('name'),contact:text('contact'),service:text('service'),details:text('details'),
-      consent:data.get('consent')==='Да',
+      consent:form.querySelector('[name="consent"]')?.checked===true,
       source:text('source'),landing:location.pathname,
       referrer:document.referrer.slice(0,500),
       utm_source:(query.get('utm_source')||'').slice(0,100),
