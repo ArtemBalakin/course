@@ -1,0 +1,13 @@
+{
+  "name": "ab-digital-leads",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "deploy": "wrangler deploy",
+    "migrate": "wrangler d1 migrations apply ab-digital-leads --remote"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
