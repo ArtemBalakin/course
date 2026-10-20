@@ -10,13 +10,14 @@
     });
     menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.hidden=true;toggle.setAttribute('aria-expanded','false')}));
   }
-  const plans={self:{title:'Для себя',description:'Самостоятельные занятия по видеозаписям.'},feedback:{title:'Вместе',description:'Видеоуроки и обратная связь по домашним заданиям (объём уточняется).'},personal:{title:'Индивидуально',description:'Видеоуроки и персональные разборы (условия уточняются).'}};
+  const plans={self:{title:'SELF DANCE',description:'Самостоятельные занятия. Доступ к видео на три месяца.',price:'12 900 ₸'},feedback:{title:'DANCE WITH ME',description:'Общий чат, ответы Сабины дважды в неделю, видео на шесть месяцев.',price:'19 900 ₸'},personal:{title:'VIP LATINA',description:'Три индивидуальных видеоразбора, личный чат на четыре недели. Срок доступа уточняется.',price:'34 900 ₸'}};
   const buttons=[...document.querySelectorAll('[data-plan]')];
   if(buttons.length){
     const params=new URLSearchParams(location.search);let selected=plans[params.get('plan')]?params.get('plan'):'self';
     const title=document.querySelector('#selected-plan-title');
     const desc=document.querySelector('#selected-plan-desc');
-    const render=()=>{buttons.forEach(b=>{const active=b.dataset.plan===selected;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});title.textContent=plans[selected].title;desc.textContent=plans[selected].description;history.replaceState({},'',location.pathname+'?plan='+encodeURIComponent(selected));};
+    const price=document.querySelector('#selected-plan-price');
+    const render=()=>{buttons.forEach(b=>{const active=b.dataset.plan===selected;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});title.textContent=plans[selected].title;desc.textContent=plans[selected].description;if(price)price.textContent=plans[selected].price;history.replaceState({},'',location.pathname+'?plan='+encodeURIComponent(selected));};
     buttons.forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.plan;render()}));
     render();
   }

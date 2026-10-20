@@ -1,0 +1,23 @@
+/* SABINA / LATINA SOLO — editorial updates from Oct 2026 content discussion */
+body[data-page="course"] .tariff-card h3{font-size:clamp(25px,2.5vw,33px);line-height:1.14;overflow-wrap:anywhere}
+body[data-page="course"] .tariff-price{font-size:28px;letter-spacing:-.5px}
+body[data-page="course"] .tariff-price small{font-size:10px;font-weight:600;letter-spacing:0}
+body[data-page="course"] .tariff-card.featured .tariff-price small{color:#f7d4df}
+body[data-page="course"] .tariff-disclaimer{max-width:880px}
+body[data-page="course"] .faq-list details p a{text-decoration:underline;text-underline-offset:3px;color:#8c3c54}
+body[data-page="course"] .learning-path{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:40px;background:#4b2337;color:#fef1e8;padding:clamp(42px,6vw,80px) max(5vw,calc((100vw - 1250px)/2))}
+body[data-page="course"] .learning-path .dance-kicker{color:#f7c9ba}
+body[data-page="course"] .learning-path h3{font:600 clamp(38px,4.3vw,61px)/1.12 'Playfair Display',Georgia,serif;letter-spacing:-1.6px;margin:24px 0}
+body[data-page="course"] .learning-path h3 em{font-weight:500;color:#e4afb6}
+body[data-page="course"] .learning-path-copy>p{font:400 15px/1.8 Manrope,sans-serif;color:#f6e0e1;max-width:680px}
+body[data-page="course"] .learning-path-copy>p.learning-path-small{font-size:12px;color:#dfc2cb;margin-top:22px}
+body[data-page="course"] .learning-path-weeks{display:grid;gap:12px;align-content:center}
+body[data-page="course"] .learning-path-weeks>div{display:grid;grid-template-columns:85px 1fr;align-items:center;gap:13px;border:1px solid #deb2c088;padding:18px}
+body[data-page="course"] .learning-path-weeks strong{font:600 27px 'Playfair Display',Georgia,serif;color:#f8c3b9}
+body[data-page="course"] .learning-path-weeks span{font:600 13px/1.5 Manrope,sans-serif}
+body[data-page="course"] .learning-path-weeks .learning-finish{background:#ead4c8;color:#562438;border-color:#ead4c8}
+body[data-page="course"] .learning-path-weeks .learning-finish strong{color:#61283e}
+body[data-page="checkout"] .plan-switcher{gap:8px;flex-wrap:wrap}
+body[data-page="checkout"] .plan-switcher button{font-size:11px;white-space:normal;line-height:1.35}
+@media(max-width:800px){body[data-page="course"] .learning-path{grid-template-columns:1fr;gap:22px;padding:50px 6%}}
+@media(max-width:450px){body[data-page="course"] .learning-path-weeks>div{grid-template-columns:67px 1fr;padding:14px}body[data-page="course"] .learning-path-weeks strong{font-size:23px}body[data-page="course"] .tariff-price{font-size:24px}}
