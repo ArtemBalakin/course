@@ -1,0 +1,15 @@
+
+body[data-page="course"] .dance-course-documents{background:#f1e0d6;color:#673248;padding:92px 0 110px}
+body[data-page="course"] .dance-course-doc-head{display:grid;grid-template-columns:1fr minmax(0,390px);gap:45px;align-items:end;margin:25px 0 37px}
+body[data-page="course"] .dance-course-doc-head h2{font:600 clamp(43px,5.4vw,72px)/1.14 'Playfair Display',Georgia,serif;letter-spacing:-1.5px;margin:0}
+body[data-page="course"] .dance-course-doc-head h2 em{font-weight:500;color:#b06478}
+body[data-page="course"] .dance-course-doc-head p{font-size:15px;line-height:1.8;color:#82636c;margin:0}
+body[data-page="course"] .dance-course-doc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+body[data-page="course"] .dance-course-doc-grid a{position:relative;display:flex;flex-direction:column;min-height:156px;background:#fffaf5;border:1px solid #e2c9c3;padding:24px 27px;transition:transform .2s,box-shadow .2s}
+body[data-page="course"] .dance-course-doc-grid a:hover{transform:translateY(-4px);box-shadow:0 14px 25px #69294119}
+body[data-page="course"] .dance-course-doc-grid a span{font:800 10px Manrope,sans-serif;letter-spacing:1.7px;color:#aa7486}
+body[data-page="course"] .dance-course-doc-grid a strong{font:600 clamp(23px,2.7vw,32px)/1.15 'Playfair Display',Georgia,serif;color:#672d45;margin-top:auto;padding-top:23px;padding-right:28px}
+body[data-page="course"] .dance-course-doc-grid a b{position:absolute;right:26px;top:23px;color:#b66f84;font-size:21px}
+body[data-page="course"] .dance-doc-link-all{display:inline-block;margin-top:25px;border-bottom:1px solid #b88393;padding-bottom:10px;font:800 13px Manrope,sans-serif;color:#6b2e46}
+@media(max-width:750px){body[data-page="course"] .dance-course-doc-head{grid-template-columns:1fr;gap:15px}body[data-page="course"] .dance-course-documents{padding:65px 0 78px}}
+@media(max-width:550px){body[data-page="course"] .dance-course-doc-grid{grid-template-columns:1fr}body[data-page="course"] .dance-course-doc-grid a{min-height:125px}body[data-page="course"] .dance-course-doc-head h2{font-size:43px}}
