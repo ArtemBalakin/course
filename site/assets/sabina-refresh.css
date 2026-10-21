@@ -21,3 +21,35 @@ body[data-page="checkout"] .plan-switcher{gap:8px;flex-wrap:wrap}
 body[data-page="checkout"] .plan-switcher button{font-size:11px;white-space:normal;line-height:1.35}
 @media(max-width:800px){body[data-page="course"] .learning-path{grid-template-columns:1fr;gap:22px;padding:50px 6%}}
 @media(max-width:450px){body[data-page="course"] .learning-path-weeks>div{grid-template-columns:67px 1fr;padding:14px}body[data-page="course"] .learning-path-weeks strong{font-size:23px}body[data-page="course"] .tariff-price{font-size:24px}}
+
+/* Latina Solo: compact, course-branded footer and unobtrusive legal links */
+body[data-page="course"] .sabina-footer,
+body[data-page="checkout"] .sabina-footer{background:#301923;color:#f9eae4;padding:49px max(5%,calc((100vw - 1220px)/2)) 26px}
+body[data-page="course"] .sabina-footer-top,
+body[data-page="checkout"] .sabina-footer-top{display:flex;align-items:start;justify-content:space-between;gap:45px}
+body[data-page="course"] .sabina-footer-identity,
+body[data-page="checkout"] .sabina-footer-identity{flex:0 1 360px}
+body[data-page="course"] .sabina-footer .course-brand,
+body[data-page="checkout"] .sabina-footer .course-brand{color:#fff1e9;font-size:25px;text-decoration:none}
+body[data-page="course"] .sabina-footer .course-brand span,
+body[data-page="checkout"] .sabina-footer .course-brand span{color:#e3b4bb}
+body[data-page="course"] .sabina-footer-identity p,
+body[data-page="checkout"] .sabina-footer-identity p{color:#d6afb9;font-size:12px;line-height:1.75;margin:10px 0 0}
+body[data-page="course"] .sabina-footer-links,
+body[data-page="checkout"] .sabina-footer-links{display:flex;align-items:center;justify-content:flex-end;align-content:flex-start;flex-wrap:wrap;gap:12px 23px;max-width:690px;padding-top:5px}
+body[data-page="course"] .sabina-footer-links a,
+body[data-page="checkout"] .sabina-footer-links a{font:600 12px/1.6 Manrope,sans-serif;color:#e9c9d1;transition:color .15s}
+body[data-page="course"] .sabina-footer-links a:hover,
+body[data-page="checkout"] .sabina-footer-links a:hover{color:#fffdf6;text-decoration:underline;text-underline-offset:4px}
+body[data-page="course"] .sabina-footer-bottom,
+body[data-page="checkout"] .sabina-footer-bottom{display:flex;align-items:center;flex-wrap:wrap;gap:12px 28px;border-top:1px solid #6c485a;padding-top:19px;margin-top:38px;font:500 11px/1.6 Manrope,sans-serif;color:#d3b2be}
+body[data-page="course"] .sabina-footer-bottom a,
+body[data-page="checkout"] .sabina-footer-bottom a{color:#e1c2c7;text-decoration:none}
+body[data-page="course"] .sabina-footer-disclaimer,
+body[data-page="checkout"] .sabina-footer-disclaimer{font:400 10px/1.6 Manrope,sans-serif;color:#b88e9e;margin:13px 0 0}
+@media(max-width:850px){
+ body[data-page="course"] .sabina-footer-top,body[data-page="checkout"] .sabina-footer-top{flex-direction:column;gap:24px}
+ body[data-page="course"] .sabina-footer-identity,body[data-page="checkout"] .sabina-footer-identity{flex:initial}
+ body[data-page="course"] .sabina-footer-links,body[data-page="checkout"] .sabina-footer-links{justify-content:flex-start;gap:11px 20px}
+ body[data-page="course"] .sabina-footer-bottom,body[data-page="checkout"] .sabina-footer-bottom{margin-top:29px}
+}
