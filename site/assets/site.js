@@ -10,7 +10,7 @@
     });
     menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.hidden=true;toggle.setAttribute('aria-expanded','false')}));
   }
-  const plans={self:{title:'SELF DANCE',description:'Самостоятельные занятия. Доступ к видео на три месяца.',price:'12 900 ₸'},feedback:{title:'DANCE WITH ME',description:'Общий чат, ответы Сабины дважды в неделю, видео на шесть месяцев.',price:'19 900 ₸'},personal:{title:'VIP LATINA',description:'Три индивидуальных видеоразбора, личный чат на четыре недели. Срок доступа уточняется.',price:'34 900 ₸'}};
+  const plans={self:{title:'SELF DANCE',description:'Самостоятельные занятия. Доступ к видео на три месяца.',price:'12 900 ₸'},feedback:{title:'DANCE WITH ME',description:'Общий чат, ответы Сабины дважды в неделю, видео на шесть месяцев.',price:'19 900 ₸'},personal:{title:'VIP LATINA',description:'Три индивидуальных видеоразбора, личный чат с Сабиной на четыре недели.',price:'34 900 ₸'}};
   const buttons=[...document.querySelectorAll('[data-plan]')];
   if(buttons.length){
     const params=new URLSearchParams(location.search);let selected=plans[params.get('plan')]?params.get('plan'):'self';
