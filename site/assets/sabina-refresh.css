@@ -53,3 +53,20 @@ body[data-page="checkout"] .sabina-footer-disclaimer{font:400 10px/1.6 Manrope,s
  body[data-page="course"] .sabina-footer-links,body[data-page="checkout"] .sabina-footer-links{justify-content:flex-start;gap:11px 20px}
  body[data-page="course"] .sabina-footer-bottom,body[data-page="checkout"] .sabina-footer-bottom{margin-top:29px}
 }
+
+/* Payment methods */
+.payment-marks{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-top:14px}
+.payment-mark{display:inline-flex;align-items:center;justify-content:center;height:34px;min-width:58px;padding:0 10px;border:1px solid currentColor;border-radius:8px;background:#fff;color:#24151b;box-sizing:border-box}
+.payment-mark-visa{font:900 italic 18px/1 Arial,sans-serif;letter-spacing:-1.2px}
+.payment-mark-mastercard{gap:6px;font:600 9px/1 Arial,sans-serif;text-transform:lowercase;padding-left:8px}
+.payment-mark-mastercard i{position:relative;width:27px;height:17px;display:inline-block}
+.payment-mark-mastercard i:before,.payment-mark-mastercard i:after{content:"";position:absolute;top:0;width:17px;height:17px;border-radius:50%}
+.payment-mark-mastercard i:before{left:0;background:#ea001b}
+.payment-mark-mastercard i:after{right:0;background:#ff9900;opacity:.92}
+body[data-page="checkout"] .checkout-payment-info{margin-top:20px;padding:20px 22px;border:1px solid #d9c0c4;background:#fff8f4}
+body[data-page="checkout"] .checkout-payment-info>strong{font:700 14px Manrope,sans-serif;color:#5d2a3d}
+body[data-page="checkout"] .checkout-payment-info>p{font:400 12px/1.7 Manrope,sans-serif;color:#775e66;margin:7px 0 0}
+body[data-page="course"] .sabina-footer .payment-marks,
+body[data-page="checkout"] .sabina-footer .payment-marks{margin-top:18px}
+body[data-page="course"] .sabina-footer .payment-mark,
+body[data-page="checkout"] .sabina-footer .payment-mark{height:30px;background:#fffaf7;border-color:#f1d8de}
