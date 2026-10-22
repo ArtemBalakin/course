@@ -117,3 +117,20 @@ The main studio homepage now only highlights the studio's core services, Mini Ap
 ## Cloudflare Web Analytics
 
 Separate production and preview tracking is prepared but inactive until two public beacon tokens are configured. See docs/WEB_ANALYTICS.md.
+
+## Latina Solo: Kazakh version (22 October 2026)
+
+The course, checkout and legal pages exist in Russian (`/courses/sabina/…`) and Kazakh (`/kk/courses/sabina/…`)
+with a RU / ҚАЗ switcher and hreflang links. The Russian pages are the source and are edited by hand; the Kazakh
+pages are generated — do not edit `site/kk/courses/` directly.
+
+After changing any Russian Sabina page:
+
+```bash
+node scripts/generate-sabina-locales.mjs --missing   # phrases without a translation
+node scripts/generate-sabina-locales.mjs             # rebuild KK pages and the RU switcher
+```
+
+Translations live in `scripts/i18n/sabina-kk.json` (`"Russian phrase": "Kazakh"`); `js:` keys are strings that
+`site.js` inserts at runtime (checkout plan text, program dialog). The build fails if a Russian phrase has no
+translation. Pay buttons on Kazakh pages open the bot with `start=site_kk_<plan>`.

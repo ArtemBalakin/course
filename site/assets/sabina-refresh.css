@@ -70,3 +70,11 @@ body[data-page="course"] .sabina-footer .payment-marks,
 body[data-page="checkout"] .sabina-footer .payment-marks{margin-top:18px}
 body[data-page="course"] .sabina-footer .payment-mark,
 body[data-page="checkout"] .sabina-footer .payment-mark{height:30px;background:#fffaf7;border-color:#f1d8de}
+
+/* Переключатель RU / ҚАЗ на страницах курса и документов - в палитре курса */
+.lang-switch.sabina-lang{border-color:#e6d2cb;background:transparent;margin-right:10px}
+.lang-switch.sabina-lang a{color:var(--d-ink)}
+.lang-switch.sabina-lang a:hover{background:#f3e3dd;color:var(--wine)}
+.lang-switch.sabina-lang a[aria-current="page"]{background:var(--wine);color:#fff}
+.s-legal-header .lang-switch.sabina-lang{margin-left:auto}
+@media(max-width:850px){.lang-switch.sabina-lang{margin-left:auto;margin-right:8px}}

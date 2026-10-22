@@ -1,5 +1,7 @@
 (function(){
   'use strict';
+  // Перевод динамических строк: на /kk/ страницах словарь подключается файлом i18n-*.js до site.js.
+  const tr=value=>(window.AB_TRANSLATIONS&&window.AB_TRANSLATIONS[value])||value;
   const toggle=document.querySelector('.nav-toggle');
   const menu=document.querySelector('.mobile-nav');
   if(toggle&&menu){
@@ -13,7 +15,7 @@
   // Коды тарифов совпадают с ботом: кнопка оплаты открывает @DanceCoursebot сразу на карточке тарифа.
   const plans={self:{title:'SELF DANCE',description:'Самостоятельные занятия, все 6 модулей открыты сразу. Доступ к материалам на 2 месяца с даты оплаты.',price:'12 990 ₸'},dwm:{title:'DANCE WITH ME',description:'Обучение в потоке: новый модуль каждую неделю, общий чат и ответы Сабины дважды в неделю. Доступ на 2 месяца со старта потока.',price:'19 990 ₸'},vip:{title:'VIP LATINA',description:'Всё из DANCE WITH ME, разбор видео в конце каждой недели и личный чат с Сабиной 6 недель. Доступ на 2 месяца со старта потока.',price:'39 990 ₸'}};
   const legacyPlans={feedback:'dwm',personal:'vip'};
-  const botUrl=code=>'https://t.me/DanceCoursebot?start=site_'+code;
+  const botUrl=code=>'https://t.me/DanceCoursebot?start=site_'+(document.documentElement.lang==='kk'?'kk_':'')+code;
   const buttons=[...document.querySelectorAll('[data-plan]')];
   if(buttons.length){
     const params=new URLSearchParams(location.search);const requested=legacyPlans[params.get('plan')]||params.get('plan');let selected=plans[requested]?requested:'self';
@@ -21,7 +23,7 @@
     const desc=document.querySelector('#selected-plan-desc');
     const price=document.querySelector('#selected-plan-price');
     const pay=document.querySelector('#checkout-pay');
-    const render=()=>{buttons.forEach(b=>{const active=b.dataset.plan===selected;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});title.textContent=plans[selected].title;desc.textContent=plans[selected].description;if(price)price.textContent=plans[selected].price;if(pay){pay.href=botUrl(selected);pay.textContent='Оплатить '+plans[selected].price+' в Telegram ↗';}history.replaceState({},'',location.pathname+'?plan='+encodeURIComponent(selected));};
+    const render=()=>{buttons.forEach(b=>{const active=b.dataset.plan===selected;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});title.textContent=plans[selected].title;desc.textContent=tr(plans[selected].description);if(price)price.textContent=plans[selected].price;if(pay){pay.href=botUrl(selected);pay.textContent=tr('Оплатить ')+plans[selected].price+tr(' в Telegram ↗');}history.replaceState({},'',location.pathname+'?plan='+encodeURIComponent(selected));};
     buttons.forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.plan;render()}));
     render();
   }
@@ -46,7 +48,7 @@
     cards.forEach((card,index)=>{
       const option=document.createElement('option');
       option.value=String(index);
-      option.textContent=(index+1)+'. '+(card.querySelector('.module-title')?.textContent||'Этап курса');
+      option.textContent=(index+1)+'. '+(card.querySelector('.module-title')?.textContent||tr('Этап курса'));
       jump.append(option);
     });
     const showStage=index=>{
@@ -59,10 +61,10 @@
       const total=String(cards.length);
       number.textContent=step.padStart(2,'0')+' / '+total.padStart(2,'0');
       visual.textContent=card.dataset.module;
-      title.textContent=card.querySelector('.module-title')?.textContent||'Этап курса';
+      title.textContent=card.querySelector('.module-title')?.textContent||tr('Этап курса');
       subtitle.textContent=card.querySelector('.module-subtitle')?.textContent||'';
       content.replaceChildren(template.content.cloneNode(true));
-      progress.textContent='Этап '+step+' из '+total;
+      progress.textContent=tr('Этап ')+step+tr(' из ')+total;
       jump.value=String(index);
       prev.disabled=index===0;
       next.disabled=index===cards.length-1;
@@ -100,8 +102,6 @@
     lessonDialog.addEventListener('click',event=>{if(event.target===lessonDialog)lessonDialog.close()});
     lessonDialog.addEventListener('close',()=>{returnFocus?.focus({preventScroll:true})});
   }
-
-  const tr=value=>(window.AB_TRANSLATIONS&&window.AB_TRANSLATIONS[value])||value;
 
   // Static portfolio gallery: images are stored with the site and require no bot or payment credentials.
   const showcaseDialog=document.getElementById('portfolio-gallery');

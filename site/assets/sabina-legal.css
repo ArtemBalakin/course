@@ -88,3 +88,11 @@ body[data-page="course-legal"] .s-legal-footer-note{font:400 11px/1.7 Manrope,sa
 body[data-page="course-legal"] .s-legal-footer-note a{text-decoration:underline}
 @media(max-width:850px){body[data-page="course-legal"] .s-legal-header nav{display:none}body[data-page="course-legal"] .legal-grid{grid-template-columns:1fr;padding-top:40px;gap:30px}body[data-page="course-legal"] .legal-sidebar{position:static}body[data-page="course-legal"] .legal-sidebar nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}body[data-page="course-legal"] .legal-help{display:none}body[data-page="course-legal"] .legal-hub-intro{grid-template-columns:1fr;gap:12px}}
 @media(max-width:550px){body[data-page="course-legal"] .s-legal-header{min-height:76px;padding:12px 5%}body[data-page="course-legal"] .course-brand{font-size:24px}body[data-page="course-legal"] .course-brand span{display:none}body[data-page="course-legal"] .s-legal-back{font-size:11px;padding:10px 12px}body[data-page="course-legal"] .legal-hero{padding:38px 0 65px}body[data-page="course-legal"] .legal-hero h1{font-size:42px}body[data-page="course-legal"] .legal-hero p{font-size:14px}body[data-page="course-legal"] .legal-hero-meta span{font-size:10px}body[data-page="course-legal"] .legal-section h2{font-size:31px}body[data-page="course-legal"] .legal-body p{font-size:14px}body[data-page="course-legal"] .legal-cards{grid-template-columns:1fr}body[data-page="course-legal"] .legal-tariff{padding:20px 15px}body[data-page="course-legal"] .legal-tariff strong{font-size:14px;right:14px}body[data-page="course-legal"] .legal-end-note{padding:26px}body[data-page="course-legal"] .s-legal-footer-top,body[data-page="course-legal"] .s-legal-footer-bottom{flex-direction:column}body[data-page="course-legal"] .legal-owner{padding:22px}}
+
+/* Переключатель RU / ҚАЗ - в палитре курса */
+.lang-switch.sabina-lang{border-color:#e6d2cb;background:transparent;margin-left:auto;margin-right:10px}
+.lang-switch.sabina-lang a{color:var(--d-ink)}
+.lang-switch.sabina-lang a:hover{background:#f3e3dd;color:var(--wine)}
+.lang-switch.sabina-lang a[aria-current="page"]{background:var(--wine);color:#fff}
+/* в шапке документов на мобильных скрыты все nav - переключатель языка оставляем видимым */
+body[data-page="course-legal"] .s-legal-header nav.lang-switch.sabina-lang{display:flex;gap:3px;font-size:10px}
