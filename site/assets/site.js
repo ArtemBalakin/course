@@ -10,14 +10,18 @@
     });
     menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.hidden=true;toggle.setAttribute('aria-expanded','false')}));
   }
-  const plans={self:{title:'SELF DANCE',description:'Самостоятельные занятия. Доступ к видео на три месяца.',price:'12 900 ₸'},feedback:{title:'DANCE WITH ME',description:'Общий чат, ответы Сабины дважды в неделю, видео на шесть месяцев.',price:'19 900 ₸'},personal:{title:'VIP LATINA',description:'Три индивидуальных видеоразбора, личный чат с Сабиной на четыре недели.',price:'34 900 ₸'}};
+  // Коды тарифов совпадают с ботом: кнопка оплаты открывает @DanceCoursebot сразу на карточке тарифа.
+  const plans={self:{title:'SELF DANCE',description:'Самостоятельные занятия, все 6 модулей открыты сразу. Доступ к материалам на 2 месяца с даты оплаты.',price:'12 990 ₸'},dwm:{title:'DANCE WITH ME',description:'Обучение в потоке: новый модуль каждую неделю, общий чат и ответы Сабины дважды в неделю. Доступ на 2 месяца со старта потока.',price:'19 990 ₸'},vip:{title:'VIP LATINA',description:'Всё из DANCE WITH ME, разбор видео в конце каждой недели и личный чат с Сабиной 6 недель. Доступ на 2 месяца со старта потока.',price:'39 990 ₸'}};
+  const legacyPlans={feedback:'dwm',personal:'vip'};
+  const botUrl=code=>'https://t.me/DanceCoursebot?start=site_'+code;
   const buttons=[...document.querySelectorAll('[data-plan]')];
   if(buttons.length){
-    const params=new URLSearchParams(location.search);let selected=plans[params.get('plan')]?params.get('plan'):'self';
+    const params=new URLSearchParams(location.search);const requested=legacyPlans[params.get('plan')]||params.get('plan');let selected=plans[requested]?requested:'self';
     const title=document.querySelector('#selected-plan-title');
     const desc=document.querySelector('#selected-plan-desc');
     const price=document.querySelector('#selected-plan-price');
-    const render=()=>{buttons.forEach(b=>{const active=b.dataset.plan===selected;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});title.textContent=plans[selected].title;desc.textContent=plans[selected].description;if(price)price.textContent=plans[selected].price;history.replaceState({},'',location.pathname+'?plan='+encodeURIComponent(selected));};
+    const pay=document.querySelector('#checkout-pay');
+    const render=()=>{buttons.forEach(b=>{const active=b.dataset.plan===selected;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});title.textContent=plans[selected].title;desc.textContent=plans[selected].description;if(price)price.textContent=plans[selected].price;if(pay){pay.href=botUrl(selected);pay.textContent='Оплатить '+plans[selected].price+' в Telegram ↗';}history.replaceState({},'',location.pathname+'?plan='+encodeURIComponent(selected));};
     buttons.forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.plan;render()}));
     render();
   }
