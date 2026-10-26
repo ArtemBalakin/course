@@ -79,18 +79,32 @@ body[data-page="checkout"] .sabina-footer .payment-mark{height:30px;background:#
 .s-legal-header .lang-switch.sabina-lang{margin-left:auto}
 @media(max-width:850px){.lang-switch.sabina-lang{margin-left:auto;margin-right:8px}}
 
-/* Блок разработчиков: тихая верхняя часть подвала в палитре курса (фон и цвета подвала), без отдельных акцентов */
-.dev-credit{background:#301923;color:#f9ebe4;border-bottom:1px solid #6c485a}
-.dev-credit-inner{max-width:1320px;margin:0 auto;padding:30px 60px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.dev-credit-copy{max-width:640px}
-.dev-credit-kicker{display:block;margin-bottom:8px;font:700 10px Manrope,sans-serif;letter-spacing:.16em;color:#d6afb9}
-.dev-credit h2{margin:0 0 6px;font:700 17px/1.3 Manrope,sans-serif;font-style:normal;letter-spacing:0;color:#fff1e9}
-.dev-credit p{margin:0;font:400 13px/1.55 'DM Sans',Arial,sans-serif;color:#d6afb9}
-.dev-credit-actions{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
-.dev-credit-btn{display:inline-block;padding:11px 20px;border:1px solid #6c485a;border-radius:30px;color:#f9ebe4;font:700 12px Manrope,sans-serif;text-decoration:none;transition:background .2s,border-color .2s}
-.dev-credit-btn:hover{background:#4a2a39;border-color:#d6afb9}
+/* Подвал: плашка студии AB/digital - карточка в палитре курса; остальные сведения - в две колонки */
+.sabina-footer .dev-credit{position:relative;overflow:hidden;margin:0 0 40px;padding:22px 28px 22px 32px;border:1px solid #7b4b5f;border-radius:18px;
+  background:linear-gradient(120deg,#4d2536 0%,#3b1f2c 60%,#341b27 100%);color:#f9ebe4;box-shadow:0 14px 34px rgba(0,0,0,.22)}
+.sabina-footer .dev-credit::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:#e3b4bb}
+.dev-credit-inner{display:flex;gap:24px 36px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.dev-credit-copy{flex:1 1 380px;max-width:640px}
+.dev-credit-kicker{display:flex;align-items:center;gap:10px;margin-bottom:10px;font:700 10px Manrope,sans-serif;letter-spacing:.16em;color:#e3b4bb}
+.dev-credit-logo{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:7px;background:#fff1e9;color:#301923;font:800 15px/1 Manrope,sans-serif;font-style:normal;letter-spacing:0}
+.dev-credit h2{margin:0 0 6px;font:700 19px/1.3 Manrope,sans-serif;font-style:normal;letter-spacing:-.2px;color:#fff1e9}
+.dev-credit p{margin:0;font:400 13px/1.6 'DM Sans',Arial,sans-serif;color:#dcb9c3}
+.dev-credit-actions{display:flex;gap:18px 22px;align-items:center;flex-wrap:wrap}
+.dev-credit-btn{display:inline-block;padding:13px 22px;border-radius:30px;background:#fff1e9;color:#672438;font:800 13px Manrope,sans-serif;text-decoration:none;transition:background .2s,transform .2s}
+.dev-credit-btn:hover{background:#fff;transform:translateY(-1px)}
 .dev-credit-link{color:#e9c9d1;font:600 12px Manrope,sans-serif;text-decoration:underline;text-underline-offset:4px}
+.dev-credit-link:hover{color:#fff}
 .dev-credit a:focus-visible{outline:2px solid #e9c9d1;outline-offset:3px}
-.sabina-footer-bottom a{color:inherit;text-decoration:underline;text-underline-offset:3px}
-@media(max-width:900px){.dev-credit-inner{padding:26px 35px}}
-@media(max-width:640px){.dev-credit-inner{padding:24px 22px}}
+
+.sabina-footer-bottom{display:grid;grid-template-columns:1fr auto;gap:18px 48px;align-items:start}
+.sfb-legal{display:flex;flex-direction:column;gap:6px}
+.sfb-contact{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.sfb-contact-links{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.sfb-contact .payment-marks,body[data-page] .sabina-footer .sfb-contact .payment-marks{margin-top:0}
+.sabina-footer-bottom a{color:#e1c2c7;text-decoration:none}
+.sabina-footer-bottom a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:760px){
+  .sabina-footer .dev-credit{padding:20px 20px 20px 24px;border-radius:16px;margin-bottom:30px}
+  .sabina-footer-bottom{grid-template-columns:1fr}
+  .sfb-contact,.sfb-contact-links{align-items:flex-start}
+}
