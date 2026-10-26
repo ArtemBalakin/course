@@ -90,7 +90,7 @@ for(const page of pages){
   // кнопка оплаты ведёт в бота с меткой kk, чтобы в статистике было видно казахскую версию сайта
   kk=kk.replaceAll('?start=site_','?start=site_kk_');
   // Playfair Display без казахских букв: в kk-версии подменяем его целиком на Playfair
-  kk=kk.replace('</head>','<link rel="stylesheet" href="/assets/sabina-kk-font.css?v=20261032"></head>');
+  kk=kk.replace('</head>','<link rel="stylesheet" href="/assets/sabina-kk-font.css?v=20261033"></head>');
   kk=kk.replace(/<script src="\/assets\/site\.js(\?[^"]*)?" defer><\/script>/,
     m=>'<script src="/assets/i18n-sabina-kk.js?v=20261026" defer></script>'+m);
   kk=decorate(kk,'kk',page);
