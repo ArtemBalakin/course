@@ -103,3 +103,10 @@ body[data-page] .sabina-footer .sabina-footer-bottom .sfb-line{display:flex;flex
 @media(max-width:640px){.about-gallery{gap:12px;margin-top:30px}.about-gallery figure{border-radius:12px}}
 body[data-page="course"] .tariff-card.featured .tariff-top p{color:#f1d6d9}
 @media(min-width:851px){body[data-page="course"] .lesson-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-page="course"] .lesson-grid .module-tile.intro-tile{grid-column:1/-1;min-height:250px}}
+body[data-page="course"] .module-tile .lesson-glyph.intro-play{display:flex;flex-direction:column;align-items:center;gap:12px;font:600 11px/1.3 Manrope,sans-serif;letter-spacing:1.4px;text-transform:uppercase;opacity:1;color:#fff4ee;margin-right:clamp(0px,3vw,48px)}
+body[data-page="course"] .intro-play i{display:grid;place-items:center;width:84px;height:84px;border:1.5px solid #fff4ee99;border-radius:50%;background:#ffffff1f;font-style:normal;font-size:26px;letter-spacing:0;padding-left:5px;box-shadow:0 0 0 12px #ffffff12;transition:transform .25s,background .25s}
+body[data-page="course"] .intro-tile:hover .intro-play i{transform:scale(1.07);background:#ffffff33}
+body[data-page="course"] .intro-play small{font-size:10px;letter-spacing:1.6px;opacity:.85}
+/* Playfair Display не содержит расширенной кириллицы (ғ қ ә ө ү ұ һ ң): берём эти буквы из родственного Playfair */
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400 900;font-display:swap;src:url(https://fonts.gstatic.com/s/playfair/v10/0nkHC9D7PO4KhmUJ59baVQ_iWhg0cgSrLQZDFpFUsLCFf_1ubkfQeG9gkTjhmHc.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400 900;font-display:swap;src:url(https://fonts.gstatic.com/s/playfair/v10/0nkFC9D7PO4KhmUJ5_zTZ_4MYQXznAK-TUcZXKO3UMnW6VNpe4-SoCdQniDl.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}

@@ -96,3 +96,5 @@ body[data-page="course-legal"] .s-legal-footer-note a{text-decoration:underline}
 .lang-switch.sabina-lang a[aria-current="page"]{background:var(--wine);color:#fff}
 /* в шапке документов на мобильных скрыты все nav - переключатель языка оставляем видимым */
 body[data-page="course-legal"] .s-legal-header nav.lang-switch.sabina-lang{display:flex;gap:3px;font-size:10px}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400 900;font-display:swap;src:url(https://fonts.gstatic.com/s/playfair/v10/0nkHC9D7PO4KhmUJ59baVQ_iWhg0cgSrLQZDFpFUsLCFf_1ubkfQeG9gkTjhmHc.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400 900;font-display:swap;src:url(https://fonts.gstatic.com/s/playfair/v10/0nkFC9D7PO4KhmUJ5_zTZ_4MYQXznAK-TUcZXKO3UMnW6VNpe4-SoCdQniDl.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
