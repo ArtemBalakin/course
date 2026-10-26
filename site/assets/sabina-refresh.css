@@ -101,3 +101,4 @@ body[data-page] .sabina-footer .sabina-footer-bottom .sfb-line{display:flex;flex
 .about-gallery figure{margin:0;border-radius:16px;overflow:hidden;background:#e8d5cf;aspect-ratio:4/5}
 .about-gallery img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 @media(max-width:640px){.about-gallery{gap:12px;margin-top:30px}.about-gallery figure{border-radius:12px}}
+body[data-page="course"] .tariff-card.featured .tariff-top p{color:#f1d6d9}
