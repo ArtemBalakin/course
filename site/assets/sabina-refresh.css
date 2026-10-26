@@ -90,3 +90,14 @@ body[data-page] .sabina-footer .sabina-footer-bottom .sfb-line{display:flex;flex
 .sabina-footer-bottom a{color:#d9bcc6;text-decoration:none}
 .sabina-footer-bottom a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:760px){body .sabina-footer .sabina-footer-links{justify-content:flex-start}}
+
+/* Фото преподавателя: портрет вместо декоративной буквы, два снимка под текстом */
+.dance-about-art.has-photo{display:block;background:#6a273c}
+.dance-about-art.has-photo:before{display:none}
+.dance-about-art.has-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.dance-about-art.has-photo:after{content:"";position:absolute;inset:0;width:auto;height:auto;border:0;border-radius:0;transform:none;
+  background:linear-gradient(180deg,rgba(48,25,35,.5) 0,rgba(48,25,35,0) 26%,rgba(48,25,35,0) 64%,rgba(48,25,35,.66) 100%)}
+.about-gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:38px;max-width:560px}
+.about-gallery figure{margin:0;border-radius:16px;overflow:hidden;background:#e8d5cf;aspect-ratio:4/5}
+.about-gallery img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+@media(max-width:640px){.about-gallery{gap:12px;margin-top:30px}.about-gallery figure{border-radius:12px}}
