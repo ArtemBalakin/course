@@ -1,0 +1,13 @@
+/* Отдельная полоска студии AB/digital под подвалом страниц курса - по аналогии с «Сделано на Tilda».
+ * Нейтральная светлая, не из палитры курса: это пометка о разработчике, а не часть дизайна курса. */
+.made-by{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 16px;padding:13px 5%;background:#f4ede8;color:#4a3b41;
+  border-top:1px solid #e3d6cf;font:500 12px/1.5 Manrope,'DM Sans',Arial,sans-serif;text-align:center}
+.made-by a{color:inherit;text-decoration:none}
+.made-by-brand{display:inline-flex;align-items:center;gap:8px;color:#0e1b26}
+.made-by-brand b{font:800 13px Manrope,sans-serif;letter-spacing:-.2px}
+.made-by-logo{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:7px;background:#0e1b26;color:#fff;font:800 14px/1 Manrope,sans-serif;font-style:normal}
+.made-by-text{color:#6b5a60}
+.made-by-cta{padding:6px 13px;border:1px solid #cdbbb3;border-radius:20px;font-weight:700;color:#0e1b26;transition:background .2s,border-color .2s}
+.made-by-cta:hover{background:#fff;border-color:#0e1b26}
+.made-by a:focus-visible{outline:2px solid #0e1b26;outline-offset:3px}
+@media(max-width:640px){.made-by{padding:14px 20px;flex-direction:column;gap:6px}.made-by-text{max-width:300px}}
