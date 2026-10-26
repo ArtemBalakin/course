@@ -1,0 +1,78 @@
+/* AB/digital: единый тёмный «технологичный» стиль главной страницы.
+ * Подключается последним и действует только на body[data-page="home"] (RU/KK/EN) -
+ * страницы курса Сабины (светлый тёплый стиль) этот файл не затрагивает.
+ * Палитра: navy + лайм как в первом экране, голубой и фиолетовый - второстепенные акценты.
+ * Заголовки - без курсива и без засечек: акцентное слово выделяется цветом, а не шрифтом. */
+body[data-page="home"]{
+  --t-bg:#0b1721;--t-bg2:#0e1b26;--t-surface:#132532;--t-surface2:#183041;
+  --t-line:rgba(255,255,255,.11);--t-line-lime:rgba(217,255,94,.28);
+  --t-text:#e8f0f5;--t-muted:#9fb2bf;--t-lime:#d9ff5e;--t-cyan:#5ce1ff;--t-violet:#b9a6ff;
+}
+
+/* ---- заголовки: прямой sans, акцент цветом ---- */
+body[data-page="home"] h1 em,body[data-page="home"] h2 em,body[data-page="home"] h3 em{
+  font-family:inherit;font-style:normal;font-weight:inherit;letter-spacing:inherit;font-size:inherit;line-height:inherit;color:var(--t-lime)}
+body[data-page="home"] .solution-showcase-reminder .solution-case-content h3 em{color:var(--t-cyan)}
+
+/* ---- общий фон секций ---- */
+body[data-page="home"] .ab-capabilities,
+body[data-page="home"] .corporate-section{background:var(--t-bg);color:var(--t-text)}
+body[data-page="home"] .solutions-section{background:var(--t-bg2);color:var(--t-text)}
+body[data-page="home"] .ab-capabilities,
+body[data-page="home"] .solutions-section,
+body[data-page="home"] .corporate-section{border-top:1px solid var(--t-line)}
+
+/* ---- «Что мы можем сделать» ---- */
+body[data-page="home"] .ab-cap-eyebrow,
+body[data-page="home"] .solutions-eyebrow,
+body[data-page="home"] .corporate-overline{color:var(--t-lime)}
+body[data-page="home"] .ab-capabilities h2,
+body[data-page="home"] .solutions-header h2,
+body[data-page="home"] .corporate-intro h2{color:#fff}
+body[data-page="home"] .ab-cap-intro>p,
+body[data-page="home"] .solutions-header>p,
+body[data-page="home"] .corporate-intro>p,
+body[data-page="home"] .ab-cap-footnote,
+body[data-page="home"] .corporate-note{color:var(--t-muted)}
+body[data-page="home"] .ab-capabilities span.ab-cap-item-number{color:inherit}
+
+body[data-page="home"] .ab-capabilities .ab-cap-item{
+  --accent:var(--t-lime);
+  background:linear-gradient(180deg,var(--t-surface2),var(--t-surface));color:var(--t-text);
+  border:1px solid var(--t-line);border-top:2px solid var(--accent);box-shadow:0 18px 40px rgba(0,0,0,.28)}
+body[data-page="home"] .ab-capabilities .ab-cap-item:hover{border-color:var(--accent);box-shadow:0 22px 48px rgba(0,0,0,.4)}
+body[data-page="home"] .ab-capabilities .ab-cap-mini{--accent:var(--t-lime);background:linear-gradient(180deg,var(--t-surface2),var(--t-surface));color:var(--t-text);border-color:var(--t-line)}
+body[data-page="home"] .ab-capabilities .ab-cap-bots{--accent:var(--t-cyan);background:linear-gradient(180deg,var(--t-surface2),var(--t-surface));color:var(--t-text);border-color:var(--t-line)}
+body[data-page="home"] .ab-capabilities .ab-cap-web{--accent:var(--t-violet);background:linear-gradient(180deg,var(--t-surface2),var(--t-surface));color:var(--t-text);border-color:var(--t-line)}
+body[data-page="home"] .ab-capabilities .ab-cap-item h3{color:#fff}
+body[data-page="home"] .ab-capabilities .ab-cap-item p{color:var(--t-muted)}
+body[data-page="home"] .ab-capabilities .ab-cap-item-number,
+body[data-page="home"] .ab-capabilities .ab-cap-item-art,
+body[data-page="home"] .ab-capabilities .ab-cap-item-art span,
+body[data-page="home"] .ab-capabilities .ab-cap-item-art i{color:var(--accent)}
+body[data-page="home"] .ab-capabilities .ab-cap-item-art svg{color:var(--accent)}
+body[data-page="home"] .ab-capabilities .ab-cap-tags span{color:var(--t-text);border:1px solid var(--t-line);background:rgba(255,255,255,.04)}
+body[data-page="home"] .ab-capabilities .ab-cap-item-arrow{color:var(--accent);border-top-color:var(--t-line)}
+body[data-page="home"] .ab-capabilities .ab-cap-item-arrow:hover,
+body[data-page="home"] .ab-capabilities .ab-cap-item-arrow:focus-visible{color:#fff}
+
+/* ---- «Не просто код. Решение задач.» ---- */
+body[data-page="home"] .solutions-header .solutions-eyebrow+h2,
+body[data-page="home"] .solutions-section h2{color:#fff}
+body[data-page="home"] .solution-showcase{background:linear-gradient(180deg,#112431,#0d1c27);border-color:var(--t-line-lime)}
+
+/* ---- «Системы, в разработке которых участвовали» ---- */
+body[data-page="home"] .corporate-case{box-shadow:0 22px 50px rgba(0,0,0,.45)}
+
+/* ---- подзаголовки портфолио ---- */
+body[data-page="home"] .portfolio-subhead h3,
+body[data-page="home"] .project-info h3{color:#fff}
+
+/* ---- единый ритм акцентных кнопок и фокуса ---- */
+body[data-page="home"] a:focus-visible,body[data-page="home"] button:focus-visible{outline:2px solid var(--t-lime);outline-offset:3px}
+
+/* ---- первый экран: заголовок держится в две строки ---- */
+body[data-page="home"] .home-hero h1{font-size:clamp(32px,4.2vw,56px)}
+body[data-page="home"] .home-hero h1 span.nb{color:inherit;white-space:nowrap}
+body[data-page="home"] .home-hero h1{word-spacing:.08em}
+body[data-page="home"] h1,body[data-page="home"] h2{word-spacing:.07em}

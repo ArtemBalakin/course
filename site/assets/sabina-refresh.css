@@ -78,3 +78,19 @@ body[data-page="checkout"] .sabina-footer .payment-mark{height:30px;background:#
 .lang-switch.sabina-lang a[aria-current="page"]{background:var(--wine);color:#fff}
 .s-legal-header .lang-switch.sabina-lang{margin-left:auto}
 @media(max-width:850px){.lang-switch.sabina-lang{margin-left:auto;margin-right:8px}}
+
+/* Блок разработчиков: студия AB/digital - в собственной тёмной палитре, отдельно от стиля курса */
+.dev-credit{background:#0e1b26;color:#e8f0f5;border-top:1px solid rgba(217,255,94,.28)}
+.dev-credit-inner{max-width:1320px;margin:0 auto;padding:44px 60px;display:flex;gap:32px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.dev-credit-copy{max-width:600px}
+.dev-credit-kicker{display:inline-block;margin-bottom:10px;font:800 11px Manrope,sans-serif;letter-spacing:.14em;color:#d9ff5e}
+.dev-credit h2{margin:0 0 8px;font:800 clamp(21px,2.8vw,28px)/1.18 Manrope,sans-serif;font-style:normal;letter-spacing:-.4px;color:#fff}
+.dev-credit p{margin:0;font:500 15px/1.55 Manrope,sans-serif;color:#9fb2bf}
+.dev-credit-actions{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.dev-credit-btn{display:inline-block;padding:14px 22px;border-radius:30px;background:#d9ff5e;color:#0e1b26;font:800 13px Manrope,sans-serif;text-decoration:none;transition:transform .2s}
+.dev-credit-btn:hover{transform:translateY(-2px)}
+.dev-credit-link{color:#e8f0f5;font:700 13px Manrope,sans-serif;text-decoration:underline;text-underline-offset:4px}
+.dev-credit a:focus-visible{outline:2px solid #d9ff5e;outline-offset:3px}
+.sabina-footer-bottom a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:900px){.dev-credit-inner{padding:38px 35px}}
+@media(max-width:640px){.dev-credit-inner{padding:34px 22px}}
