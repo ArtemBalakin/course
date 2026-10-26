@@ -90,7 +90,7 @@ for(const page of pages){
   // кнопка оплаты ведёт в бота с меткой kk, чтобы в статистике было видно казахскую версию сайта
   kk=kk.replaceAll('?start=site_','?start=site_kk_');
   kk=kk.replace(/<script src="\/assets\/site\.js(\?[^"]*)?" defer><\/script>/,
-    m=>'<script src="/assets/i18n-sabina-kk.js?v=20261022" defer></script>'+m);
+    m=>'<script src="/assets/i18n-sabina-kk.js?v=20261026" defer></script>'+m);
   kk=decorate(kk,'kk',page);
   const target=path.join(root,'site/kk/courses/sabina',page);
   fs.mkdirSync(path.dirname(target),{recursive:true});
