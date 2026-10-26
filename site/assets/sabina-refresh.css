@@ -85,8 +85,8 @@ body .sabina-footer .sabina-footer-top{flex-direction:row;align-items:center;jus
 body .sabina-footer .sabina-footer-identity{flex:0 0 auto}
 body .sabina-footer .course-brand{font-size:21px}
 body .sabina-footer .sabina-footer-links{justify-content:flex-end;max-width:none;padding-top:0;gap:8px 22px}
-.sabina-footer-bottom{display:flex;flex-direction:column;align-items:flex-start;gap:5px;margin-top:22px;padding-top:16px;color:#bf9fae;font:500 11px/1.6 Manrope,sans-serif}
-.sabina-footer-bottom .sfb-line{display:flex;flex-wrap:wrap;gap:2px 18px;margin:0}
+body[data-page] .sabina-footer .sabina-footer-bottom{display:flex;flex-direction:column;align-items:flex-start;gap:5px;margin-top:22px;padding-top:16px;color:#bf9fae;font:500 11px/1.6 Manrope,sans-serif}
+body[data-page] .sabina-footer .sabina-footer-bottom .sfb-line{display:flex;flex-wrap:wrap;gap:2px 18px;margin:0}
 .sabina-footer-bottom a{color:#d9bcc6;text-decoration:none}
 .sabina-footer-bottom a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:760px){body .sabina-footer .sabina-footer-links{justify-content:flex-start}}
