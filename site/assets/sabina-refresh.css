@@ -102,3 +102,4 @@ body[data-page] .sabina-footer .sabina-footer-bottom .sfb-line{display:flex;flex
 .about-gallery img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 @media(max-width:640px){.about-gallery{gap:12px;margin-top:30px}.about-gallery figure{border-radius:12px}}
 body[data-page="course"] .tariff-card.featured .tariff-top p{color:#f1d6d9}
+@media(min-width:851px){body[data-page="course"] .lesson-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-page="course"] .lesson-grid .module-tile.intro-tile{grid-column:1/-1;min-height:250px}}

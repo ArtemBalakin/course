@@ -45,10 +45,15 @@
     let activeIndex=0;
     let returnFocus=null;
     // Build the jump list from existing cards: works with 6 or 20+ stages.
+    // The introduction is not a numbered module: stages are counted without it.
+    const isIntro=card=>card.dataset.intro==='true';
+    const stageNumber=index=>cards.slice(0,index+1).filter(card=>!isIntro(card)).length;
+    const stageTotal=cards.filter(card=>!isIntro(card)).length;
     cards.forEach((card,index)=>{
       const option=document.createElement('option');
       option.value=String(index);
-      option.textContent=(index+1)+'. '+(card.querySelector('.module-title')?.textContent||tr('Этап курса'));
+      const label=card.querySelector('.module-title')?.textContent||tr('Этап курса');
+      option.textContent=isIntro(card)?label:stageNumber(index)+'. '+label;
       jump.append(option);
     });
     const showStage=index=>{
@@ -57,14 +62,15 @@
       const template=document.getElementById('lesson-template-'+card.dataset.module);
       if(!template)return;
       activeIndex=index;
-      const step=String(index+1);
-      const total=String(cards.length);
-      number.textContent=step.padStart(2,'0')+' / '+total.padStart(2,'0');
+      const intro=isIntro(card);
+      const step=String(stageNumber(index));
+      const total=String(stageTotal);
+      number.textContent=intro?tr('Введение').toUpperCase():step.padStart(2,'0')+' / '+total.padStart(2,'0');
       visual.textContent=card.dataset.module;
       title.textContent=card.querySelector('.module-title')?.textContent||tr('Этап курса');
       subtitle.textContent=card.querySelector('.module-subtitle')?.textContent||'';
       content.replaceChildren(template.content.cloneNode(true));
-      progress.textContent=tr('Этап ')+step+tr(' из ')+total;
+      progress.textContent=intro?tr('Введение'):tr('Этап ')+step+tr(' из ')+total;
       jump.value=String(index);
       prev.disabled=index===0;
       next.disabled=index===cards.length-1;
