@@ -102,6 +102,7 @@
       'Источник: '+f.source,'UTM: '+[f.utm_source,f.utm_medium,f.utm_campaign].filter(Boolean).join(' / ')
     ].join('\n');
     // Open synchronously to avoid popup blockers; the customer must paste and send.
+    window.abTrack?.('telegram_click');
     window.open('https://t.me/ArtemBalakin','_blank','noopener,noreferrer');
     try{
       await navigator.clipboard.writeText(message);
@@ -128,6 +129,7 @@
     const primary=outcomes[0].status==='fulfilled'&&outcomes[0].value===true;
     const backup=outcomes[1].status==='fulfilled'&&outcomes[1].value===true;
 
+    window.abTrack?.(primary||backup?'lead_submit':'lead_error');
     if(backup){
       form.reset();
       delete form.dataset.requestId;

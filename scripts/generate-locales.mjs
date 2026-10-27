@@ -7,7 +7,7 @@ import path from 'node:path';
 
 const root=process.cwd();
 const template=fs.readFileSync(path.join(root,'scripts/templates/home.ru.html'),'utf8');
-const domain='https://ab-digital.onrender.com';
+const domain='https://ab-digital.kz';
 const locales={
  ru:{lang:'ru',path:'/',title:'Разработка Telegram-ботов, Mini Apps и сайтов в Алматы | AB/digital',
   description:'Разрабатываем Telegram-ботов, Mini Apps, сайты и backend-системы для бизнеса в Алматы и Казахстане. Дизайн, интеграции, запуск и поддержка.',
@@ -77,6 +77,7 @@ const outFiles=[];
 for(const locale of Object.values(locales)){
   const dictionary=locale.lang==='ru'?{}:JSON.parse(fs.readFileSync(path.join(root,'scripts/i18n/'+locale.lang+'.json'),'utf8'));
   let html=translateHtml(template,dictionary);
+  if(locale.lang!=='ru') html=html.replaceAll('/services/telegram-mini-apps/','#salon-booking-bot').replaceAll('/services/telegram-bots/','#reminder-bot').replaceAll('/services/website-development/','#corporate-platforms');
   html=html.replace('<html lang="ru">','<html lang="'+locale.lang+'">');
   html=html.replace(/<meta name="description" content="[^"]+">/,
     '<meta name="description" content="'+escapeAttr(locale.description)+'">');
@@ -112,7 +113,7 @@ const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www
   Object.values(locales).map(l=>'  <url><loc>'+domain+l.path+'</loc>'+
     Object.values(locales).map(other=>'<xhtml:link rel="alternate" hreflang="'+other.lang+'" href="'+domain+other.path+'"/>').join('')+
     '<xhtml:link rel="alternate" hreflang="x-default" href="'+domain+'/"/></url>').join('\n')+
-  '\n</urlset>\n';
+  '\n'+['telegram-bots','website-development','telegram-mini-apps'].map(slug=>'  <url><loc>'+domain+'/services/'+slug+'/</loc></url>').join('\n')+'\n</urlset>\n';
 fs.writeFileSync(path.join(root,'site/sitemap.xml'),sitemap);
 fs.writeFileSync(path.join(root,'site/robots.txt'),'User-agent: *\nAllow: /\n\nSitemap: '+domain+'/sitemap.xml\n');
 outFiles.push('site/sitemap.xml','site/robots.txt');

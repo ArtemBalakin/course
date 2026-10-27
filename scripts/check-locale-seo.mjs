@@ -1,10 +1,10 @@
 import { chromium } from 'playwright';
 const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
-const hosts=['ab-digital.onrender.com','ab-digital-preview.onrender.com'];
+const hosts=['ab-digital.kz','ab-digital-preview.onrender.com'];
 const languages=[
- {lang:'ru',path:'/',marker:'Сайты, Telegram-боты'},
- {lang:'kk',path:'/kk/',marker:'Сайттар, Telegram-боттар'},
- {lang:'en',path:'/en/',marker:'Websites, Telegram bots'},
+ {lang:'ru',path:'/',marker:'Разработка сайтов, Telegram-боты'},
+ {lang:'kk',path:'/kk/',marker:'Сайт әзірлеу, Telegram-боттар'},
+ {lang:'en',path:'/en/',marker:'Website development, Telegram bots'},
 ];
 const failures=[];
 try{
@@ -56,7 +56,7 @@ try{
  await page.goto('https://'+hosts[0]+'/robots.txt');
  const robots=await page.locator('body').innerText();
  console.log('ROBOTS',robots);
- if(!robots.includes('Sitemap: https://ab-digital.onrender.com/sitemap.xml'))failures.push({test:'robots',robots});
+ if(!robots.includes('Sitemap: https://ab-digital.kz/sitemap.xml'))failures.push({test:'robots',robots});
  const sitemapResponse=await page.request.get('https://'+hosts[0]+'/sitemap.xml');
  const sitemap=await sitemapResponse.text();
  if(sitemapResponse.status()!==200)failures.push({test:'sitemap-http',status:sitemapResponse.status()});

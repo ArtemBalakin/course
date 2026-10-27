@@ -1,25 +1,17 @@
-/**
- * Cloudflare Web Analytics for the two AB/digital Render hostnames.
- * Enter PUBLIC Cloudflare Web Analytics beacon tokens, NOT Cloudflare API keys.
- * Missing tokens disable analytics and third-party requests completely.
- */
-(function () {
-  'use strict';
-
-  const BEACON_TOKENS = {
-    'ab-digital.onrender.com': 'c81faf1fe46a427d8c10e8644458ab4f',
-    'ab-digital-preview.onrender.com': '3495d8071f0c426a8d4c352ffe1a6161'
-  };
-
-  const hostname = window.location.hostname.toLowerCase();
-  const token = BEACON_TOKENS[hostname];
-  if (typeof token !== 'string' || !/^[a-zA-Z0-9_-]{20,128}$/.test(token)) return;
-
-  const beacon = document.createElement('script');
-  beacon.src = 'https://static.cloudflareinsights.com/beacon.min.js';
-  beacon.type = 'module';
-  beacon.async = true;
-  // The site is multi-page HTML; hash anchors are not extra pageviews.
-  beacon.setAttribute('data-cf-beacon', JSON.stringify({ token: token, spa: false }));
-  document.head.appendChild(beacon);
+/* Public Metrica counter. No form values or session recording. */
+(function(){
+ 'use strict';
+ if(location.hostname!=='ab-digital.kz'&&location.hostname!=='www.ab-digital.kz')return;
+ const id=113830797;
+ window.ym=window.ym||function(){(window.ym.a=window.ym.a||[]).push(arguments)};
+ window.ym.l=Date.now();
+ const script=document.createElement('script');script.async=true;script.src='https://mc.yandex.ru/metrika/tag.js';document.head.appendChild(script);
+ // Query strings and fragments can contain customer data; omit them from page URLs.
+ const safeUrl=location.origin+location.pathname;
+ let safeRef='';try{const r=new URL(document.referrer);safeRef=r.origin+r.pathname}catch{}
+ window.ym(id,'init',{clickmap:false,trackLinks:false,accurateTrackBounce:true,webvisor:false,trackHash:false,defer:true});
+ window.ym(id,'hit',safeUrl,{referer:safeRef,title:document.title});
+ const allowed=new Set(['telegram_click','lead_submit','lead_error','service_open']);
+ window.abTrack=function(name){if(allowed.has(name))window.ym(id,'reachGoal',name)};
+ document.addEventListener('click',function(event){const a=event.target.closest?.('a[href]');if(!a)return;let u;try{u=new URL(a.href,location.href)}catch{return}if(u.hostname==='t.me'&&u.pathname==='/ArtemBalakin')window.abTrack('telegram_click');else if(u.origin===location.origin&&u.pathname.startsWith('/services/'))window.abTrack('service_open')});
 })();
