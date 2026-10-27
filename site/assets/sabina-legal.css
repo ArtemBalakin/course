@@ -41,6 +41,11 @@ body[data-page="course-legal"] .legal-section-index{font:800 10px Manrope,sans-s
 body[data-page="course-legal"] .legal-body h2{font:600 clamp(28px,3vw,38px)/1.18 'Playfair Display',Georgia,serif;color:#672e45;letter-spacing:-.6px;margin:15px 0 23px}
 body[data-page="course-legal"] .legal-body p{font:400 15px/1.85 Manrope,sans-serif;color:#6b525d;margin:0 0 17px;overflow-wrap:anywhere}
 body[data-page="course-legal"] .legal-body a{border-bottom:1px solid #d1a5aa;color:#9d4965}
+body[data-page="course-legal"] .legal-body h3{font:700 16px/1.45 Manrope,sans-serif;color:#632d44;margin:30px 0 14px}
+body[data-page="course-legal"] .legal-body ul,body[data-page="course-legal"] .legal-body ol{margin:0 0 19px;padding-left:23px;font:400 15px/1.8 Manrope,sans-serif;color:#6b525d}
+body[data-page="course-legal"] .legal-body li{margin:0 0 7px;overflow-wrap:anywhere;padding-left:3px}
+body[data-page="course-legal"] .legal-body li::marker{color:#b07c8d}
+body[data-page="course-legal"] .legal-n{font-weight:800;color:#9d4965;margin-right:3px;white-space:nowrap}
 body[data-page="course-legal"] .legal-tariff{position:relative;border:1px solid #e0c6c0;background:#fffaf4;margin:14px 0;padding:23px 24px}
 body[data-page="course-legal"] .legal-tariff b{font:800 14px Manrope,sans-serif;color:#632d44}
 body[data-page="course-legal"] .legal-tariff strong{position:absolute;right:23px;top:22px;font:800 17px Manrope,sans-serif;color:#632d44}

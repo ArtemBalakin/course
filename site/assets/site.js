@@ -13,7 +13,7 @@
     menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.hidden=true;toggle.setAttribute('aria-expanded','false')}));
   }
   // Коды тарифов совпадают с ботом: кнопка оплаты открывает @DanceCoursebot сразу на карточке тарифа.
-  const plans={self:{title:'SELF DANCE',description:'Самостоятельные занятия, все уроки открыты сразу. Доступ к материалам на 2 месяца с даты оплаты.',price:'12 990 ₸'},dwm:{title:'DANCE WITH ME',description:'Обучение в потоке 4 недели: новые уроки каждую неделю, общий чат и ответы Сабины дважды в неделю. Доступ на 2 месяца со старта потока.',price:'19 990 ₸'},vip:{title:'VIP LATINA',description:'Всё из DANCE WITH ME, разбор видео в конце каждой недели и личный чат с Сабиной 4 недели. Доступ на 2 месяца со старта потока.',price:'39 990 ₸'}};
+  const plans={self:{title:'SELF DANCE',description:'Самостоятельные занятия, все уроки открыты сразу. Доступ к материалам на 2 месяца с даты оплаты.',price:'12 990 ₸'},dwm:{title:'DANCE WITH ME',description:'Обучение в потоке 4 недели: новые уроки каждую неделю, общий чат и ответы Сабины три раза в неделю. Доступ на 2 месяца со старта потока.',price:'19 990 ₸'},vip:{title:'VIP LATINA',description:'Всё из DANCE WITH ME, разбор видео в конце каждой недели и личный чат с Сабиной 4 недели. Доступ на 2 месяца со старта потока.',price:'39 990 ₸'}};
   const legacyPlans={feedback:'dwm',personal:'vip'};
   const botUrl=code=>'https://t.me/DanceCoursebot?start=site_'+(document.documentElement.lang==='kk'?'kk_':'')+code;
   const buttons=[...document.querySelectorAll('[data-plan]')];

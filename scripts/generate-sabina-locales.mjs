@@ -12,7 +12,8 @@ import path from 'node:path';
 const root=process.cwd();
 const domain='https://ab-digital.kz';
 const pages=['index.html','checkout/index.html','legal/index.html','legal/offer/index.html',
-  'legal/privacy/index.html','legal/refunds/index.html','legal/payment/index.html','legal/consent/index.html'];
+  'legal/privacy/index.html','legal/refunds/index.html','legal/payment/index.html','legal/consent/index.html',
+  'legal/media/index.html'];
 const dictFile=path.join(root,'scripts/i18n/sabina-kk.json');
 const dict=fs.existsSync(dictFile)?JSON.parse(fs.readFileSync(dictFile,'utf8')):{};
 const MARK='data-sabina-i18n';
@@ -31,15 +32,22 @@ function stripGenerated(html){
     .replace(new RegExp('<link rel="alternate" hreflang="[a-z-]+" href="[^"]*" '+MARK+'>','g'),'');
 }
 
+/* Абзацы и пункты списков со ссылками (<p>…<a>…</p>, <li>…<a>…</li>) переводятся целиком, вместе с разметкой:
+ * ключ словаря - внутренний HTML русского абзаца, значение - внутренний HTML казахского. Порядок слов в казахском
+ * другой, поэтому по кускам между ссылками такой абзац не перевести. */
+const RICH=/<(p|li)>((?:(?!<\/\1>)[\s\S])*?<a [\s\S]*?)<\/\1>/g;
+const stripRich=html=>html.replace(RICH,(all,tag,inner)=>has(inner)?'':all);
+
 function textNodes(html){
-  return [...html.matchAll(/>([^<>]+)</g)].map(m=>decode(m[1]).trim()).filter(s=>s&&cyr(s));
+  return [...stripRich(html).matchAll(/>([^<>]+)</g)].map(m=>decode(m[1]).trim()).filter(s=>s&&cyr(s));
 }
 function attrValues(html){
   return [...html.matchAll(TRANSLATED_ATTRS)].map(m=>decode(m[2])).filter(s=>cyr(s));
 }
 
 function translate(html){
-  let out=html.replace(/>([^<>]+)</g,(all,raw)=>{
+  let out=html.replace(RICH,(all,tag,inner)=>has(inner)?'<'+tag+'>'+dict[inner]+'</'+tag+'>':all);
+  out=out.replace(/>([^<>]+)</g,(all,raw)=>{
     const key=decode(raw).trim();
     if(!key||!has(key))return all;
     const lead=raw.match(/^\s*/)[0], tail=raw.match(/\s*$/)[0];
