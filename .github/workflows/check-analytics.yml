@@ -1,4 +1,4 @@
-name: Verify live analytics beacon
+name: Verify live Metrica installation
 on:
   push:
     paths:
@@ -16,8 +16,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: |
-          npm install --no-save --ignore-scripts playwright@1.56.0
-          npx playwright install --with-deps chromium
-      - name: Inspect Cloudflare beacon in both real browsers
+      - name: Verify Metrica bootstrap and live pages
         run: node scripts/check-analytics.mjs

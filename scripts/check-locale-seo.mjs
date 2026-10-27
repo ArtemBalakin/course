@@ -2,9 +2,9 @@ import { chromium } from 'playwright';
 const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
 const hosts=['ab-digital.kz','ab-digital-preview.onrender.com'];
 const languages=[
- {lang:'ru',path:'/',marker:'Разработка сайтов, Telegram-боты'},
- {lang:'kk',path:'/kk/',marker:'Сайт әзірлеу, Telegram-боттар'},
- {lang:'en',path:'/en/',marker:'Website development, Telegram bots'},
+ {lang:'ru',path:'/',marker:'Разработка сайтов и Telegram-ботов'},
+ {lang:'kk',path:'/kk/',marker:'Сайттар мен Telegram-боттар әзірлеу'},
+ {lang:'en',path:'/en/',marker:'Website and Telegram bot development'},
 ];
 const failures=[];
 try{
