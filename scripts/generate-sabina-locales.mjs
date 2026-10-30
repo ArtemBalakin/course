@@ -13,7 +13,7 @@ const root=process.cwd();
 const domain='https://ab-digital.kz';
 const pages=['index.html','checkout/index.html','legal/index.html','legal/offer/index.html',
   'legal/privacy/index.html','legal/refunds/index.html','legal/payment/index.html','legal/consent/index.html',
-  'legal/media/index.html'];
+  'legal/media/index.html','checkout/result/index.html'];
 const dictFile=path.join(root,'scripts/i18n/sabina-kk.json');
 const dict=fs.existsSync(dictFile)?JSON.parse(fs.readFileSync(dictFile,'utf8')):{};
 const MARK='data-sabina-i18n';
@@ -100,7 +100,7 @@ for(const page of pages){
   // Playfair Display без казахских букв: в kk-версии подменяем его целиком на Playfair
   kk=kk.replace('</head>','<link rel="stylesheet" href="/assets/sabina-kk-font.css?v=20261035"></head>');
   kk=kk.replace(/<script src="\/assets\/site\.js(\?[^"]*)?" defer><\/script>/,
-    m=>'<script src="/assets/i18n-sabina-kk.js?v=20261026" defer></script>'+m);
+    m=>'<script src="/assets/i18n-sabina-kk.js?v=20261031" defer></script>'+m);
   kk=decorate(kk,'kk',page);
   const target=path.join(root,'site/kk/courses/sabina',page);
   fs.mkdirSync(path.dirname(target),{recursive:true});

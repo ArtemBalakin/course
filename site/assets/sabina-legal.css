@@ -101,3 +101,15 @@ body[data-page="course-legal"] .s-legal-footer-note a{text-decoration:underline}
 .lang-switch.sabina-lang a[aria-current="page"]{background:var(--wine);color:#fff}
 /* в шапке документов на мобильных скрыты все nav - переключатель языка оставляем видимым */
 body[data-page="course-legal"] .s-legal-header nav.lang-switch.sabina-lang{display:flex;gap:3px;font-size:10px}
+
+.pay-logos{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 4px}
+.pay-logos img{display:block;width:64px;height:40px;border:1px solid rgba(87,37,56,.18);border-radius:7px;background:#fff}
+.sabina-footer .pay-logos,.s-legal-footer .pay-logos{margin:16px 0 0}
+.sabina-footer .pay-logos img,.s-legal-footer .pay-logos img{border-color:rgba(255,255,255,.35)}
+.checkout-pay-error{margin:12px 0 0;padding:11px 14px;border-radius:10px;background:#fbe9ec;color:#7a1730;font-size:14px;line-height:1.45}
+.checkout-pay-error[hidden]{display:none}
+.checkout-alt{display:block;margin-top:12px;font-size:14px;text-align:center;color:inherit;opacity:.8}
+.result-card{max-width:620px;margin:0 auto;padding:34px 30px;border:1px solid rgba(87,37,56,.14);border-radius:22px;background:#fff;text-align:center}
+.result-card h1{margin:0 0 12px}
+.result-card p{margin:0 0 14px;line-height:1.55}
+.result-card .dance-button{display:inline-flex;margin-top:6px}

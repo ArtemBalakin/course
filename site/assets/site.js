@@ -13,7 +13,7 @@
     menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.hidden=true;toggle.setAttribute('aria-expanded','false')}));
   }
   // Коды тарифов совпадают с ботом: кнопка оплаты открывает @DanceCoursebot сразу на карточке тарифа.
-  const plans={self:{title:'SELF DANCE',description:'Самостоятельные занятия, все уроки открыты сразу. Доступ к материалам на 2 месяца с даты оплаты.',price:'12 990 ₸'},dwm:{title:'DANCE WITH ME',description:'Обучение в потоке 4 недели: новые уроки каждую неделю, общий чат и ответы Сабины три раза в неделю. Доступ на 2 месяца со старта потока.',price:'19 990 ₸'},vip:{title:'VIP LATINA',description:'Всё из DANCE WITH ME, разбор видео в конце каждой недели и личный чат с Сабиной 4 недели. Доступ на 2 месяца со старта потока.',price:'39 990 ₸'}};
+  const plans={self:{title:'SELF DANCE',description:'Самостоятельные занятия: уроки по порядку, без дат открытия. Доступ к материалам на 2 месяца с даты оплаты.',price:'12 990 ₸'},dwm:{title:'DANCE WITH ME',description:'Обучение в потоке 4 недели: новые уроки каждую неделю, общий чат и ответы Сабины три раза в неделю. Доступ на 2 месяца со старта потока.',price:'19 990 ₸'},vip:{title:'VIP LATINA',description:'Всё из DANCE WITH ME, разбор видео в конце каждой недели и личный чат с Сабиной 4 недели. Доступ на 2 месяца со старта потока.',price:'39 990 ₸'}};
   const legacyPlans={feedback:'dwm',personal:'vip'};
   const botUrl=code=>'https://t.me/DanceCoursebot?start=site_'+(document.documentElement.lang==='kk'?'kk_':'')+code;
   const buttons=[...document.querySelectorAll('[data-plan]')];
@@ -23,7 +23,22 @@
     const desc=document.querySelector('#selected-plan-desc');
     const price=document.querySelector('#selected-plan-price');
     const pay=document.querySelector('#checkout-pay');
-    const render=()=>{buttons.forEach(b=>{const active=b.dataset.plan===selected;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});title.textContent=plans[selected].title;desc.textContent=tr(plans[selected].description);if(price)price.textContent=plans[selected].price;if(pay){pay.href=botUrl(selected);pay.textContent=tr('Оплатить ')+plans[selected].price+tr(' в Telegram ↗');}history.replaceState({},'',location.pathname+'?plan='+encodeURIComponent(selected));};
+    const payAlt=document.querySelector('#checkout-pay-telegram');
+    const payError=document.querySelector('#checkout-error');
+    if(pay){pay.addEventListener('click',async()=>{
+      pay.disabled=true;if(payError)payError.hidden=true;
+      try{
+        const res=await fetch('/api/site/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tariff:selected,lang:document.documentElement.lang==='kk'?'kk':'ru'})});
+        const data=await res.json().catch(()=>({}));
+        if(!res.ok||!data.paymentUrl)throw new Error(data.error||'');
+        try{sessionStorage.setItem('sabina-order',data.orderId)}catch(e){}
+        location.href=data.paymentUrl;
+      }catch(e){
+        if(payError){payError.textContent=e.message||tr('Не удалось открыть страницу оплаты. Попробуйте ещё раз или оплатите через Telegram-бота.');payError.hidden=false}
+        pay.disabled=false;
+      }
+    })}
+    const render=()=>{buttons.forEach(b=>{const active=b.dataset.plan===selected;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});title.textContent=plans[selected].title;desc.textContent=tr(plans[selected].description);if(price)price.textContent=plans[selected].price;if(pay){pay.textContent=tr('Оплатить ')+plans[selected].price;if(payAlt)payAlt.href=botUrl(selected);}history.replaceState({},'',location.pathname+'?plan='+encodeURIComponent(selected));};
     buttons.forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.plan;render()}));
     render();
   }
@@ -185,4 +200,40 @@
     showcaseDialog.addEventListener('close',()=>returnFocus?.focus({preventScroll:true}));
   }
 
+})();
+
+// Страница результата оплаты: показывает статус заказа и ведёт в бота, который привяжет оплату к аккаунту Telegram.
+(()=>{
+  const tr=value=>(window.AB_TRANSLATIONS&&window.AB_TRANSLATIONS[value])||value;
+  const box=document.querySelector('[data-order-result]');
+  if(!box)return;
+  const params=new URLSearchParams(location.search);let order=params.get('o');
+  if(!order){try{order=sessionStorage.getItem('sabina-order')}catch(e){}}
+  const title=box.querySelector('[data-result-title]');
+  const text=box.querySelector('[data-result-text]');
+  const link=box.querySelector('[data-result-bot]');
+  const bot=order?'https://t.me/DanceCoursebot?start=claim_'+encodeURIComponent(order):'https://t.me/DanceCoursebot';
+  link.href=bot;
+  const states={
+    PAID:['Оплата получена','Спасибо! Нажмите кнопку ниже: бот привяжет оплату к вашему аккаунту Telegram и откроет доступ к курсу.',true],
+    PENDING:['Проверяем оплату','Платёж ещё обрабатывается. Страница обновится сама, это занимает не больше минуты.',false],
+    CREATED:['Проверяем оплату','Платёж ещё обрабатывается. Страница обновится сама, это занимает не больше минуты.',false],
+    ERROR:['Оплата не прошла','Деньги не списаны или будут возвращены банком. Вернитесь к тарифам и попробуйте ещё раз.',false],
+    EXPIRED:['Срок оплаты истёк','Вернитесь к тарифам и оформите заказ заново.',false]
+  };
+  let tries=0;
+  const show=status=>{
+    const s=states[status]||states.PENDING;
+    title.textContent=tr(s[0]);text.textContent=tr(s[1]);link.hidden=!s[2];
+  };
+  const poll=async()=>{
+    if(!order){show('PENDING');text.textContent=tr('Не нашли номер заказа. Если вы оплатили курс, откройте бота: он найдёт заказ.');link.hidden=false;return}
+    try{
+      const res=await fetch('/api/site/checkout/'+encodeURIComponent(order));
+      const data=await res.json();
+      show(data.status);
+      if((data.status==='PENDING'||data.status==='CREATED')&&++tries<30)setTimeout(poll,4000);
+    }catch(e){show('PENDING');if(++tries<30)setTimeout(poll,6000)}
+  };
+  show('PENDING');poll();
 })();
