@@ -136,8 +136,10 @@ Translations live in `scripts/i18n/sabina-kk.json` (`"Russian phrase": "Kazakh"`
 translation. Pay buttons on Kazakh pages open the bot with `start=site_kk_<plan>`.
 
 
-## Страницы личных проектов
+## Страница разработки Telegram-ботов
 
-Подробные разборы находятся в `site/projects/salon-booking/index.html` и `site/projects/reminder-bot/index.html`; общие стили — `site/assets/projects.css`. Это личные проекты Артёма Балакина, не клиентские внедрения. Скриншоты используют демонстрационные данные. У страниц собственные canonical, метаданные и разметка SoftwareSourceCode/BreadcrumbList.
+`site/services/telegram-bots/index.html` содержит описание услуги, сценарии, примеры Salon Booking и Reminder Bot со скриншотами, состав первой версии, оценку, порядок запуска и FAQ. Стили изолированы в `site/assets/telegram-bots.css`. Это личные проекты Артёма Балакина; данные на скриншотах демонстрационные. Отдельных страниц проектов нет.
 
-Ссылки с главной редактируются в `scripts/templates/home.ru.html`, подписи — также в `scripts/i18n/{kk,en}.json`. После изменений выполнить `node scripts/generate-locales.mjs`: он обновляет три главные страницы и sitemap, включая оба проекта. Страницы проектов написаны на русском; ссылки с других языковых версий помечены RU.
+Старые адреса `/projects/salon-booking/` и `/projects/reminder-bot/` перенаправляются ответом 301 к соответствующим якорям на странице услуги. Фрагмент `deploy/nginx-project-redirects.conf` установлен как `/etc/nginx/snippets/ab-digital-project-redirects.conf` и включён в HTTPS-блок nginx. Он также обрабатывает адреса без завершающего слеша и с `index.html`.
+
+Главная редактируется в `scripts/templates/home.ru.html`, переводы — в `scripts/i18n/{kk,en}.json`. После изменений выполнить `node scripts/generate-locales.mjs`. В sitemap остаются главные страницы на трёх языках и три страницы услуг.
