@@ -119,3 +119,7 @@ body[data-page="course"] .intro-play small{font-size:10px;letter-spacing:1.6px;o
 .result-card h1{margin:0 0 12px}
 .result-card p{margin:0 0 14px;line-height:1.55}
 .result-card .dance-button{display:inline-flex;margin-top:6px}
+.dance-ticker .ticker-track{display:flex;width:max-content;animation:ticker-loop 60s linear infinite}
+.dance-ticker .ticker-track>div{display:block;flex:none;animation:none}
+@keyframes ticker-loop{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.dance-ticker .ticker-track{animation:none}}
