@@ -33,3 +33,4 @@
 .tg-scope-columns.tg-three{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:1050px){.tg-demo{gap:34px}}
 @media(max-width:760px){.tg-demo{grid-template-columns:minmax(0,1fr);gap:30px}.tg-chat{max-width:460px}.tg-task-grid-2,.tg-scope-columns.tg-three{grid-template-columns:minmax(0,1fr)}.tg-facts li{flex:1 1 140px}}
+.topbar .lang-switch{margin-left:auto;margin-right:12px}.topbar .lang-switch a{padding:6px 8px;border-radius:16px;text-decoration:none!important}.topbar .lang-switch a[aria-current="page"]{background:#10222c;color:#fff}

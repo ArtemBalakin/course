@@ -86,3 +86,7 @@ body[data-page="home"] h1,body[data-page="home"] h2{word-spacing:.07em}
 .ab-workflow-node>div,.ab-workflow-node:not(:last-child) div{padding:26px 0 28px!important}
 .ab-workflow-node h3{font-size:clamp(20px,2vw,26px)!important;margin-bottom:8px!important}
 @media(max-width:560px){.ab-workflow-node{grid-template-columns:44px minmax(0,1fr)!important}.ab-workflow-node .ab-workflow-node-marker,.ab-workflow-node.ab-flow-active .ab-workflow-node-marker,.ab-workflow-node:last-child .ab-workflow-node-marker,.ab-workflow-node:last-child.ab-flow-active .ab-workflow-node-marker{padding-top:31px;font-size:13px!important}.ab-workflow-node>div,.ab-workflow-node:not(:last-child) div{padding:22px 0 24px!important}}
+
+/* Service-card link: no glow box around the full-width link on hover (motion.css ring was meant for the round arrow). */
+.ab-capabilities .ab-cap-item:hover .ab-cap-item-arrow,.ab-capabilities .ab-cap-item .ab-cap-item-arrow:focus-visible{box-shadow:none!important}
+.ab-capabilities .ab-cap-item .ab-cap-item-arrow:focus-visible{outline:2px solid #d9ff5e;outline-offset:4px;border-radius:4px}

@@ -3,3 +3,4 @@
 .service-card-price{font:800 22px/1.3 Manrope,Arial,sans-serif;margin:8px 0 2px}.service-card-term{font-size:13px;color:#52616b;margin:0 0 12px;line-height:1.6}.service-fit{font-size:13px;color:#68727a;border-top:1px solid #e0e5da;padding-top:12px;margin:14px 0 0}.service-note{font-size:14px;color:#52616b;max-width:850px;margin-top:20px}
 .service-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}.service-three h3{font-size:18px;margin:0 0 12px}.service-three ul{margin:0;padding-left:20px;font-size:14px;line-height:1.8;color:#52616b}.service-three li+li{margin-top:6px}
 @media(max-width:650px){.service-three{grid-template-columns:1fr;gap:24px}.service-facts li{flex:1 1 140px}}
+.topbar .lang-switch{margin-left:auto;margin-right:12px}.topbar .lang-switch a{padding:6px 8px;border-radius:16px;text-decoration:none!important}.topbar .lang-switch a[aria-current="page"]{background:#10222c;color:#fff}
