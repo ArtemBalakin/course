@@ -1,0 +1,2 @@
+AB/digital has moved permanently to https://ab-digital.kz/
+Legacy Render services redirect their former website paths with HTTP 301.

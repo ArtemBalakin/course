@@ -4,8 +4,12 @@ services:
     name: ab-digital-preview
     branch: develop
     buildCommand: echo "Static website — no build required"
-    staticPublishPath: ./site
+    staticPublishPath: ./render-redirect
     autoDeployTrigger: commit
+    routes:
+      - type: redirect
+        source: /*
+        destination: https://ab-digital.kz/*
     headers:
       - path: /*
         name: X-Content-Type-Options
