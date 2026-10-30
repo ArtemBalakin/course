@@ -76,3 +76,13 @@ body[data-page="home"] .home-hero h1{font-size:clamp(32px,4.2vw,56px)}
 body[data-page="home"] .home-hero h1 span.nb{color:inherit;white-space:nowrap}
 body[data-page="home"] .home-hero h1{word-spacing:.08em}
 body[data-page="home"] h1,body[data-page="home"] h2{word-spacing:.07em}
+
+/* Home process: flat numbered list instead of glowing circles, arrows and progress line. */
+.ab-workflow-path{padding:0!important}
+.ab-workflow-path::before,.ab-workflow-path::after,.ab-motion-ready .ab-workflow-path::after,.ab-workflow-node::after,.ab-workflow-node:not(:last-child)::after{display:none!important}
+.ab-workflow-node{grid-template-columns:64px minmax(0,1fr)!important;gap:0!important;min-height:0!important;border-top:1px solid #ffffff2e}
+.ab-workflow-node:last-child{border-bottom:1px solid #ffffff2e}
+.ab-workflow-node .ab-workflow-node-marker,.ab-workflow-node.ab-flow-active .ab-workflow-node-marker,.ab-workflow-node:last-child .ab-workflow-node-marker,.ab-workflow-node:last-child.ab-flow-active .ab-workflow-node-marker{width:auto!important;height:auto!important;place-items:start!important;padding-top:34px;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:#d9ff5e!important;font:700 14px/1 Manrope,Arial,sans-serif!important;letter-spacing:.5px}
+.ab-workflow-node>div,.ab-workflow-node:not(:last-child) div{padding:26px 0 28px!important}
+.ab-workflow-node h3{font-size:clamp(20px,2vw,26px)!important;margin-bottom:8px!important}
+@media(max-width:560px){.ab-workflow-node{grid-template-columns:44px minmax(0,1fr)!important}.ab-workflow-node .ab-workflow-node-marker,.ab-workflow-node.ab-flow-active .ab-workflow-node-marker,.ab-workflow-node:last-child .ab-workflow-node-marker,.ab-workflow-node:last-child.ab-flow-active .ab-workflow-node-marker{padding-top:31px;font-size:13px!important}.ab-workflow-node>div,.ab-workflow-node:not(:last-child) div{padding:22px 0 24px!important}}
