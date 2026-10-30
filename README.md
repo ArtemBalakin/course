@@ -134,3 +134,10 @@ node scripts/generate-sabina-locales.mjs             # rebuild KK pages and the 
 Translations live in `scripts/i18n/sabina-kk.json` (`"Russian phrase": "Kazakh"`); `js:` keys are strings that
 `site.js` inserts at runtime (checkout plan text, program dialog). The build fails if a Russian phrase has no
 translation. Pay buttons on Kazakh pages open the bot with `start=site_kk_<plan>`.
+
+
+## Страницы личных проектов
+
+Подробные разборы находятся в `site/projects/salon-booking/index.html` и `site/projects/reminder-bot/index.html`; общие стили — `site/assets/projects.css`. Это личные проекты Артёма Балакина, не клиентские внедрения. Скриншоты используют демонстрационные данные. У страниц собственные canonical, метаданные и разметка SoftwareSourceCode/BreadcrumbList.
+
+Ссылки с главной редактируются в `scripts/templates/home.ru.html`, подписи — также в `scripts/i18n/{kk,en}.json`. После изменений выполнить `node scripts/generate-locales.mjs`: он обновляет три главные страницы и sitemap, включая оба проекта. Страницы проектов написаны на русском; ссылки с других языковых версий помечены RU.
