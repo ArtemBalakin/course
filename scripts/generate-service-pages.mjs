@@ -23,6 +23,8 @@ const UI = {
   en: { home: 'Home', skip: 'Skip to content', estimate: 'Get an estimate on Telegram', write: 'Message us on Telegram', others: 'Other services', faq: 'Questions before you order', how: 'How we work', switchTitle: 'Site language', privacy: '', eyebrow: 'ALMATY · KAZAKHSTAN · REMOTE', kicker: 'AB/DIGITAL · KAZAKHSTAN', topBots: 'Discuss a bot', topProject: 'Discuss a project', names: { 'telegram-bots': 'Custom Telegram bot development in Kazakhstan', 'telegram-mini-apps': 'Telegram Mini App development for business', 'website-development': 'Custom website development in Almaty and Kazakhstan' } },
 };
 
+const kkFont = lang => lang === 'kk' ? '<link rel="stylesheet" href="/assets/sabina-kk-font.css?v=20261035">' : '';
+
 const process4 = {
   ru: [['Обсуждаем задачу.', 'Уточняем пользователей, функции и ограничения.'], ['Согласуем объём.', 'Фиксируем состав первой версии, оценку и этапы.'], ['Разрабатываем и проверяем.', 'Показываем результат и проходим ключевые сценарии.'], ['Запускаем.', 'Настраиваем размещение и передаём инструкции. Поддержку согласуем отдельно.']],
   kk: [['Міндетті талқылаймыз.', 'Пайдаланушыларды, функциялар мен шектеулерді нақтылаймыз.'], ['Көлемді келісеміз.', 'Бірінші нұсқаның құрамын, бағасын және кезеңдерін бекітеміз.'], ['Әзірлейміз және тексереміз.', 'Нәтижені көрсетіп, негізгі сценарийлерден өтеміз.'], ['Іске қосамыз.', 'Орналастыруды баптап, нұсқаулықтарды береміз. Қолдауды бөлек келісеміз.']],
@@ -340,7 +342,7 @@ const relatedLinks = (lang, slugs) => slugs.map(s => `<a href="${servicePath(lan
 /* ------------------------------------------------------------------ generic service page (sites, Mini Apps) */
 function servicePage(lang, slug, c, kind) {
   const u = UI[lang];
-  const css = '<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/services.css?v=20261031-lang">';
+  const css = '<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/services.css?v=20261031-lang">' + kkFont(lang);
   const offers = kind === 'sites' ? [[c.kinds[0][0], 250000], [c.kinds[1][0], 500000]] : [[u.names[slug], 500000]];
   const h1 = u.names[slug];
   let middle;
@@ -363,7 +365,7 @@ function servicePage(lang, slug, c, kind) {
 function botsPage(lang, c) {
   const u = UI[lang];
   const slug = 'telegram-bots';
-  const css = '<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/telegram-bots.css?v=20261031-lang">';
+  const css = '<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/telegram-bots.css?v=20261031-lang">' + kkFont(lang);
   const shots = (names, caps, alts, label) => `<div class="tg-screens">${names.map((n, i) => `<figure><a href="/assets/portfolio/${n}.webp" target="_blank" rel="noopener" aria-label="${attr(caps[i] + ': ' + label)}"><img src="/assets/portfolio/${n}.webp" alt="${attr(alts[i])}" width="500" height="1013" loading="lazy" decoding="async"></a><figcaption><span>0${i + 1}</span> ${esc(caps[i])}</figcaption></figure>`).join('')}</div>`;
   const project = (id, extraClass, p, href, names) => `<article class="tg-project${extraClass}" id="${id}" aria-labelledby="${id}-title"><div class="tg-project-heading"><div><p class="tg-project-tag">${esc(p.tag)}</p><h3 id="${id}-title">${esc(p.h3)}</h3><p class="tg-project-lead">${esc(p.lead)}</p></div><a class="tg-source" href="${href}" target="_blank" rel="noopener noreferrer">${esc(c.codeLink)}</a></div>
 <div class="tg-project-body"><p>${p.body}</p><ul class="tg-list">${p.list.map(i => `<li>${esc(i)}</li>`).join('')}</ul></div>

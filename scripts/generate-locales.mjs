@@ -83,6 +83,7 @@ for(const locale of Object.values(locales)){
     '<meta name="description" content="'+escapeAttr(locale.description)+'">');
   html=html.replace('<meta name="robots" content="noindex,nofollow">','<meta name="robots" content="index,follow,max-image-preview:large">');
   html=html.replace(/<title>[^<]+<\/title>/,'<title>'+escapeText(locale.title)+'</title>');
+  if(locale.lang==='kk') html=html.replace('</head>','<link rel="stylesheet" href="/assets/sabina-kk-font.css?v=20261035"></head>');
   html=html.replace('</head>',headMetadata(locale)+'<script src="/assets/preview-redirect.js"></script></head>');
   // Rewrite navigation links before inserting the locale switcher. Otherwise the
   // global href="/" rewrite mistakenly changes the RU option on /kk/ and /en/.
