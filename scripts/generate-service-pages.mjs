@@ -9,6 +9,9 @@ import path from 'node:path';
 const root = process.cwd();
 const domain = 'https://ab-digital.kz';
 const TG = 'https://t.me/ArtemBalakin';
+const EMAIL = 'admin@ab-digital.kz';
+const OG_IMAGE = domain + '/assets/og-image.png';
+const OG_IMAGE_ALT = 'AB/digital: Telegram bots, Mini Apps, websites';
 const LANGS = ['ru', 'kk', 'en'];
 const lp = { ru: '/', kk: '/kk/', en: '/en/' };
 const ogLocale = { ru: 'ru_RU', kk: 'kk_KZ', en: 'en_US' };
@@ -322,7 +325,7 @@ function pageHead(lang, slug, title, desc, ogTitle, css, ldExtra, faqList, servi
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: UI[lang].home, item: domain + lp[lang] }, { '@type': 'ListItem', position: 2, name: serviceName, item: url }] },
     { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: faqList.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
   ].map(o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`).join('');
-  return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0e1b26"><title>${esc(title)}</title><meta name="description" content="${attr(desc)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${url}">${alternates}<meta property="og:type" content="website"><meta property="og:site_name" content="AB/digital"><meta property="og:locale" content="${ogLocale[lang]}"><meta property="og:title" content="${attr(ogTitle)}"><meta property="og:description" content="${attr(desc)}"><meta property="og:url" content="${url}"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">${css}${ld}<script src="/assets/analytics.js" defer></script><script src="/assets/preview-redirect.js"></script></head>`;
+  return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0e1b26"><title>${esc(title)}</title><meta name="description" content="${attr(desc)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${url}">${alternates}<meta property="og:type" content="website"><meta property="og:site_name" content="AB/digital"><meta property="og:locale" content="${ogLocale[lang]}"><meta property="og:title" content="${attr(ogTitle)}"><meta property="og:description" content="${attr(desc)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${OG_IMAGE}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${OG_IMAGE_ALT}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${attr(ogTitle)}"><meta name="twitter:description" content="${attr(desc)}"><meta name="twitter:image" content="${OG_IMAGE}"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">${css}${ld}<script src="/assets/analytics.js" defer></script><script src="/assets/preview-redirect.js"></script></head>`;
 }
 
 function topbar(lang, slug, contactLabel) {
@@ -332,7 +335,7 @@ function topbar(lang, slug, contactLabel) {
 
 function footer(lang) {
   const privacy = lang === 'ru' ? ` · <a href="/legal/privacy/">${UI.ru.privacy}</a>` : '';
-  return `<footer class="footer"><a href="${lp[lang]}">AB/digital</a>${privacy}</footer>`;
+  return `<footer class="footer"><a href="${lp[lang]}">AB/digital</a> · <a href="mailto:${EMAIL}">${EMAIL}</a>${privacy}</footer>`;
 }
 
 const faqHtml = list => list.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('\n');

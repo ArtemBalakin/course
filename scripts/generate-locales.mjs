@@ -4,10 +4,14 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import {execFileSync} from 'node:child_process';
 
 const root=process.cwd();
 const template=fs.readFileSync(path.join(root,'scripts/templates/home.ru.html'),'utf8');
 const domain='https://ab-digital.kz';
+const ogImage=domain+'/assets/og-image.png';
+const ogImageAlt='AB/digital: Telegram bots, Mini Apps, websites';
+const email='admin@ab-digital.kz';
 const locales={
  ru:{lang:'ru',path:'/',title:'Разработка Telegram-ботов, Mini Apps и сайтов в Алматы | AB/digital',
   description:'Разрабатываем Telegram-ботов, Mini Apps, сайты и backend-системы для бизнеса в Алматы и Казахстане. Дизайн, интеграции, запуск и поддержка.',
@@ -42,11 +46,11 @@ function headMetadata(locale){
     '<link rel="alternate" hreflang="x-default" href="'+domain+'/">';
   const organization={
     '@context':'https://schema.org','@type':'Organization','@id':domain+'/#organization',
-    name:'AB/digital',url:domain+'/',description:locale.description,
+    name:'AB/digital',url:domain+'/',description:locale.description,email,
     areaServed:[{'@type':'Country',name:'Kazakhstan'},{'@type':'City',name:'Almaty'}],
     availableLanguage:['ru','kk','en'],
     sameAs:['https://github.com/ArtemBalakin'],
-    contactPoint:[{'@type':'ContactPoint',contactType:'sales',url:'https://t.me/ArtemBalakin'}]
+    contactPoint:[{'@type':'ContactPoint',contactType:'sales',url:'https://t.me/ArtemBalakin',email}]
   };
   const website={'@context':'https://schema.org','@type':'WebSite','@id':u+'#website',
     name:'AB/digital',url:u,inLanguage:locale.lang,description:locale.description,publisher:{'@id':domain+'/#organization'}};
@@ -57,9 +61,14 @@ function headMetadata(locale){
     '<meta property="og:title" content="'+escapeAttr(locale.title)+'">'+
     '<meta property="og:description" content="'+escapeAttr(locale.description)+'">'+
     '<meta property="og:url" content="'+u+'">'+
-    '<meta name="twitter:card" content="summary">'+
+    '<meta property="og:image" content="'+ogImage+'">'+
+    '<meta property="og:image:width" content="1200">'+
+    '<meta property="og:image:height" content="630">'+
+    '<meta property="og:image:alt" content="'+ogImageAlt+'">'+
+    '<meta name="twitter:card" content="summary_large_image">'+
     '<meta name="twitter:title" content="'+escapeAttr(locale.title)+'">'+
     '<meta name="twitter:description" content="'+escapeAttr(locale.description)+'">'+
+    '<meta name="twitter:image" content="'+ogImage+'">'+
     '<script type="application/ld+json">'+jsonForHtml(organization)+'</script>'+
     '<script type="application/ld+json">'+jsonForHtml(website)+'</script>';
 }
@@ -110,15 +119,22 @@ for(const locale of Object.values(locales)){
   fs.writeFileSync(target,html);
   outFiles.push(path.relative(root,target));
 }
+// lastmod is the page's last commit date, or today while the page has uncommitted changes.
+const lastmod=urlPath=>{
+  const file='site'+urlPath+'index.html';
+  const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim();
+  const date=git('status','--porcelain','--',file)?'':git('log','-1','--format=%cs','--',file);
+  return '<lastmod>'+(date||new Date().toISOString().slice(0,10))+'</lastmod>';
+};
 const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'+
-  Object.values(locales).map(l=>'  <url><loc>'+domain+l.path+'</loc>'+
+  Object.values(locales).map(l=>'  <url><loc>'+domain+l.path+'</loc>'+lastmod(l.path)+
     Object.values(locales).map(other=>'<xhtml:link rel="alternate" hreflang="'+other.lang+'" href="'+domain+other.path+'"/>').join('')+
     '<xhtml:link rel="alternate" hreflang="x-default" href="'+domain+'/"/></url>').join('\n')+
   '\n'+['telegram-bots','website-development','telegram-mini-apps'].flatMap(slug=>{
     const servicePath=l=>(l.lang==='ru'?'':l.path.slice(0,-1))+'/services/'+slug+'/';
     const alternates=Object.values(locales).map(o=>'<xhtml:link rel="alternate" hreflang="'+o.lang+'" href="'+domain+servicePath(o)+'"/>').join('')+
       '<xhtml:link rel="alternate" hreflang="x-default" href="'+domain+'/services/'+slug+'/"/>';
-    return Object.values(locales).map(l=>'  <url><loc>'+domain+servicePath(l)+'</loc>'+alternates+'</url>');
+    return Object.values(locales).map(l=>'  <url><loc>'+domain+servicePath(l)+'</loc>'+lastmod(servicePath(l))+alternates+'</url>');
   }).join('\n')+'\n</urlset>\n';
 fs.writeFileSync(path.join(root,'site/sitemap.xml'),sitemap);
 fs.writeFileSync(path.join(root,'site/robots.txt'),'User-agent: *\nAllow: /\n\nSitemap: '+domain+'/sitemap.xml\n');
