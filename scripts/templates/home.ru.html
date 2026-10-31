@@ -112,8 +112,9 @@
     <div class="contact-panel-head"><span>ЗАЯВКА</span><span aria-hidden="true">✳</span></div>
     <h3>Коротко о проекте</h3>
     <p class="contact-panel-lead">Пара вопросов, чтобы сразу обсудить дело.</p>
-    <form id="ab-contact-form" action="https://formspree.io/f/mgaongrd" method="POST" accept-charset="UTF-8">
+    <form id="ab-contact-form" action="/api/lead" method="POST" accept-charset="UTF-8">
       <input type="hidden" name="source" value="AB/digital — форма на сайте">
+      <div style="position:absolute;left:-9999px" aria-hidden="true"><input name="company_site" type="text" tabindex="-1" autocomplete="off" aria-label="Leave empty"></div>
       <div class="contact-form-row">
         <label for="ab-contact-name">Как к вам обращаться *
           <input id="ab-contact-name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="Ваше имя" required>
@@ -136,11 +137,11 @@
       <label for="ab-contact-details">Опишите задачу *
         <textarea id="ab-contact-details" name="details" rows="4" maxlength="1200" placeholder="Что хотите сделать, для кого и к какому сроку?" required></textarea>
       </label>
-      <label class="contact-consent" for="ab-contact-consent"><input id="ab-contact-consent" name="consent" type="checkbox" value="Да" required><span>Согласен(на) на обработку имени, контакта и описания задачи для ответа на обращение. Данные передаются через сервис Formspree.</span></label>
+      <label class="contact-consent" for="ab-contact-consent"><input id="ab-contact-consent" name="consent" type="checkbox" value="Да" required><span>Согласен(на) на обработку имени, контакта и описания задачи для ответа на обращение. Заявка хранится на нашем сервере и передаётся нам через Telegram и почтовый сервис Resend.</span></label>
       <button type="submit" class="contact-form-submit"><span class="contact-submit-label">Отправить заявку</span><span aria-hidden="true">↗</span></button><button id="ab-contact-telegram-copy" type="button" class="contact-telegram-copy">Отправить копию через Telegram ↗</button>
       <p id="ab-contact-status" class="contact-form-status" role="status" aria-live="polite" aria-atomic="true">Заявка отправляется напрямую с сайта. Telegram для отправки не нужен.</p>
     </form>
   </div>
 </div>
 </section>
-</main><footer class="footer "><div class="footer-up"><a href="/" class="brand"><span class="brand-icon">a<span>.</span></span><span>AB<span class="brand-soft">/</span>digital</span></a><p>Сайты, боты, интеграции. Продукты, которые помогают бизнесу работать.</p><a href="https://t.me/ArtemBalakin" target="_blank" rel="noopener noreferrer" class="footer-git">Telegram: @ArtemBalakin ↗</a></div><div class="footer-bottom"><span>© 2026 AB/digital · <a href="mailto:admin@ab-digital.kz">admin@ab-digital.kz</a></span><span>Сайты · Дизайн · Telegram · Автоматизация</span></div></footer><script src="/assets/site.js" defer></script><script src="/assets/corporate-images.js?v=1" defer></script><script src="/assets/motion.js?v=20261014-motion-v1" defer></script><script src="/assets/leads-config.js?v=20261016-prepared-v1" defer></script><script src="/assets/contact.js?v=20261027" defer></script><script src="/assets/analytics.js?v=20261027" defer></script></body></html>
+</main><footer class="footer "><div class="footer-up"><a href="/" class="brand"><span class="brand-icon">a<span>.</span></span><span>AB<span class="brand-soft">/</span>digital</span></a><p>Сайты, боты, интеграции. Продукты, которые помогают бизнесу работать.</p><a href="https://t.me/ArtemBalakin" target="_blank" rel="noopener noreferrer" class="footer-git">Telegram: @ArtemBalakin ↗</a></div><div class="footer-bottom"><span>© 2026 AB/digital · <a href="mailto:admin@ab-digital.kz">admin@ab-digital.kz</a></span><span>Сайты · Дизайн · Telegram · Автоматизация</span></div></footer><script src="/assets/site.js" defer></script><script src="/assets/corporate-images.js?v=1" defer></script><script src="/assets/motion.js?v=20261014-motion-v1" defer></script><script src="/assets/contact.js?v=20261031" defer></script><script src="/assets/analytics.js?v=20261027" defer></script></body></html>

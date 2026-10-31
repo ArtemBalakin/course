@@ -1,0 +1,21 @@
+# Секреты и база лежат вне репозитория: /opt/ab-digital-leads (.env и data/).
+services:
+  leads:
+    build: .
+    restart: unless-stopped
+    env_file: /opt/ab-digital-leads/.env
+    ports:
+      - 127.0.0.1:8091:8091
+    volumes:
+      - /opt/ab-digital-leads/data:/data
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 96m
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: "3"

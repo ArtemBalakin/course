@@ -1,5 +1,5 @@
-/* AB/digital contact form: Formspree + optional Cloudflare Worker/D1 backup.
- * Credentials never reach the browser. Backup is disabled until configured.
+/* AB/digital contact form: POST /api/lead on our own server.
+ * The server replies only after the lead is stored; Telegram and email delivery follow from there.
  */
 (function(){
   'use strict';
@@ -11,11 +11,7 @@
   const label=submit?.querySelector('.contact-submit-label');
   const status=document.getElementById('ab-contact-status');
   const alternative=document.getElementById('ab-contact-telegram-copy');
-  const config=window.AB_LEADS_CONFIG||{};
-  const endpoint=typeof config.endpoint==='string'?config.endpoint.trim():'';
-  const sitekey=typeof config.sitekey==='string'?config.sitekey.trim():'';
-  const backupEnabled=/^https:\/\/[-a-z0-9.]+\/(api\/lead)$/.test(endpoint)&&sitekey.length>=16;
-  let submitting=false,turnstileId=null,turnstileReady=false;
+  let submitting=false;
 
   function announce(message,state){
     if(!status)return;
@@ -32,6 +28,7 @@
       id:form.dataset.requestId || (window.crypto?.randomUUID?window.crypto.randomUUID():''),
       name:text('name'),contact:text('contact'),service:text('service'),details:text('details'),
       consent:form.querySelector('[name="consent"]')?.checked===true,
+      company_site:text('company_site'),
       source:text('source'),landing:location.pathname,
       referrer:document.referrer.slice(0,500),
       utm_source:(query.get('utm_source')||'').slice(0,100),
@@ -42,55 +39,19 @@
     };
   }
 
-  if(backupEnabled){
-    const widget=document.createElement('div');
-    widget.className='contact-turnstile';
-    widget.id='ab-contact-turnstile';
-    const before=submit||status;
-    if(before)form.insertBefore(widget,before);
-    const script=document.createElement('script');
-    script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
-    script.async=true;
-    script.defer=true;
-    script.onload=()=>{
-      if(!window.turnstile)return;
-      try{
-        turnstileId=window.turnstile.render(widget,{sitekey,theme:'light'});
-        turnstileReady=true;
-      }catch(_ignored){turnstileReady=false;}
-    };
-    document.head.appendChild(script);
-  }
-
   function withTimeout(url,options,ms=12000){
     const controller=new AbortController();
     const timer=setTimeout(()=>controller.abort(),ms);
     return fetch(url,{...options,signal:controller.signal}).finally(()=>clearTimeout(timer));
   }
 
-  function sendFormspree(fields){
-    const body=new FormData(form);
-    if(fields.id)body.set('request_id',fields.id);
-    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','landing','referrer'].forEach(k=>{
-      if(fields[k])body.set(k,fields[k]);
+  async function sendLead(fields){
+    const response=await withTimeout(form.action,{
+      method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(fields)
     });
-    return withTimeout(form.action,{
-      method:'POST',body,headers:{Accept:'application/json'}
-    }).then(response=>response.ok);
-  }
-
-  function sendBackup(fields){
-    if(!backupEnabled||!turnstileReady||!window.turnstile)return Promise.resolve(false);
-    const token=window.turnstile.getResponse(turnstileId);
-    if(!token)return Promise.resolve(false);
-    return withTimeout(endpoint,{
-      method:'POST',headers:{'content-type':'application/json'},
-      body:JSON.stringify({...fields,turnstile_token:token})
-    }).then(async response=>{
-      if(!response.ok)return false;
-      const result=await response.json();
-      return result.saved===true;
-    });
+    if(!response.ok)return false;
+    const result=await response.json();
+    return result.saved===true;
   }
 
   async function copyTelegramText(){
@@ -115,7 +76,7 @@
   alternative?.addEventListener('click',copyTelegramText);
 
   form.addEventListener('submit',async function(event){
-    if(!('fetch' in window))return; // Native Formspree POST without JavaScript.
+    if(!('fetch' in window))return; // Native POST without JavaScript.
     event.preventDefault();
     if(submitting||!form.reportValidity())return;
     submitting=true;
@@ -125,30 +86,17 @@
 
     const fields=currentFields();
     if(fields.id)form.dataset.requestId=fields.id;
-    const outcomes=await Promise.allSettled([sendFormspree(fields),sendBackup(fields)]);
-    const primary=outcomes[0].status==='fulfilled'&&outcomes[0].value===true;
-    const backup=outcomes[1].status==='fulfilled'&&outcomes[1].value===true;
+    const saved=await sendLead(fields).catch(()=>false);
 
-    window.abTrack?.(primary||backup?'lead_submit':'lead_error');
-    if(backup){
+    window.abTrack?.(saved?'lead_submit':'lead_error');
+    if(saved){
       form.reset();
       delete form.dataset.requestId;
-      announce(primary?
-        tr('Заявка сохранена и отправлена по двум независимым каналам. Мы скоро свяжемся с вами.'):
-        tr('Заявка надёжно сохранена. Мы скоро свяжемся с вами.'),'success');
-    }else if(primary){
-      form.reset();
-      delete form.dataset.requestId;
-      announce(backupEnabled?
-        tr('Formspree принял заявку, но резервный канал не подтвердил сохранение. Для надёжности напишите нам в Telegram.'):
-        tr('Formspree принял заявку. Если ответ задержится, напишите нам в Telegram: @ArtemBalakin.'),'success');
+      announce(tr('Заявка надёжно сохранена. Мы скоро свяжемся с вами.'),'success');
     }else{
       announce(tr('Не удалось подтвердить доставку заявки. Данные остались в форме. Используйте кнопку отправки в Telegram ниже.'),'error');
     }
 
-    if(turnstileReady&&window.turnstile){
-      try{window.turnstile.reset(turnstileId);}catch(_ignored){}
-    }
     submitting=false;
     if(submit){submit.disabled=false;submit.removeAttribute('aria-busy');}
     if(label)label.textContent=tr('Отправить заявку');

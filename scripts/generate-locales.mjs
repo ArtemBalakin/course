@@ -102,7 +102,7 @@ for(const locale of Object.values(locales)){
   html=html.replace('</body>','</body>');
   if(locale.lang!=='ru'){
     html=html.replace('<script src="/assets/site.js" defer></script>',
-      '<script src="/assets/i18n-'+locale.lang+'.js?v=20261015" defer></script><script src="/assets/site.js" defer></script>');
+      '<script src="/assets/i18n-'+locale.lang+'.js?v=20261031" defer></script><script src="/assets/site.js" defer></script>');
     // Verify that every Russian source phrase has an explicit translation.
     // Kazakh uses Cyrillic too, so looking for Cyrillic in the output is incorrect.
     const untranslatedTexts=[...template.matchAll(/>([^<>]+)</g)].map(m=>m[1].trim())

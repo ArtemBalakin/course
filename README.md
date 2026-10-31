@@ -1,6 +1,6 @@
 # AB/digital + Latina Solo by Sabina — preview website
 
-An **actual responsive static website** with **zero package dependencies**. This is the public-preview-ready implementation of a personal IT/development business and an online Latin-dance course sales funnel. Payments and course checkout remain disabled; the studio contact form accepts inquiries through Formspree.
+An **actual responsive static website** with **zero package dependencies**. This is the public-preview-ready implementation of a personal IT/development business and an online Latin-dance course sales funnel. Payments and course checkout remain disabled; the studio contact form sends inquiries to our own `services/leads` intake (see `docs/LEADS.md`).
 
 ## Pages
 
@@ -103,7 +103,7 @@ Refreshed both homepage stylesheet URLs with an explicit version query to avoid 
 Improved reading contrast and body type across the homepage and course, simplified the three service descriptions for non-technical clients and added design/Tilda/other site builders. Replaced the generic N3/iSpace boxes with differently composed cards themed to their public websites and linked to public-page screenshots via WordPress mShots (third-party-generated, may change/temporarily be unavailable). Reframed process copy with explicit agreed milestones and timeframes; layered timeline behind numbered circles. Direct Telegram/WhatsApp buttons are not yet included because no confirmed personal contact handles have been supplied: never substitute a guessed chat URL. Existing GitHub link is retained as a verified interim route.
 
 
-## AB/digital Formspree contact (October 2026)
+## AB/digital Formspree contact (October 2026, replaced by `services/leads`)
 
 Studio homepage `/#contact` now submits to **`https://formspree.io/f/mgaongrd`**. The previous Telegram message-draft submission is replaced with a native `POST` action plus progressive AJAX `fetch`, preserving the form's existing fields and style. Client-side success, error, and submitting states handle Formspree JSON responses and the button is disabled during submission. A visitor consent checkbox is required and the privacy-policy draft now discloses Formspree for inquiries. No Formspree secrets are present in client code; the form endpoint is a public submission destination.
 

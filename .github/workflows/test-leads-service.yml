@@ -1,0 +1,19 @@
+name: Test lead intake service
+on:
+  push:
+    paths:
+      - services/leads/**
+      - .github/workflows/test-leads-service.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: |
+          node --test services/leads/test/*.test.mjs

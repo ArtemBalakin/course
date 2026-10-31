@@ -49,7 +49,7 @@
 @media(max-width:650px){.corporate-case.corporate-case-n3{display:flex;flex-direction:column}.corporate-case-n3 .corporate-case-copy{padding:27px 24px}.corporate-case-n3 .corporate-case-copy h3{font-size:34px}.corporate-case-n3 .corporate-case-shot{min-height:270px;height:270px}.n3-identity{margin-bottom:22px}.contact-panel{padding:24px 20px}.contact-form-row{grid-template-columns:1fr}.contact-tg-button{width:100%;padding:14px}.home-contact .contact-copy h2{font-size:clamp(37px,10vw,54px)}.ab-workflow-node:not(:last-child)::after{left:16px;top:88px;width:7px;height:7px}}
 
 
-/* Direct Formspree form: privacy acknowledgement, loading/error/success feedback. */
+/* Contact form: privacy acknowledgement, loading/error/success feedback. */
 #ab-contact-form .contact-consent{display:flex;align-items:flex-start;gap:10px;font:400 12px/1.6 'DM Sans',sans-serif;color:#38525a}
 #ab-contact-form .contact-consent input[type="checkbox"]{
   width:19px;height:19px;flex:0 0 19px;accent-color:#237f68;margin:2px 0 0;
