@@ -307,6 +307,10 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
 .solution-phone-rear:hover,.solution-phone-rear:focus-visible{z-index:5;transform:translateY(-52%) rotate(0) scale(.94);box-shadow:0 21px 35px #000a}
 .solution-phone-front:hover,.solution-phone-front:focus-visible{z-index:5;transform:translateY(-53%) rotate(0) scale(1.02);box-shadow:0 21px 35px #000a}
 .solution-visual-hint{position:absolute;bottom:24px;right:13px;left:13px;text-align:center;font:800 9px Manrope,sans-serif;letter-spacing:1px;color:#bbdbd4}
+.solution-showcase-sabina{grid-column:1/-1;grid-template-columns:minmax(0,1fr) 46%}
+.solution-showcase-sabina .solution-case-content h3 em{color:#f4b9a7}
+.solution-showcase-sabina .solution-case-visual{background:radial-gradient(circle at 82% 18%,#8a4a45 0,#4a2a33 42%,#10232d 88%)}
+.solution-showcase-sabina .solution-phone img{background:#efe0d3}
 .solutions-caveat{margin:16px 0 0;color:#788687;font:400 12px/1.7 'DM Sans',sans-serif}
 @media(max-width:1150px){
   .solution-showcases{grid-template-columns:1fr;gap:16px}

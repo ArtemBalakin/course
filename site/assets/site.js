@@ -139,6 +139,12 @@
         ['Выбор мастера','/assets/portfolio/salon-master.webp'],
         ['Дата и время','/assets/portfolio/salon-slots.webp'],
         ['Подтверждение записи','/assets/portfolio/salon-summary.webp']
+      ]},
+      sabina:{title:'Latina Solo by Sabina',source:'https://t.me/DanceCoursebot',sourceLabel:'Открыть бота ↗',screens:[
+        ['Приветствие и меню','/assets/portfolio/sabina-menu.webp'],
+        ['Программа курса','/assets/portfolio/sabina-program.webp'],
+        ['Тарифы и оплата','/assets/portfolio/sabina-tariffs.webp'],
+        ['Мой курс и прогресс','/assets/portfolio/sabina-course.webp']
       ]}
     };
     const viewerHeading=showcaseDialog.querySelector('#portfolio-viewer-heading');
@@ -148,6 +154,7 @@
     const viewerSource=showcaseDialog.querySelector('#portfolio-viewer-source');
     const thumbArea=showcaseDialog.querySelector('#portfolio-viewer-thumbs');
     const closeButton=showcaseDialog.querySelector('.portfolio-viewer-close');
+    const defaultSourceLabel=viewerSource.textContent;
     let activeProject='reminder',activeScreen=0,returnFocus=null;
     const updateViewer=()=>{
       const item=showcaseProjects[activeProject],screen=item.screens[activeScreen];
@@ -157,6 +164,7 @@
       viewerImage.alt=tr(item.title)+' — '+tr(screen[0]);
       viewerCount.textContent=String(activeScreen+1).padStart(2,'0')+' / '+String(item.screens.length).padStart(2,'0');
       viewerSource.href=item.source;
+      viewerSource.textContent=item.sourceLabel?tr(item.sourceLabel):defaultSourceLabel;
       thumbArea.replaceChildren();
       item.screens.forEach((shot,i)=>{
         const button=document.createElement('button');

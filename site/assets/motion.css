@@ -33,6 +33,7 @@
 /* Product previews float as a group so links keep their own tilt + focus/hover transforms. */
 .solution-phones{animation:ab-device-hover 6.7s ease-in-out infinite}
 .solution-showcase-reminder .solution-phones{animation-delay:-3.1s;animation-duration:7.3s}
+.solution-showcase-sabina .solution-phones{animation-delay:-1.7s;animation-duration:7s}
 .solution-case-visual::after{content:"";position:absolute;z-index:0;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,#71bdba51 0%,transparent 69%);filter:blur(10px);left:-15%;bottom:-15%;animation:ab-device-light 9s ease-in-out infinite;pointer-events:none}
 .solution-phones,.solution-visual-kicker,.solution-visual-hint{z-index:1}
 .solution-showcase{isolation:isolate;--ab-glow-color:#9dd6be24}

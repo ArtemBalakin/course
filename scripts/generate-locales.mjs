@@ -87,6 +87,8 @@ for(const locale of Object.values(locales)){
   const dictionary=locale.lang==='ru'?{}:JSON.parse(fs.readFileSync(path.join(root,'scripts/i18n/'+locale.lang+'.json'),'utf8'));
   let html=translateHtml(template,dictionary);
   if(locale.lang!=='ru') html=html.replaceAll('href="/services/','href="'+locale.path+'services/');
+  // Казахская версия курса есть только для /kk/, EN ведёт на русскую страницу.
+  if(locale.lang==='kk') html=html.replaceAll('href="/courses/sabina/','href="/kk/courses/sabina/');
   html=html.replace('<html lang="ru">','<html lang="'+locale.lang+'">');
   html=html.replace(/<meta name="description" content="[^"]+">/,
     '<meta name="description" content="'+escapeAttr(locale.description)+'">');
@@ -101,8 +103,8 @@ for(const locale of Object.values(locales)){
   html=html.replace('<button class="nav-toggle"',languageSwitcher(locale)+'<button class="nav-toggle"');
   html=html.replace('</body>','</body>');
   if(locale.lang!=='ru'){
-    html=html.replace('<script src="/assets/site.js" defer></script>',
-      '<script src="/assets/i18n-'+locale.lang+'.js?v=20261031" defer></script><script src="/assets/site.js" defer></script>');
+    html=html.replace('<script src="/assets/site.js?v=20261103-sabina" defer></script>',
+      '<script src="/assets/i18n-'+locale.lang+'.js?v=20261103" defer></script><script src="/assets/site.js?v=20261103-sabina" defer></script>');
     // Verify that every Russian source phrase has an explicit translation.
     // Kazakh uses Cyrillic too, so looking for Cyrillic in the output is incorrect.
     const untranslatedTexts=[...template.matchAll(/>([^<>]+)</g)].map(m=>m[1].trim())

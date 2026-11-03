@@ -13,6 +13,7 @@ body[data-page="home"]{
 body[data-page="home"] h1 em,body[data-page="home"] h2 em,body[data-page="home"] h3 em{
   font-family:inherit;font-style:normal;font-weight:inherit;letter-spacing:inherit;font-size:inherit;line-height:inherit;color:var(--t-lime)}
 body[data-page="home"] .solution-showcase-reminder .solution-case-content h3 em{color:var(--t-cyan)}
+body[data-page="home"] .solution-showcase-sabina .solution-case-content h3 em{color:#f4b9a7}
 
 /* ---- общий фон секций ---- */
 body[data-page="home"] .ab-capabilities,
