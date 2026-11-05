@@ -307,10 +307,6 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
 .solution-phone-rear:hover,.solution-phone-rear:focus-visible{z-index:5;transform:translateY(-52%) rotate(0) scale(.94);box-shadow:0 21px 35px #000a}
 .solution-phone-front:hover,.solution-phone-front:focus-visible{z-index:5;transform:translateY(-53%) rotate(0) scale(1.02);box-shadow:0 21px 35px #000a}
 .solution-visual-hint{position:absolute;bottom:24px;right:13px;left:13px;text-align:center;font:800 9px Manrope,sans-serif;letter-spacing:1px;color:#bbdbd4}
-.solution-showcase-sabina{grid-column:1/-1;grid-template-columns:minmax(0,1fr) 46%}
-.solution-showcase-sabina .solution-case-content h3 em{color:#f4b9a7}
-.solution-showcase-sabina .solution-case-visual{background:radial-gradient(circle at 82% 18%,#8a4a45 0,#4a2a33 42%,#10232d 88%)}
-.solution-showcase-sabina .solution-phone img{background:#efe0d3}
 .solutions-caveat{margin:16px 0 0;color:#788687;font:400 12px/1.7 'DM Sans',sans-serif}
 @media(max-width:1150px){
   .solution-showcases{grid-template-columns:1fr;gap:16px}
@@ -351,6 +347,26 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
   .solution-phone-front{right:16%}
   .solution-case-open{font-size:11px}
 }
+.solution-showcase-sabina{grid-column:1/-1;grid-template-columns:minmax(0,1fr) 50%;min-height:650px}
+.solution-showcase-sabina .solution-case-content h3 em{color:#f4b9a7}
+.solution-showcase-sabina .solution-case-visual{background:radial-gradient(circle at 82% 18%,#9a4d5f 0,#55293b 42%,#10232d 90%)}
+.solution-showcase-sabina .solution-phones{max-width:560px;min-height:600px}
+/* Современный iPhone: титановая грань, тонкая рамка, Dynamic Island и боковые кнопки. Размеры от --w. */
+.solution-showcase-sabina .solution-iphone{--w:258px;width:var(--w);padding:calc(var(--w)*.03);border:0;border-radius:calc(var(--w)*.17);background:#060607;overflow:visible;
+  box-shadow:inset 0 0 0 1px #3b3b3f,0 0 0 1.5px #b9b3ac,0 0 0 3px #57534f,0 30px 60px #0a050aa6}
+.solution-iphone img{aspect-ratio:720/1560;border-radius:calc(var(--w)*.14);background:#3a1f2c}
+.solution-iphone::after{content:"";position:absolute;top:calc(var(--w)*.058);left:50%;width:31%;height:calc(var(--w)*.088);transform:translateX(-50%);border-radius:99px;background:#000;box-shadow:inset 0 0 0 1px #151517}
+.solution-iphone::before{content:"";position:absolute;left:-3.5px;top:calc(var(--w)*.62);width:3px;height:calc(var(--w)*.16);border-radius:2px 0 0 2px;background:#8d8781;
+  box-shadow:0 calc(var(--w)*.22) 0 #8d8781,calc(var(--w) + 4px) calc(var(--w)*.08) 0 #8d8781}
+.solution-showcase-sabina .solution-phone-rear{left:4%;transform:translateY(-48%) rotate(-6deg) scale(.9)}
+.solution-showcase-sabina .solution-phone-front{right:4%;transform:translateY(-50%)}
+.solution-showcase-sabina .solution-phone-rear:hover,.solution-showcase-sabina .solution-phone-rear:focus-visible{transform:translateY(-50%) rotate(0) scale(.95);box-shadow:inset 0 0 0 1px #3b3b3f,0 0 0 1.5px #b9b3ac,0 0 0 3px #57534f,0 34px 64px #000b}
+.solution-showcase-sabina .solution-phone-front:hover,.solution-showcase-sabina .solution-phone-front:focus-visible{transform:translateY(-51.5%) scale(1.02);box-shadow:inset 0 0 0 1px #3b3b3f,0 0 0 1.5px #b9b3ac,0 0 0 3px #57534f,0 34px 64px #000b}
+.portfolio-viewer[data-project="sabina"] .portfolio-viewer-device{padding:9px;border:0;border-radius:50px;background:#060607;box-shadow:inset 0 0 0 1px #3b3b3f,0 0 0 1.5px #b9b3ac,0 0 0 3px #57534f,0 20px 45px #1a333455}
+.portfolio-viewer[data-project="sabina"] .portfolio-viewer-device img{aspect-ratio:720/1560;border-radius:42px;background:#3a1f2c}
+@media(max-width:1150px){.solution-showcase-sabina{grid-template-columns:minmax(0,1fr) 50%;min-height:620px}.solution-showcase-sabina .solution-iphone{--w:232px}}
+@media(max-width:760px){.solution-showcase-sabina{grid-template-columns:1fr}.solution-showcase-sabina .solution-case-visual{height:600px}.solution-showcase-sabina .solution-phones{min-height:0;max-width:520px}.solution-showcase-sabina .solution-iphone{--w:232px}.solution-showcase-sabina .solution-phone-rear{left:3%}.solution-showcase-sabina .solution-phone-front{right:3%}}
+@media(max-width:600px){.solution-showcase-sabina .solution-case-visual{height:470px}.solution-showcase-sabina .solution-iphone{--w:178px}.solution-showcase-sabina .solution-phone-rear{left:0}.solution-showcase-sabina .solution-phone-front{right:0}.portfolio-viewer[data-project="sabina"] .portfolio-viewer-device{padding:6px;border-radius:36px}.portfolio-viewer[data-project="sabina"] .portfolio-viewer-device img{border-radius:30px}}
 
 
 /* AB/digital hero: subtle, accessible kinetic system diagram. */

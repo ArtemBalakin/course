@@ -142,8 +142,9 @@
       ]},
       sabina:{title:'Latina Solo by Sabina',source:'https://t.me/DanceCoursebot',sourceLabel:'Открыть бота ↗',screens:[
         ['Приветствие и меню','/assets/portfolio/sabina-menu.webp'],
-        ['Программа курса','/assets/portfolio/sabina-program.webp'],
-        ['Тарифы и оплата','/assets/portfolio/sabina-tariffs.webp'],
+        ['Модуль 2 · Базовые движения','/assets/portfolio/sabina-module2.webp'],
+        ['Модуль 3 · Хореография','/assets/portfolio/sabina-module3.webp'],
+        ['Тарифы и старт потока','/assets/portfolio/sabina-tariffs.webp'],
         ['Мой курс и прогресс','/assets/portfolio/sabina-course.webp']
       ]}
     };
@@ -163,6 +164,7 @@
       viewerImage.src=screen[1];
       viewerImage.alt=tr(item.title)+' — '+tr(screen[0]);
       viewerCount.textContent=String(activeScreen+1).padStart(2,'0')+' / '+String(item.screens.length).padStart(2,'0');
+      showcaseDialog.dataset.project=activeProject;
       viewerSource.href=item.source;
       viewerSource.textContent=item.sourceLabel?tr(item.sourceLabel):defaultSourceLabel;
       thumbArea.replaceChildren();
