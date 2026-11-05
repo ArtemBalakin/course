@@ -178,8 +178,8 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
 .portfolio-viewer-stage{display:grid;grid-template-columns:54px minmax(0,1fr) 54px;justify-items:center;align-items:center;gap:16px;padding:18px 23px;background:linear-gradient(130deg,#edf0ea,#e5ebe6)}
 .portfolio-viewer-arrow{border:1px solid #cbd5cd;border-radius:50%;height:46px;width:46px;display:grid;place-items:center;background:#fff;color:#21392f;font:700 20px Manrope,sans-serif}
 .portfolio-viewer-arrow:hover,.portfolio-viewer-arrow:focus-visible{background:#d9ff5e}
-.portfolio-viewer-device{width:fit-content;max-width:100%;padding:5px;border:5px solid #1d2c34;border-radius:23px;background:#1d2c34;box-shadow:0 15px 40px #1a33344d}
-.portfolio-viewer-device img{display:block;height:min(63dvh,715px);width:auto;max-width:100%;aspect-ratio:500/1013;border-radius:13px;object-fit:contain;background:#fff9ef}
+.portfolio-viewer-device{width:fit-content;max-width:100%;filter:drop-shadow(0 16px 30px #1a333440)}
+.portfolio-viewer-device img{display:block;height:min(66dvh,740px);width:auto;max-width:100%;aspect-ratio:824/1702;object-fit:contain}
 .portfolio-viewer-footer{display:flex;align-items:center;gap:18px;justify-content:space-between;padding:14px 28px 22px}
 #portfolio-viewer-count{font:800 11px Manrope,sans-serif;color:#6b8178;letter-spacing:1px;min-width:60px}
 .portfolio-viewer-thumbs{display:flex;justify-content:center;align-items:center;gap:9px}
@@ -209,8 +209,8 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
   .portfolio-viewer-header{padding:17px 16px 12px}
   .portfolio-viewer-stage{grid-template-columns:36px minmax(0,1fr) 36px;gap:5px;padding:14px 8px}
   .portfolio-viewer-arrow{height:35px;width:35px;font-size:17px}
-  .portfolio-viewer-device{border-width:4px;padding:3px;border-radius:15px}
-  .portfolio-viewer-device img{height:min(62dvh,635px);border-radius:8px}
+  .portfolio-viewer-device{filter:drop-shadow(0 10px 20px #1a333440)}
+  .portfolio-viewer-device img{height:min(62dvh,635px)}
   .portfolio-viewer-footer{padding:12px 13px 16px;gap:7px}
   .portfolio-viewer-thumbs{gap:3px}
   .portfolio-viewer-thumb{width:30px;height:49px}
@@ -300,12 +300,13 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
 .solution-case-visual::before{content:"";position:absolute;width:380px;height:380px;border:1px solid #ffffff31;border-radius:50%;transform:rotate(23deg);left:-95px;top:45px}
 .solution-visual-kicker{position:absolute;top:30px;right:16px;color:#a9d9d3;font:800 9px Manrope,sans-serif;letter-spacing:1.5px}
 .solution-phones{display:flex;align-items:center;justify-content:center;position:relative;width:100%;height:100%;max-width:275px;min-height:390px;isolation:isolate}
-.solution-phone{display:block;position:absolute;top:50%;width:min(74%,180px);padding:5px;border:3px solid #162831;border-radius:20px;background:#15232a;box-shadow:0 17px 31px #020e1799;transition:transform .2s,box-shadow .2s;outline-offset:5px;overflow:hidden}
-.solution-phone img{display:block;width:100%;height:auto;aspect-ratio:500/1013;object-fit:contain;border-radius:13px;background:#fff9ec}
-.solution-phone-rear{z-index:1;left:3%;transform:translateY(-48%) rotate(-9deg) scale(.86);transform-origin:center center}
-.solution-phone-front{z-index:2;right:1%;transform:translateY(-50%) rotate(7deg);transform-origin:center center}
-.solution-phone-rear:hover,.solution-phone-rear:focus-visible{z-index:5;transform:translateY(-52%) rotate(0) scale(.94);box-shadow:0 21px 35px #000a}
-.solution-phone-front:hover,.solution-phone-front:focus-visible{z-index:5;transform:translateY(-53%) rotate(0) scale(1.02);box-shadow:0 21px 35px #000a}
+.solution-phone{display:block;position:absolute;top:50%;width:min(76%,205px);filter:drop-shadow(0 18px 26px #020e1780);transition:transform .2s,filter .2s;outline-offset:5px;border-radius:28px}
+/* Рамка iPhone впечена в картинки assets/portfolio/iphone/*.webp (824x1702, прозрачные углы). */
+.solution-phone img{display:block;width:100%;height:auto;aspect-ratio:824/1702}
+.solution-phone-rear{z-index:1;left:4%;transform:translateY(-48%) rotate(-6deg) scale(.86);transform-origin:center center}
+.solution-phone-front{z-index:2;right:5%;transform:translateY(-50%) rotate(4deg);transform-origin:center center}
+.solution-phone-rear:hover,.solution-phone-rear:focus-visible{z-index:5;transform:translateY(-52%) rotate(0) scale(.94);filter:drop-shadow(0 24px 32px #020e17a6)}
+.solution-phone-front:hover,.solution-phone-front:focus-visible{z-index:5;transform:translateY(-53%) rotate(0) scale(1.02);filter:drop-shadow(0 24px 32px #020e17a6)}
 .solution-visual-hint{position:absolute;bottom:24px;right:13px;left:13px;text-align:center;font:800 9px Manrope,sans-serif;letter-spacing:1px;color:#bbdbd4}
 .solutions-caveat{margin:16px 0 0;color:#788687;font:400 12px/1.7 'DM Sans',sans-serif}
 @media(max-width:1150px){
@@ -315,7 +316,7 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
   .solution-case-content h3{font-size:clamp(29px,3vw,43px);margin:24px 0 16px}
   .solution-case-problem,.solution-case-outcome p{max-width:490px;font-size:14px}
   .solution-phones{max-width:375px}
-  .solution-phone{width:min(65%,190px)}
+  .solution-phone{width:min(68%,210px)}
 }
 @media(max-width:760px){
   .solutions-header{display:block}
@@ -324,9 +325,9 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
   .solution-case-content{padding:29px 26px 22px}
   .solution-case-content h3{margin:19px 0 13px}
   .solution-case-problem,.solution-case-outcome p{max-width:none}
-  .solution-case-visual{height:355px}
+  .solution-case-visual{height:440px}
   .solution-phones{min-height:0;max-width:375px}
-  .solution-phone{width:min(42%,163px)}
+  .solution-phone{width:min(44%,178px)}
   .solution-phone-rear{left:23%}
   .solution-phone-front{right:23%}
   .solution-visual-kicker{top:17px}
@@ -341,8 +342,8 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
   .solution-case-top{font-size:9px}
   .solution-case-content h3{font-size:clamp(29px,7vw,39px)}
   .solution-case-actions{gap:15px}
-  .solution-case-visual{height:327px}
-  .solution-phone{width:min(48%,160px)}
+  .solution-case-visual{height:410px}
+  .solution-phone{width:min(50%,168px)}
   .solution-phone-rear{left:16%}
   .solution-phone-front{right:16%}
   .solution-case-open{font-size:11px}
@@ -350,23 +351,15 @@ body[data-page="course"],body[data-page="checkout"]{background:var(--d-bg);color
 .solution-showcase-sabina{grid-column:1/-1;grid-template-columns:minmax(0,1fr) 50%;min-height:650px}
 .solution-showcase-sabina .solution-case-content h3 em{color:#f4b9a7}
 .solution-showcase-sabina .solution-case-visual{background:radial-gradient(circle at 82% 18%,#9a4d5f 0,#55293b 42%,#10232d 90%)}
-.solution-showcase-sabina .solution-phones{max-width:560px;min-height:600px}
-/* Современный iPhone: титановая грань, тонкая рамка, Dynamic Island и боковые кнопки. Размеры от --w. */
-.solution-showcase-sabina .solution-iphone{--w:258px;width:var(--w);padding:calc(var(--w)*.03);border:0;border-radius:calc(var(--w)*.17);background:#060607;overflow:visible;
-  box-shadow:inset 0 0 0 1px #3b3b3f,0 0 0 1.5px #b9b3ac,0 0 0 3px #57534f,0 30px 60px #0a050aa6}
-.solution-iphone img{aspect-ratio:720/1560;border-radius:calc(var(--w)*.14);background:#3a1f2c}
-.solution-iphone::after{content:"";position:absolute;top:calc(var(--w)*.058);left:50%;width:31%;height:calc(var(--w)*.088);transform:translateX(-50%);border-radius:99px;background:#000;box-shadow:inset 0 0 0 1px #151517}
-.solution-iphone::before{content:"";position:absolute;left:-3.5px;top:calc(var(--w)*.62);width:3px;height:calc(var(--w)*.16);border-radius:2px 0 0 2px;background:#8d8781;
-  box-shadow:0 calc(var(--w)*.22) 0 #8d8781,calc(var(--w) + 4px) calc(var(--w)*.08) 0 #8d8781}
-.solution-showcase-sabina .solution-phone-rear{left:4%;transform:translateY(-48%) rotate(-6deg) scale(.9)}
-.solution-showcase-sabina .solution-phone-front{right:4%;transform:translateY(-50%)}
-.solution-showcase-sabina .solution-phone-rear:hover,.solution-showcase-sabina .solution-phone-rear:focus-visible{transform:translateY(-50%) rotate(0) scale(.95);box-shadow:inset 0 0 0 1px #3b3b3f,0 0 0 1.5px #b9b3ac,0 0 0 3px #57534f,0 34px 64px #000b}
-.solution-showcase-sabina .solution-phone-front:hover,.solution-showcase-sabina .solution-phone-front:focus-visible{transform:translateY(-51.5%) scale(1.02);box-shadow:inset 0 0 0 1px #3b3b3f,0 0 0 1.5px #b9b3ac,0 0 0 3px #57534f,0 34px 64px #000b}
-.portfolio-viewer[data-project="sabina"] .portfolio-viewer-device{padding:9px;border:0;border-radius:50px;background:#060607;box-shadow:inset 0 0 0 1px #3b3b3f,0 0 0 1.5px #b9b3ac,0 0 0 3px #57534f,0 20px 45px #1a333455}
-.portfolio-viewer[data-project="sabina"] .portfolio-viewer-device img{aspect-ratio:720/1560;border-radius:42px;background:#3a1f2c}
-@media(max-width:1150px){.solution-showcase-sabina{grid-template-columns:minmax(0,1fr) 50%;min-height:620px}.solution-showcase-sabina .solution-iphone{--w:232px}}
-@media(max-width:760px){.solution-showcase-sabina{grid-template-columns:1fr}.solution-showcase-sabina .solution-case-visual{height:600px}.solution-showcase-sabina .solution-phones{min-height:0;max-width:520px}.solution-showcase-sabina .solution-iphone{--w:232px}.solution-showcase-sabina .solution-phone-rear{left:3%}.solution-showcase-sabina .solution-phone-front{right:3%}}
-@media(max-width:600px){.solution-showcase-sabina .solution-case-visual{height:470px}.solution-showcase-sabina .solution-iphone{--w:178px}.solution-showcase-sabina .solution-phone-rear{left:0}.solution-showcase-sabina .solution-phone-front{right:0}.portfolio-viewer[data-project="sabina"] .portfolio-viewer-device{padding:6px;border-radius:36px}.portfolio-viewer[data-project="sabina"] .portfolio-viewer-device img{border-radius:30px}}
+.solution-showcase-sabina .solution-phones{max-width:580px;min-height:600px}
+.solution-showcase-sabina .solution-phone{width:276px}
+.solution-showcase-sabina .solution-phone-rear{left:3%;transform:translateY(-48%) rotate(-6deg) scale(.9)}
+.solution-showcase-sabina .solution-phone-front{right:3%;transform:translateY(-50%)}
+.solution-showcase-sabina .solution-phone-rear:hover,.solution-showcase-sabina .solution-phone-rear:focus-visible{transform:translateY(-50%) rotate(0) scale(.95)}
+.solution-showcase-sabina .solution-phone-front:hover,.solution-showcase-sabina .solution-phone-front:focus-visible{transform:translateY(-51.5%) scale(1.02)}
+@media(max-width:1150px){.solution-showcase-sabina{grid-template-columns:minmax(0,1fr) 50%;min-height:620px}.solution-showcase-sabina .solution-phone{width:248px}}
+@media(max-width:760px){.solution-showcase-sabina{grid-template-columns:1fr}.solution-showcase-sabina .solution-case-visual{height:600px}.solution-showcase-sabina .solution-phones{min-height:0;max-width:520px}.solution-showcase-sabina .solution-phone{width:248px}.solution-showcase-sabina .solution-phone-rear{left:2%}.solution-showcase-sabina .solution-phone-front{right:2%}}
+@media(max-width:600px){.solution-showcase-sabina .solution-case-visual{height:470px}.solution-showcase-sabina .solution-phone{width:186px}.solution-showcase-sabina .solution-phone-rear{left:4%}.solution-showcase-sabina .solution-phone-front{right:0}}
 
 
 /* AB/digital hero: subtle, accessible kinetic system diagram. */

@@ -368,8 +368,8 @@ function servicePage(lang, slug, c, kind) {
 function botsPage(lang, c) {
   const u = UI[lang];
   const slug = 'telegram-bots';
-  const css = '<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/telegram-bots.css?v=20261031-lang">' + kkFont(lang);
-  const shots = (names, caps, alts, label) => `<div class="tg-screens">${names.map((n, i) => `<figure><a href="/assets/portfolio/${n}.webp" target="_blank" rel="noopener" aria-label="${attr(caps[i] + ': ' + label)}"><img src="/assets/portfolio/${n}.webp" alt="${attr(alts[i])}" width="500" height="1013" loading="lazy" decoding="async"></a><figcaption><span>0${i + 1}</span> ${esc(caps[i])}</figcaption></figure>`).join('')}</div>`;
+  const css = '<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/telegram-bots.css?v=20261105-iphone">' + kkFont(lang);
+  const shots = (names, caps, alts, label) => `<div class="tg-screens">${names.map((n, i) => `<figure><a href="/assets/portfolio/iphone/${n}.webp" target="_blank" rel="noopener" aria-label="${attr(caps[i] + ': ' + label)}"><img src="/assets/portfolio/iphone/${n}.webp" alt="${attr(alts[i])}" width="824" height="1702" loading="lazy" decoding="async"></a><figcaption><span>0${i + 1}</span> ${esc(caps[i])}</figcaption></figure>`).join('')}</div>`;
   const project = (id, extraClass, p, href, names) => `<article class="tg-project${extraClass}" id="${id}" aria-labelledby="${id}-title"><div class="tg-project-heading"><div><p class="tg-project-tag">${esc(p.tag)}</p><h3 id="${id}-title">${esc(p.h3)}</h3><p class="tg-project-lead">${esc(p.lead)}</p></div><a class="tg-source" href="${href}" target="_blank" rel="noopener noreferrer">${esc(c.codeLink)}</a></div>
 <div class="tg-project-body"><p>${p.body}</p><ul class="tg-list">${p.list.map(i => `<li>${esc(i)}</li>`).join('')}</ul></div>
 ${shots(names, p.caps, p.alts, c.screenLabel)}
@@ -389,7 +389,7 @@ ${topbar(lang, slug, u.topBots)}
 <div class="tg-actions"><a class="btn btn-accent" href="${TG}" target="_blank" rel="noopener noreferrer">${esc(u.estimate)}</a><a class="tg-text-link" href="#examples">${esc(c.exLink)}</a></div></div>
 <a class="tg-hero-showcase" href="#examples" aria-label="${attr(c.showcaseAlt.join(' / '))}">
 <div class="tg-showcase-heading"><span>${esc(c.showcase[0])}</span><span>${esc(c.showcase[1])}</span></div>
-<div class="tg-hero-phones"><img class="tg-phone-salon" src="/assets/portfolio/salon-services.webp" alt="${attr(c.showcaseAlt[0])}" width="500" height="1013" fetchpriority="high"><img class="tg-phone-reminder" src="/assets/portfolio/reminder-today.webp" alt="${attr(c.showcaseAlt[1])}" width="500" height="1013" decoding="async"></div>
+<div class="tg-hero-phones"><img class="tg-phone-salon" src="/assets/portfolio/iphone/salon-services.webp" alt="${attr(c.showcaseAlt[0])}" width="824" height="1702" fetchpriority="high"><img class="tg-phone-reminder" src="/assets/portfolio/iphone/reminder-today.webp" alt="${attr(c.showcaseAlt[1])}" width="824" height="1702" decoding="async"></div>
 <p>${esc(c.showcaseP)}<br><span>${esc(c.showcaseS)}</span></p></a>
 </section>
 

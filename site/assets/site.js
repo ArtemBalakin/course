@@ -129,23 +129,23 @@
   if(showcaseDialog&&typeof showcaseDialog.showModal==='function'){
     const showcaseProjects={
       reminder:{title:'Мой дом',source:'https://github.com/ArtemBalakin/reminderBot',screens:[
-        ['Главная — светлая тема','/assets/portfolio/reminder-today.webp'],
-        ['Главная — тёмная тема','/assets/portfolio/reminder-night.webp'],
-        ['Календарь задач','/assets/portfolio/reminder-calendar.webp'],
-        ['Профиль и статистика','/assets/portfolio/reminder-profile.webp']
+        ['Главная — светлая тема','/assets/portfolio/iphone/reminder-today.webp'],
+        ['Главная — тёмная тема','/assets/portfolio/iphone/reminder-night.webp'],
+        ['Календарь задач','/assets/portfolio/iphone/reminder-calendar.webp'],
+        ['Профиль и статистика','/assets/portfolio/iphone/reminder-profile.webp']
       ]},
       salon:{title:'Salon Booking',source:'https://github.com/ArtemBalakin/salon-booking-bot/tree/feature/miniapp-showcase',screens:[
-        ['Выбор услуги','/assets/portfolio/salon-services.webp'],
-        ['Выбор мастера','/assets/portfolio/salon-master.webp'],
-        ['Дата и время','/assets/portfolio/salon-slots.webp'],
-        ['Подтверждение записи','/assets/portfolio/salon-summary.webp']
+        ['Выбор услуги','/assets/portfolio/iphone/salon-services.webp'],
+        ['Выбор мастера','/assets/portfolio/iphone/salon-master.webp'],
+        ['Дата и время','/assets/portfolio/iphone/salon-slots.webp'],
+        ['Подтверждение записи','/assets/portfolio/iphone/salon-summary.webp']
       ]},
       sabina:{title:'Latina Solo by Sabina',source:'https://t.me/DanceCoursebot',sourceLabel:'Открыть бота ↗',screens:[
-        ['Приветствие и меню','/assets/portfolio/sabina-menu.webp'],
-        ['Модуль 2 · Базовые движения','/assets/portfolio/sabina-module2.webp'],
-        ['Модуль 3 · Хореография','/assets/portfolio/sabina-module3.webp'],
-        ['Тарифы и старт потока','/assets/portfolio/sabina-tariffs.webp'],
-        ['Мой курс и прогресс','/assets/portfolio/sabina-course.webp']
+        ['Приветствие и меню','/assets/portfolio/iphone/sabina-menu.webp'],
+        ['Модуль 2 · Базовые движения','/assets/portfolio/iphone/sabina-module2.webp'],
+        ['Модуль 3 · Хореография','/assets/portfolio/iphone/sabina-module3.webp'],
+        ['Тарифы и старт потока','/assets/portfolio/iphone/sabina-tariffs.webp'],
+        ['Мой курс и прогресс','/assets/portfolio/iphone/sabina-course.webp']
       ]}
     };
     const viewerHeading=showcaseDialog.querySelector('#portfolio-viewer-heading');
@@ -164,7 +164,6 @@
       viewerImage.src=screen[1];
       viewerImage.alt=tr(item.title)+' — '+tr(screen[0]);
       viewerCount.textContent=String(activeScreen+1).padStart(2,'0')+' / '+String(item.screens.length).padStart(2,'0');
-      showcaseDialog.dataset.project=activeProject;
       viewerSource.href=item.source;
       viewerSource.textContent=item.sourceLabel?tr(item.sourceLabel):defaultSourceLabel;
       thumbArea.replaceChildren();
@@ -175,7 +174,7 @@
         button.setAttribute('aria-label',tr(shot[0]));
         button.setAttribute('aria-pressed',String(i===activeScreen));
         const img=document.createElement('img');
-        img.src=shot[1];img.alt='';img.width=500;img.height=1013;
+        img.src=shot[1];img.alt='';img.width=824;img.height=1702;
         button.append(img);
         button.addEventListener('click',()=>{activeScreen=i;updateViewer()});
         thumbArea.append(button);
