@@ -59,3 +59,20 @@ for (const u of urls) {
   const s = r.inspectionResult?.indexStatusResult || {};
   console.log(`${s.verdict}\t${s.coverageState}\t${u}`);
 }
+
+// ---- Яндекс.Вебмастер (токен: %USERPROFILE%\.claude\secrets\yandex-webmaster.token) ----
+console.log('\n# Яндекс.Вебмастер');
+try {
+  const yt = fs.readFileSync(path.join(os.homedir(), '.claude', 'secrets', 'yandex-webmaster.token'), 'utf8').trim();
+  const ya = async (p) => (await fetch('https://api.webmaster.yandex.net/v4' + p, { headers: { authorization: `OAuth ${yt}` } })).json();
+  const { user_id } = await ya('/user');
+  const host = 'https:ab-digital.kz:443';
+  const base = `/user/${user_id}/hosts/${host}`;
+  const sum = await ya(`${base}/summary`);
+  if (sum.error_code) console.log(sum.error_code, sum.error_message);
+  else {
+    console.log('сводка:', JSON.stringify(sum));
+    const qs = await ya(`${base}/search-queries/popular?order_by=TOTAL_SHOWS&query_indicator=TOTAL_SHOWS&query_indicator=TOTAL_CLICKS&query_indicator=AVG_SHOW_POSITION`);
+    (qs.queries || []).slice(0, 15).forEach((x) => console.log(x.query_text, JSON.stringify(x.indicators)));
+  }
+} catch (e) { console.log('Яндекс: ' + e.message); }
