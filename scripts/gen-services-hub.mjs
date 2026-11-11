@@ -20,12 +20,12 @@ for (const [k,t] of Object.entries(L)) {
   const cards = t.items.map(([s,n,p,d])=>`<a class="tg-card" href="${t.base}/services/${s}/"><h2>${n}</h2><p><strong>${p}</strong></p><p>${d}</p><span>${t.more} →</span></a>`).join('');
   const sw = ['ru','kk','en'].map(x=>`<a href="${L[x].base}/services/" hreflang="${x}" lang="${x}"${x===k?' aria-current="page"':''}>${{ru:'RU',kk:'ҚАЗ',en:'EN'}[x]}</a>`).join('');
   const html = `<!doctype html><html lang="${t.lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0e1b26"><title>${t.title}</title><meta name="description" content="${t.desc}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${url}">${hre}<meta property="og:type" content="website"><meta property="og:site_name" content="AB/digital"><meta property="og:locale" content="${t.loc}"><meta property="og:title" content="${t.title}"><meta property="og:description" content="${t.desc}"><meta property="og:url" content="${url}"><meta property="og:image" content="https://ab-digital.kz/assets/og-image.png"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/telegram-bots.css?v=20261105-iphone"><script src="/assets/analytics.js" defer></script></head><body>
-<header class="topbar"><a class="brand" href="${t.base||'/'}/">AB/digital</a><nav class="lang-switch" aria-label="${t.langnav}">${sw}</nav><a class="top-contact" href="https://t.me/ArtemBalakin" target="_blank" rel="noopener noreferrer">${t.contact}</a></header>
+<header class="topbar"><a class="brand" href="${t.base}/">AB/digital</a><nav class="lang-switch" aria-label="${t.langnav}">${sw}</nav><a class="top-contact" href="https://t.me/ArtemBalakin" target="_blank" rel="noopener noreferrer">${t.contact}</a></header>
 <main class="tg-page wrap" id="main">
-<nav class="tg-crumbs" aria-label="${t.home}"><a href="${t.base||'/'}/">${t.home}</a><span aria-hidden="true"> / </span><span aria-current="page">${t.h1}</span></nav>
+<nav class="tg-crumbs" aria-label="${t.home}"><a href="${t.base}/">${t.home}</a><span aria-hidden="true"> / </span><span aria-current="page">${t.h1}</span></nav>
 <section class="tg-section"><h1>${t.h1}</h1><p class="tg-lead">${t.lead}</p><div class="tg-related">${cards}</div></section>
 </main>
-<footer class="footer"><a href="${t.base||'/'}/">AB/digital</a> · <a href="mailto:admin@ab-digital.kz">admin@ab-digital.kz</a> · <a href="/legal/privacy/">${t.priv}</a></footer>
+<footer class="footer"><a href="${t.base}/">AB/digital</a> · <a href="mailto:admin@ab-digital.kz">admin@ab-digital.kz</a> · <a href="/legal/privacy/">${t.priv}</a></footer>
 </body></html>
 `;
   fs.writeFileSync(`site${t.base}/services/index.html`, html);
