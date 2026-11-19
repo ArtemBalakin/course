@@ -100,7 +100,7 @@ for(const page of pages){
   // Playfair Display без казахских букв: в kk-версии подменяем его целиком на Playfair
   kk=kk.replace('</head>','<link rel="stylesheet" href="/assets/sabina-kk-font.css?v=20261035"></head>');
   kk=kk.replace(/<script src="\/assets\/site\.js(\?[^"]*)?" defer><\/script>/,
-    m=>'<script src="/assets/i18n-sabina-kk.js?v=20261031" defer></script>'+m);
+    m=>'<script src="/assets/i18n-sabina-kk.js?v=20261119" defer></script>'+m);
   kk=decorate(kk,'kk',page);
   const target=path.join(root,'site/kk/courses/sabina',page);
   fs.mkdirSync(path.dirname(target),{recursive:true});

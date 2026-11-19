@@ -211,7 +211,8 @@
 
 })();
 
-// Страница результата оплаты: показывает статус заказа и ведёт в бота, который привяжет оплату к аккаунту Telegram.
+// Страница результата оплаты: ждёт подтверждения оплаты от бота и сама переходит в него; бот привяжет оплату к аккаунту Telegram.
+// Кнопка остаётся на случай, если браузер не откроет Telegram без нажатия (iOS Safari).
 (()=>{
   const tr=value=>(window.AB_TRANSLATIONS&&window.AB_TRANSLATIONS[value])||value;
   const box=document.querySelector('[data-order-result]');
@@ -224,16 +225,25 @@
   const bot=order?'https://t.me/DanceCoursebot?start=claim_'+encodeURIComponent(order):'https://t.me/DanceCoursebot';
   link.href=bot;
   const states={
-    PAID:['Оплата получена','Спасибо! Нажмите кнопку ниже: бот привяжет оплату к вашему аккаунту Telegram и откроет доступ к курсу.',true],
+    PAID:['Оплата получена','Спасибо! Открываем Telegram: бот привяжет оплату к вашему аккаунту и откроет доступ к курсу. Если Telegram не открылся, нажмите кнопку ниже.',true],
     PENDING:['Проверяем оплату','Платёж ещё обрабатывается. Страница обновится сама, это занимает не больше минуты.',false],
     CREATED:['Проверяем оплату','Платёж ещё обрабатывается. Страница обновится сама, это занимает не больше минуты.',false],
     ERROR:['Оплата не прошла','Деньги не списаны или будут возвращены банком. Вернитесь к тарифам и попробуйте ещё раз.',false],
     EXPIRED:['Срок оплаты истёк','Вернитесь к тарифам и оформите заказ заново.',false]
   };
-  let tries=0;
+  let tries=0,redirected=false;
   const show=status=>{
     const s=states[status]||states.PENDING;
     title.textContent=tr(s[0]);text.textContent=tr(s[1]);link.hidden=!s[2];
+  };
+  // пока Freedom Pay в тестовом режиме: предупреждаем, что деньги не списаны
+  const markTest=()=>{
+    if(box.querySelector('[data-result-test]'))return;
+    const note=document.createElement('p');
+    note.setAttribute('data-result-test','');
+    note.style.cssText='margin:0 0 12px;padding:8px 12px;border:1px dashed currentColor;border-radius:8px;font-weight:600';
+    note.textContent=tr('🧪 Тестовая оплата: деньги не списаны.');
+    title.before(note);
   };
   const poll=async()=>{
     if(!order){show('PENDING');text.textContent=tr('Не нашли номер заказа. Если вы оплатили курс, откройте бота: он найдёт заказ.');link.hidden=false;return}
@@ -241,6 +251,8 @@
       const res=await fetch('/api/site/checkout/'+encodeURIComponent(order));
       const data=await res.json();
       show(data.status);
+      if(data.test)markTest();
+      if(data.status==='PAID'&&!redirected){redirected=true;setTimeout(()=>{location.href=bot},1500)}
       if((data.status==='PENDING'||data.status==='CREATED')&&++tries<30)setTimeout(poll,4000);
     }catch(e){show('PENDING');if(++tries<30)setTimeout(poll,6000)}
   };
